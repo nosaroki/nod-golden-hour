@@ -22,7 +22,12 @@ export const Loader: React.FC<LoaderProps> = ({ onComplete }) => {
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-background"
+          className="fixed inset-0 z-[100] flex items-center justify-center"
+          style={{
+            backgroundImage: 'url(/images/background-texture.jpeg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+          }}
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6 }}

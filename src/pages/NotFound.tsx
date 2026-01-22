@@ -2,14 +2,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { NodSmile } from '@/components/NodSmile';
-import { GlitterBackground } from '@/components/GlitterBackground';
+import { AnimatedBackground } from '@/components/AnimatedBackground';
 
 const NotFound = () => {
   const { t } = useLanguage();
 
   return (
     <div className="relative min-h-screen flex items-center justify-center">
-      <GlitterBackground />
+      <AnimatedBackground />
       
       <div className="relative z-10 content-container text-center">
         <motion.div
