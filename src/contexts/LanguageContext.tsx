@@ -19,7 +19,7 @@ const translations: Record<Language, Record<string, string>> = {
     'nav.contact': 'Nous contacter',
     
     // Hero / About
-    'hero.title': 'We help organizations say yes to their most ambitious projects',
+    'hero.title': 'Nous aidons les organisations à dire oui à leurs projets les plus ambitieux',
     'about.description1': 'NOD Consulting est un studio-conseil en stratégie de marque et narration.',
     'about.description2': 'Nous accompagnons des entrepreneurs et des marques qui souhaitent clarifier leur positionnement, structurer leur message et déployer des contenus à forte valeur stratégique.',
     'about.description3': 'Fondé par Nnéna, stratège de marque et directrice éditoriale, NOD Consulting s\'entoure, selon les enjeux, des expertises les plus pertinentes pour accompagner chaque projet, du socle stratégique à sa mise en mouvement.',
@@ -52,7 +52,7 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Signature
     'signature.title': 'La Signature NOD',
-    'signature.tagline': 'say yes to new projects',
+    'signature.tagline': 'dire oui à de nouveaux projets',
     'signature.intro': 'Excellence, intégrité et résultats qui comptent.',
     'signature.description': 'En vous associant à NOD, vous gagnez plus qu\'un consultant—vous gagnez un allié dévoué à votre succès. Notre signature est notre promesse : une réflexion audacieuse, une exécution méticuleuse et des résultats transformateurs.',
     'signature.item1': 'Approche centrée sur le client',
@@ -62,7 +62,7 @@ const translations: Record<Language, Record<string, string>> = {
     'signature.item5': 'Partenariat à long terme',
     
     // CTA
-    'cta.title': 'Ready to say yes?',
+    'cta.title': 'Prêt à dire oui ?',
     'cta.subtitle': 'Discutons de votre projet.',
     'cta.button': 'Nous contacter',
     
@@ -81,6 +81,12 @@ const translations: Record<Language, Record<string, string>> = {
     '404.title': 'Page introuvable',
     '404.message': 'Cette page semble avoir dit non.',
     '404.button': 'Retour à l\'accueil',
+    
+    // Coming Soon
+    'coming.title': 'Bientôt disponible',
+    'coming.message': 'Nous préparons quelque chose d\'exceptionnel. Restez à l\'écoute.',
+    'coming.contact': 'En attendant, contactez-nous à',
+    'coming.button': 'Retour à l\'accueil',
     
     // Footer
     'footer.rights': 'Tous droits réservés.',
@@ -132,7 +138,7 @@ const translations: Record<Language, Record<string, string>> = {
     'signature.intro': 'Excellence, integrity, and results that matter.',
     'signature.description': 'When you partner with NOD, you gain more than a consultant—you gain a dedicated ally committed to your success. Our signature is our promise: bold thinking, meticulous execution, and transformative outcomes.',
     'signature.item1': 'Client-centric approach',
-    'signature.item2': 'Data-driven decision making',
+    'signature.item2': 'Data-driven decisions',
     'signature.item3': 'Transparent communication',
     'signature.item4': 'Measurable results',
     'signature.item5': 'Long-term partnership',
@@ -157,6 +163,12 @@ const translations: Record<Language, Record<string, string>> = {
     '404.title': 'Page not found',
     '404.message': 'This page seems to have said no.',
     '404.button': 'Back to home',
+    
+    // Coming Soon
+    'coming.title': 'Coming Soon',
+    'coming.message': 'We\'re preparing something exceptional. Stay tuned.',
+    'coming.contact': 'In the meantime, reach us at',
+    'coming.button': 'Back to home',
     
     // Footer
     'footer.rights': 'All rights reserved.',
