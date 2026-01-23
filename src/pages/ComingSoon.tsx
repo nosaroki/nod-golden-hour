@@ -3,8 +3,9 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { NodSmile } from '@/components/NodSmile';
 import { GlitterBackground } from '@/components/GlitterBackground';
+import { NodLogo } from '@/components/NodLogo';
 
-const NotFound = () => {
+const ComingSoon = () => {
   const { t, language, setLanguage } = useLanguage();
 
   return (
@@ -33,49 +34,66 @@ const NotFound = () => {
       </div>
       
       <div className="relative z-10 content-container text-center">
+        {/* Logo */}
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="mb-8"
         >
-          <NodSmile size={100} color="blue" className="mx-auto transform rotate-180" />
+          <NodLogo size="lg" />
+        </motion.div>
+
+        {/* Smile */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mb-8"
+        >
+          <NodSmile size={80} color="blue" className="mx-auto" />
         </motion.div>
 
         <motion.h1
           className="text-editorial-lg mb-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.3 }}
         >
-          404
+          {t('coming.title')}
         </motion.h1>
 
         <motion.p
-          className="text-editorial-md text-muted-foreground mb-4"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.3 }}
-        >
-          {t('404.title')}
-        </motion.p>
-
-        <motion.p
-          className="text-body-lg text-muted-foreground mb-12"
+          className="text-body-lg text-muted-foreground mb-8 max-w-md mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
         >
-          {t('404.message')}
+          {t('coming.message')}
+        </motion.p>
+
+        <motion.p
+          className="text-body-md text-muted-foreground mb-12"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
+        >
+          {t('coming.contact')}{' '}
+          <a 
+            href="mailto:contact@nod-consulting.com" 
+            className="text-primary hover:underline"
+          >
+            contact@nod-consulting.com
+          </a>
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
         >
           <Link to="/" className="btn-premium">
-            <span>{t('404.button')}</span>
+            <span>{t('coming.button')}</span>
           </Link>
         </motion.div>
       </div>
@@ -83,4 +101,4 @@ const NotFound = () => {
   );
 };
 
-export default NotFound;
+export default ComingSoon;
