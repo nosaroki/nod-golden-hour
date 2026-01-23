@@ -18,7 +18,7 @@ const NotFound = () => {
           transition={{ duration: 0.6 }}
           className="mb-8"
         >
-          <NodSmile size={120} color="orange" className="mx-auto transform rotate-180" />
+          <NodSmile size={100} color="blue" className="mx-auto transform rotate-180" />
         </motion.div>
 
         <motion.h1

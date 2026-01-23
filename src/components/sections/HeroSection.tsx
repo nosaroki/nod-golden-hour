@@ -26,7 +26,7 @@ export const HeroSection: React.FC = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.8 }}
               >
-                <NodSmile size={60} color="blue" />
+                <NodSmile size={50} color="blue" />
               </motion.div>
             </div>
           </motion.div>

@@ -48,12 +48,12 @@ export const SignatureSection: React.FC = () => {
             {t('signature.description')}
           </motion.p>
 
-          {/* Signature Items - Animated Premium Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-16">
+          {/* Signature Items - 5 Premium Compartments in One Row */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-16">
             {signatureItems.map((itemKey, index) => (
               <motion.div
                 key={itemKey}
-                className="group relative p-6 bg-card/50 backdrop-blur-sm border border-border/30 overflow-hidden cursor-default"
+                className="group relative p-4 bg-card/50 backdrop-blur-sm border border-border/30 overflow-hidden cursor-default text-center"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
@@ -70,13 +70,13 @@ export const SignatureSection: React.FC = () => {
                 />
                 
                 {/* Content */}
-                <div className="relative z-10 flex items-center gap-3">
+                <div className="relative z-10 flex flex-col items-center gap-2">
                   <motion.div
-                    className="w-2 h-2 rounded-full bg-primary flex-shrink-0"
+                    className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"
                     whileHover={{ scale: 1.5 }}
                     transition={{ type: "spring", stiffness: 400 }}
                   />
-                  <span className="text-sm md:text-base text-foreground/90 group-hover:text-foreground transition-colors duration-300">
+                  <span className="text-xs md:text-sm text-foreground/90 group-hover:text-foreground transition-colors duration-300 leading-tight">
                     {t(itemKey)}
                   </span>
                 </div>
@@ -99,7 +99,7 @@ export const SignatureSection: React.FC = () => {
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
                 transition={{ duration: 0.5, delay: 1 }}
               >
-                <NodSmile size={50} color="blue" />
+                <NodSmile size={40} color="blue" />
               </motion.div>
             </div>
             
