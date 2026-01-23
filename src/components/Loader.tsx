@@ -48,7 +48,7 @@ export const Loader: React.FC<LoaderProps> = ({ onComplete }) => {
                 ease: "easeInOut"
               }}
             >
-              <NodSmile size={150} color="orange" />
+              <NodSmile size={120} color="orange" />
             </motion.div>
           </motion.div>
         </motion.div>
