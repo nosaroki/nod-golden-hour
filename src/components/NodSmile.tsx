@@ -23,11 +23,11 @@ export const NodSmile: React.FC<NodSmileProps> = ({
       className={className}
     >
       {/* Left end dot */}
-      <circle cx="20" cy="100" r="8" fill={strokeColor} />
+      <circle cx="20" cy="20" r="8" fill={strokeColor} />
       
-      {/* Smile curve */}
+      {/* Smile curve - corrected orientation */}
       <path
-        d="M20 100 Q100 10 180 20"
+        d="M20 20 Q100 110 180 100"
         stroke={strokeColor}
         strokeWidth="12"
         strokeLinecap="round"
@@ -35,7 +35,7 @@ export const NodSmile: React.FC<NodSmileProps> = ({
       />
       
       {/* Right end dot */}
-      <circle cx="180" cy="20" r="8" fill={strokeColor} />
+      <circle cx="180" cy="100" r="8" fill={strokeColor} />
     </svg>
   );
 };
