@@ -20,7 +20,10 @@ export const NodLogo: React.FC<NodLogoProps> = ({
 }) => {
   return (
     <div className={`flex flex-col items-start ${className}`}>
-      <div className={`font-display font-bold tracking-tight ${sizeClasses[size]}`} style={{ fontFamily: 'Georgia, serif' }}>
+      <div 
+        className={`font-bold tracking-tight italic ${sizeClasses[size]}`} 
+        style={{ fontFamily: "'Migra', Georgia, serif" }}
+      >
         <span className="nod-logo-n">N</span>
         <span className="nod-logo-o">O</span>
         <span className="nod-logo-d">D</span>

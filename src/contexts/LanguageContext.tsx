@@ -51,8 +51,15 @@ const translations: Record<Language, Record<string, string>> = {
     'fields.beyond': 'Et au-delà',
     
     // Signature
-    'signature.title': 'Signature',
+    'signature.title': 'La Signature NOD',
     'signature.tagline': 'say yes to new projects',
+    'signature.intro': 'Excellence, intégrité et résultats qui comptent.',
+    'signature.description': 'En vous associant à NOD, vous gagnez plus qu\'un consultant—vous gagnez un allié dévoué à votre succès. Notre signature est notre promesse : une réflexion audacieuse, une exécution méticuleuse et des résultats transformateurs.',
+    'signature.item1': 'Approche centrée sur le client',
+    'signature.item2': 'Décisions basées sur les données',
+    'signature.item3': 'Communication transparente',
+    'signature.item4': 'Résultats mesurables',
+    'signature.item5': 'Partenariat à long terme',
     
     // CTA
     'cta.title': 'Ready to say yes?',
@@ -120,8 +127,15 @@ const translations: Record<Language, Record<string, string>> = {
     'fields.beyond': 'And Beyond',
     
     // Signature
-    'signature.title': 'Signature',
+    'signature.title': 'The NOD Signature',
     'signature.tagline': 'say yes to new projects',
+    'signature.intro': 'Excellence, integrity, and results that matter.',
+    'signature.description': 'When you partner with NOD, you gain more than a consultant—you gain a dedicated ally committed to your success. Our signature is our promise: bold thinking, meticulous execution, and transformative outcomes.',
+    'signature.item1': 'Client-centric approach',
+    'signature.item2': 'Data-driven decision making',
+    'signature.item3': 'Transparent communication',
+    'signature.item4': 'Measurable results',
+    'signature.item5': 'Long-term partnership',
     
     // CTA
     'cta.title': 'Ready to say yes?',

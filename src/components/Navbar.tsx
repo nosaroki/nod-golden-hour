@@ -108,13 +108,41 @@ export const Navbar: React.FC = () => {
               </div>
             </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden p-2 text-foreground"
-            >
-              {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            {/* Mobile: Language Switcher + Burger Menu */}
+            <div className="flex lg:hidden items-center gap-4">
+              {/* Language Switcher - Always visible on mobile */}
+              <div className="flex items-center gap-2 text-sm">
+                <button
+                  onClick={() => setLanguage('fr')}
+                  className={`transition-colors ${
+                    language === 'fr' 
+                      ? 'text-primary font-medium' 
+                      : 'text-foreground/50 hover:text-foreground'
+                  }`}
+                >
+                  FR
+                </button>
+                <span className="text-foreground/30">|</span>
+                <button
+                  onClick={() => setLanguage('en')}
+                  className={`transition-colors ${
+                    language === 'en' 
+                      ? 'text-primary font-medium' 
+                      : 'text-foreground/50 hover:text-foreground'
+                  }`}
+                >
+                  EN
+                </button>
+              </div>
+
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 text-foreground"
+              >
+                {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
       </motion.nav>
@@ -155,28 +183,6 @@ export const Navbar: React.FC = () => {
                 >
                   {t('nav.contact')}
                 </Link>
-              </motion.div>
-
-              {/* Language Switcher Mobile */}
-              <motion.div
-                className="flex items-center gap-4 mt-8 text-lg"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.5 }}
-              >
-                <button
-                  onClick={() => setLanguage('fr')}
-                  className={language === 'fr' ? 'text-primary font-medium' : 'text-foreground/50'}
-                >
-                  FR
-                </button>
-                <span className="text-foreground/30">|</span>
-                <button
-                  onClick={() => setLanguage('en')}
-                  className={language === 'en' ? 'text-primary font-medium' : 'text-foreground/50'}
-                >
-                  EN
-                </button>
               </motion.div>
             </div>
           </motion.div>
