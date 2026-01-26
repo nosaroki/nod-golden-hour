@@ -2,12 +2,14 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { NodSmile } from '@/components/NodSmile';
+import { GlitterBackground } from '@/components/GlitterBackground';
 
 const NotFound = () => {
   const { t, language, setLanguage } = useLanguage();
 
   return (
     <div className="relative min-h-screen flex items-center justify-center">
+      <GlitterBackground />
       
       {/* Language Switcher */}
       <div className="fixed top-6 right-6 z-50 flex items-center gap-2">

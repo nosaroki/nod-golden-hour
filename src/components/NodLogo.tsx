@@ -2,7 +2,7 @@ import React from 'react';
 
 interface NodLogoProps {
   className?: string;
-  size?: 'sm' | 'md' | 'lg' | 'xl' | 'hero';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
   showTagline?: boolean;
 }
 
@@ -11,9 +11,7 @@ const sizeClasses = {
   md: 'text-4xl',
   lg: 'text-6xl',
   xl: 'text-8xl',
-  hero: 'text-[12rem] leading-[0.85]',
 };
-
 
 export const NodLogo: React.FC<NodLogoProps> = ({ 
   className = '', 
