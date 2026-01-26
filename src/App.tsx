@@ -4,9 +4,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
-import Index from "./pages/Index";
-import Contact from "./pages/Contact";
-import NotFound from "./pages/NotFound";
+// import Index from "./pages/Index";
+// import Contact from "./pages/Contact";
+// import NotFound from "./pages/NotFound";
 import ComingSoon from "./pages/ComingSoon";
 
 const queryClient = new QueryClient();
@@ -19,11 +19,11 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/coming-soon" element={<ComingSoon />} />
+            {/* <Route path="/" element={<Index />} />
+            <Route path="/contact" element={<Contact />} /> */}
+            <Route path="/" element={<ComingSoon />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
+            {/* <Route path="*" element={<NotFound />} /> */}
           </Routes>
         </BrowserRouter>
       </TooltipProvider>

@@ -84,7 +84,7 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Coming Soon
     'coming.title': 'Bientôt disponible',
-    'coming.message': 'Nous préparons quelque chose d\'exceptionnel. Restez à l\'écoute.',
+    'coming.message': 'Nous préparons quelque chose d\'exceptionnel.',
     'coming.contact': 'En attendant, contactez-nous à',
     'coming.button': 'Retour à l\'accueil',
     
