@@ -117,8 +117,7 @@ const ComingSoon = () => {
 
       {/* Styles */}
       <style>{`
-        @import url('https://fonts.cdnfonts.com/css/migra');
-
+       
         .migra-font {
           font-family: 'Migra', 'Didot', 'Bodoni MT', serif;
           font-weight: 800;

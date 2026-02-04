@@ -1,5 +1,24 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap');
 
+/* 2. Fonts locales (Migra) */
+@font-face {
+  font-family: 'Migra';
+  src: url('/fonts/Migra-ExtraboldItalic.woff2') format('woff2'),
+       url('/fonts/Migra-ExtraboldItalic.woff') format('woff');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Migra';
+  src: url('/fonts/Migra-Italic.woff2') format('woff2'),
+       url('/fonts/Migra-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
