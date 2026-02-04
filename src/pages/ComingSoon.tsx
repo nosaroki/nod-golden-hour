@@ -42,18 +42,18 @@ const ComingSoon = () => {
 
         {/* Logo with animated gradient */}
         <motion.div
-          className="flex justify-center mb-6 shimmer-text"
+          className="flex justify-center mb-6 shimmer-text overflow-visible px-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <NodLogo size="hero" className="migra-font text-[clamp(4rem,10vw,8rem)]" />
+          <NodLogo size="hero" className="migra-font" />
           
         </motion.div>
 
         {/* Text Title */}
         <motion.p
-          className="text-body-lg mb-6 text-muted-foreground font-bold max-w-md mx-auto"
+          className="text-body-lg mb-6 text-muted-foreground font-bold max-w-md mx-auto whitespace-pre-line"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.4 }}
@@ -72,7 +72,7 @@ const ComingSoon = () => {
         </motion.p>
 
         <motion.p
-          className="text-body-md text-muted-foreground"
+          className="text-body-md text-muted-foreground whitespace-pre-line"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.5 }}

@@ -11,7 +11,7 @@ const sizeClasses = {
   md: 'text-4xl',
   lg: 'text-6xl',
   xl: 'text-8xl',
-  hero: 'text-[12rem] leading-[0.85]',
+  hero: 'text-[4rem] sm:text-[6rem] md:text-[8rem] lg:text-[10rem] xl:text-[12rem] leading-[0.85]',
 };
 
 export const NodLogo: React.FC<NodLogoProps> = ({ 
@@ -22,7 +22,7 @@ export const NodLogo: React.FC<NodLogoProps> = ({
   return (
     <div className={`flex flex-col items-start ${className}`}>
       <div 
-        className={`font-bold tracking-tight italic ${sizeClasses[size]}`} 
+        className={`tracking-tight italic ${sizeClasses[size]}`} 
         style={{ fontFamily: "'Migra', Georgia, serif" }}
       >
         <span className="nod-logo-n">N</span>

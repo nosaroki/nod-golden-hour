@@ -84,8 +84,8 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Coming Soon
     'coming.title': 'Bientôt disponible',
-    'coming.message': 'Nous préparons quelque chose d\'exceptionnel.',
-    'coming.contact': 'En attendant, contactez-nous à',
+    'coming.message': 'Nous préparons quelque chose d\'exceptionnel.\n',
+    'coming.contact': 'En attendant, contactez-nous à\n',
     'coming.button': 'Retour à l\'accueil',
     
     // Footer
@@ -166,8 +166,8 @@ const translations: Record<Language, Record<string, string>> = {
     
     // Coming Soon
     'coming.title': 'Coming Soon',
-    'coming.message': 'We\'re preparing something exceptional. Stay tuned.',
-    'coming.contact': 'In the meantime, reach us at',
+    'coming.message': 'We\'re preparing something exceptional. \nStay tuned.',
+    'coming.contact': 'In the meantime, reach us at\n',
     'coming.button': 'Back to home',
     
     // Footer
