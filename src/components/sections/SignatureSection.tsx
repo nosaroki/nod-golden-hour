@@ -104,27 +104,6 @@ export const SignatureSection: React.FC = () => {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.9 }}
           >
-            <div className="relative">
-              <NodLogo size="lg" />
-              <motion.div 
-                className="absolute -right-8 -bottom-1"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.6, delay: 1.1 }}
-              >
-                <NodSmile size={45} color="blue" />
-              </motion.div>
-            </div>
-            
-            <motion.p
-              className="text-nod-blue text-lg md:text-xl italic"
-              style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}
-              initial={{ opacity: 0 }}
-              animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.6, delay: 1.2 }}
-            >
-              {t('signature.tagline')}
-            </motion.p>
           </motion.div>
         </div>
       </div>
