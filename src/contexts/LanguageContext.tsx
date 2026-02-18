@@ -54,7 +54,7 @@ const translations: Record<Language, Record<string, string>> = {
     'signature.title': 'La Signature NOD',
     'signature.tagline': 'dire oui à de nouveaux projets',
     'signature.intro': 'Excellence, intégrité et résultats qui comptent.',
-    'signature.description': 'En vous associant à NOD, vous gagnez plus qu\'un consultant—vous gagnez un allié dévoué à votre succès. Notre signature est notre promesse : une réflexion audacieuse, une exécution méticuleuse et des résultats transformateurs.',
+    'signature.description': 'En vous associant à NOD, vous gagnez plus qu\'un consultant : vous gagnez un allié dévoué à votre succès. Notre signature est notre promesse : une réflexion audacieuse, une exécution méticuleuse et des résultats transformateurs.',
     'signature.item1': 'Approche centrée sur le client',
     'signature.item2': 'Décisions basées sur les données',
     'signature.item3': 'Communication transparente',

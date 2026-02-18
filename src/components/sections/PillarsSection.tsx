@@ -1,25 +1,19 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { Compass, Building2, Wand2 } from 'lucide-react';
 
 const pillars = [
   {
-    titleKey: 'pillars.explore',
-    descKey: 'pillars.explore.desc',
-    icon: Compass,
+    key: 'explore',
+    number: '01',
   },
   {
-    titleKey: 'pillars.architect',
-    descKey: 'pillars.architect.desc',
-    icon: Building2,
+    key: 'architect',
+    number: '02',
   },
   {
-    titleKey: 'pillars.orchestrate',
-    descKey: 'pillars.orchestrate.desc',
-    icon: Wand2,
+    key: 'orchestrate',
+    number: '03',
   },
 ];
 
@@ -31,39 +25,55 @@ export const PillarsSection: React.FC = () => {
   return (
     <section id="pillars" className="section-padding" ref={ref}>
       <div className="content-container">
-        <motion.h2
-          className="text-editorial-lg text-center mb-20"
-          initial={{ opacity: 0, y: 30 }}
+        {/* Section header */}
+        <motion.div
+          className="mb-20"
+          initial={{ opacity: 0, y: 40 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
         >
-          {t('pillars.title')}
-        </motion.h2>
+          <h2 className="text-editorial-lg text-center mb-6">{t('pillars.title')}</h2>
+          <div className="flex justify-center">
+            <div className="accent-line" />
+          </div>
+        </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
+        {/* Pillars grid - Editorial layout */}
+        <div className="grid md:grid-cols-3 gap-8 md:gap-12">
           {pillars.map((pillar, index) => (
             <motion.div
-              key={pillar.titleKey}
-              className="group text-center p-8 lg:p-12 bg-card/50 backdrop-blur-sm card-hover"
-              initial={{ opacity: 0, y: 40 }}
+              key={pillar.key}
+              className="group relative"
+              initial={{ opacity: 0, y: 60 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              transition={{ duration: 0.8, delay: 0.2 + index * 0.15 }}
             >
-              <motion.div
-                className="inline-flex items-center justify-center w-16 h-16 mb-8 text-primary"
-                whileHover={{ scale: 1.1, rotate: 5 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              >
-                <pillar.icon size={32} strokeWidth={1} />
-              </motion.div>
-              
-              <h3 className="text-xl md:text-2xl font-normal mb-6 group-hover:text-primary transition-colors duration-300">
-                {t(pillar.titleKey)}
-              </h3>
-              
-              <p className="text-muted-foreground text-base leading-relaxed">
-                {t(pillar.descKey)}
-              </p>
+              {/* Card with warm hover effect */}
+              <div className="relative p-8 md:p-10 bg-card/60 backdrop-blur-sm border border-border/40 transition-all duration-500 group-hover:border-primary/30 group-hover:bg-card/80 overflow-hidden">
+                {/* Number */}
+                <span 
+                  className="block text-xs tracking-[0.3em] uppercase text-primary/60 mb-6"
+                  style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}
+                >
+                  {pillar.number}
+                </span>
+                
+                {/* Title - Migra Bold Italic */}
+                <h3 
+                  className="text-2xl md:text-3xl mb-6 transition-colors duration-300 group-hover:text-primary"
+                  style={{ fontFamily: "'Migra', Georgia, serif", fontWeight: 700, fontStyle: 'italic' }}
+                >
+                  {t(`pillars.${pillar.key}`)}
+                </h3>
+                
+                {/* Description */}
+                <p className="text-muted-foreground leading-relaxed">
+                  {t(`pillars.${pillar.key}.desc`)}
+                </p>
+                
+                {/* Hover accent line at bottom */}
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary via-secondary to-accent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+              </div>
             </motion.div>
           ))}
         </div>

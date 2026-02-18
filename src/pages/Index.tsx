@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { GlitterBackground } from '@/components/GlitterBackground';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { PillarsSection } from '@/components/sections/PillarsSection';
 import { ApproachSection } from '@/components/sections/ApproachSection';
@@ -18,9 +17,8 @@ const Index = () => {
       {isLoading && <Loader onComplete={() => setIsLoading(false)} />}
       
       <div className="relative min-h-screen" style={{ opacity: isLoading ? 0 : 1, transition: 'opacity 0.5s ease' }}>
-        <GlitterBackground />
+      
         <Navbar />
-        
         <main className="relative z-10">
           <HeroSection />
           <PillarsSection />

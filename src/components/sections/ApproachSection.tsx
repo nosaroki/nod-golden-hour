@@ -8,45 +8,59 @@ export const ApproachSection: React.FC = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="approach" className="section-padding" ref={ref}>
-      <div className="content-container">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.h2
-            className="text-editorial-lg mb-8"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+    <section id="approach" className="section-padding relative overflow-hidden" ref={ref}>
+      {/* Warm gradient background accent */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(180deg, transparent 0%, hsl(18 75% 48% / 0.03) 50%, transparent 100%)',
+        }}
+      />
+      
+      <div className="content-container relative z-10">
+        <div className="max-w-4xl mx-auto">
+          {/* Section label */}
+          <motion.div
+            className="flex justify-center mb-8"
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6 }}
           >
-            {t('approach.title')}
-          </motion.h2>
+            <span className="text-xs tracking-[0.3em] uppercase text-primary/70">
+              {t('approach.title')}
+            </span>
+          </motion.div>
 
-          <motion.p
-            className="text-editorial-md text-primary mb-12"
-            initial={{ opacity: 0, y: 20 }}
+          {/* Main quote - Editorial large */}
+          <motion.h2
+            className="text-editorial-lg md:text-editorial-xl text-center mb-12"
+            style={{ fontFamily: "'Migra', Georgia, serif", fontStyle: 'italic', fontWeight: 'normal'}}
+            initial={{ opacity: 0, y: 40 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
           >
             {t('approach.subtitle')}
-          </motion.p>
+          </motion.h2>
 
+          {/* Accent line */}
+          <motion.div
+            className="flex justify-center mb-12"
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={isInView ? { opacity: 1, scaleX: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <div className="accent-line" />
+          </motion.div>
+
+          {/* Description */}
           <motion.p
-            className="text-body-lg text-muted-foreground"
+            className="text-body-lg text-muted-foreground text-center max-w-2xl mx-auto"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
           >
             {t('approach.desc')}
           </motion.p>
-
-          {/* Decorative line */}
-          <motion.div
-            className="mt-16 flex justify-center"
-            initial={{ opacity: 0, scaleX: 0 }}
-            animate={isInView ? { opacity: 1, scaleX: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <div className="w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent" />
-          </motion.div>
         </div>
       </div>
     </section>

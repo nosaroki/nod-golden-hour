@@ -10,43 +10,53 @@ export const HeroSection: React.FC = () => {
   return (
     <section id="about" className="min-h-screen flex items-center justify-center section-padding pt-32 md:pt-40">
       <div className="content-container">
-        <div className="max-w-4xl mx-auto text-center">
-          {/* Logo */}
+        <div className="max-w-5xl mx-auto">
+          {/* Logo with Smile */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mb-12 flex justify-center"
+            transition={{ duration: 1, delay: 0.2, ease: [0.33, 1, 0.68, 1] }}
+            className="mb-16 flex flex-col items-center font-weight-bold"
           >
             <div className="relative">
               <NodLogo size="xl" />
               <motion.div 
-                className="absolute -right-8 -bottom-2"
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, delay: 0.8 }}
+                className="absolute -right-10 -bottom-2"
+                initial={{ opacity: 0, scale: 0, rotate: -10 }}
+                animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                transition={{ duration: 0.8, delay: 0.8, ease: [0.33, 1, 0.68, 1] }}
               >
-                <NodSmile size={50} color="blue" />
+                <NodSmile size={60} color="blue" />
               </motion.div>
             </div>
           </motion.div>
 
-          {/* Main Title */}
+          {/* Main Title - Editorial style */}
           <motion.h1
-            className="text-editorial-lg md:text-editorial-xl text-foreground mb-12 text-balance"
-            initial={{ opacity: 0, y: 40 }}
+            className="text-editorial-xl text-foreground text-center mb-16 text-balance"
+            initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 1, delay: 0.4, ease: [0.33, 1, 0.68, 1] }}
           >
             {t('hero.title')}
           </motion.h1>
 
-          {/* Description */}
+          {/* Accent line */}
           <motion.div
-            className="space-y-6 text-body-lg text-muted-foreground max-w-3xl mx-auto"
+            className="flex justify-center mb-16"
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={{ opacity: 1, scaleX: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
+            <div className="accent-line" />
+          </motion.div>
+
+          {/* Description - Clean editorial */}
+          <motion.div
+            className="space-y-8 text-body-lg text-muted-foreground max-w-3xl mx-auto text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 1, delay: 0.8 }}
           >
             <p>{t('about.description1')}</p>
             <p>{t('about.description2')}</p>
@@ -55,16 +65,18 @@ export const HeroSection: React.FC = () => {
 
           {/* Scroll indicator */}
           <motion.div
-            className="mt-20"
+            className="mt-24 flex justify-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
+            transition={{ delay: 1.4 }}
           >
             <motion.div
-              className="w-px h-16 bg-foreground/20 mx-auto"
-              animate={{ scaleY: [1, 0.5, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
+              className="flex flex-col items-center gap-3"
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+            >
+              <div className="w-px h-12 bg-gradient-to-b from-foreground/30 to-transparent" />
+            </motion.div>
           </motion.div>
         </div>
       </div>

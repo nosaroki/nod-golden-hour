@@ -20,7 +20,7 @@ export const NodLogo: React.FC<NodLogoProps> = ({
   showTagline = false 
 }) => {
   return (
-    <div className={`flex flex-col items-start ${className}`}>
+    <div className={`flex flex-col items-start font-extrabold ${className}`}>
       <div 
         className={`tracking-tight italic ${sizeClasses[size]}`} 
         style={{ fontFamily: "'Migra', Georgia, serif" }}

@@ -9,8 +9,8 @@ export const Footer: React.FC = () => {
   return (
     <footer className="py-12 border-t border-border/50">
       <div className="content-container">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <NodLogo size="sm" />
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 ">
+          <NodLogo size="sm"/>
           
           <p className="text-sm text-muted-foreground">
             © {currentYear} NOD Consulting. {t('footer.rights')}

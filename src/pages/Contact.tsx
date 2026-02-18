@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
-import { GlitterBackground } from '@/components/GlitterBackground';
 import { NodSmile } from '@/components/NodSmile';
 import { z } from 'zod';
 
@@ -63,7 +62,6 @@ const Contact: React.FC = () => {
 
   return (
     <div className="relative min-h-screen">
-      <GlitterBackground />
       <Navbar />
       
       <main className="relative z-10 pt-32 md:pt-40 section-padding">

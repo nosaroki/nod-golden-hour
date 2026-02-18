@@ -18,65 +18,78 @@ export const SignatureSection: React.FC = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="signature" className="section-padding" ref={ref}>
-      <div className="content-container">
-        <div className="max-w-3xl mx-auto">
+    <section id="signature" className="section-padding relative overflow-hidden" ref={ref}>
+      {/* Warm gradient accent */}
+      <div 
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'linear-gradient(180deg, transparent 0%, hsl(35 100% 65% / 0.04) 50%, transparent 100%)',
+        }}
+      />
+      
+      <div className="content-container relative z-10">
+        <div className="max-w-4xl mx-auto">
           <motion.h2
             className="text-editorial-lg text-center mb-6"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8 }}
           >
             {t('signature.title')}
           </motion.h2>
+          
+          <motion.div
+            className="flex justify-center mb-10"
+            initial={{ opacity: 0, scaleX: 0 }}
+            animate={isInView ? { opacity: 1, scaleX: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <div className="accent-line" />
+          </motion.div>
 
           <motion.p
             className="text-editorial-md text-primary text-center mb-6"
+            style={{ fontFamily: "'Migra', Georgia, serif", fontStyle: 'italic' }}
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
           >
             {t('signature.intro')}
           </motion.p>
 
           <motion.p
-            className="text-body-lg text-muted-foreground text-center mb-12"
+            className="text-body-lg text-muted-foreground text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.25 }}
           >
             {t('signature.description')}
           </motion.p>
 
-          {/* Signature Items - 5 Premium Compartments in One Row */}
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3 mb-16">
+          {/* Signature Items - 5 Premium Compartments */}
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-20">
             {signatureItems.map((itemKey, index) => (
               <motion.div
                 key={itemKey}
-                className="group relative p-4 bg-card/50 backdrop-blur-sm border border-border/30 overflow-hidden cursor-default text-center"
+                className="group relative p-5 md:p-6 bg-card/50 backdrop-blur-sm border border-border/30 text-center transition-all duration-500 cursor-default hover:bg-card/80 hover:border-primary/30"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-                whileHover={{ y: -4, transition: { duration: 0.3 } }}
+                transition={{ duration: 0.6, delay: 0.35 + index * 0.1 }}
+                whileHover={{ y: -4 }}
               >
-                {/* Hover gradient overlay */}
+                {/* Top accent line on hover */}
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-br from-primary/5 via-secondary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-primary via-secondary to-accent origin-center"
+                  initial={{ scaleX: 0 }}
+                  whileHover={{ scaleX: 1 }}
+                  transition={{ duration: 0.4 }}
                 />
                 
-                {/* Animated border glow on hover */}
-                <motion.div
-                  className="absolute inset-0 border border-primary/0 group-hover:border-primary/30 transition-colors duration-500"
-                />
-                
-                {/* Content */}
-                <div className="relative z-10 flex flex-col items-center gap-2">
+                <div className="flex flex-col items-center gap-3">
                   <motion.div
-                    className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0"
-                    whileHover={{ scale: 1.5 }}
-                    transition={{ type: "spring", stiffness: 400 }}
+                    className="w-2 h-2 rounded-full bg-primary/60 group-hover:bg-primary transition-colors duration-300"
                   />
-                  <span className="text-xs md:text-sm text-foreground/90 group-hover:text-foreground transition-colors duration-300 leading-tight">
+                  <span className="text-xs md:text-sm text-foreground/80 group-hover:text-foreground transition-colors duration-300 leading-relaxed">
                     {t(itemKey)}
                   </span>
                 </div>
@@ -86,28 +99,29 @@ export const SignatureSection: React.FC = () => {
 
           {/* Logo and Tagline */}
           <motion.div
-            className="flex flex-col items-center gap-6"
+            className="flex flex-col items-center gap-8"
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.8 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
           >
             <div className="relative">
               <NodLogo size="lg" />
               <motion.div 
-                className="absolute -right-6 -bottom-1"
+                className="absolute -right-8 -bottom-1"
                 initial={{ opacity: 0, scale: 0 }}
                 animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: 1 }}
+                transition={{ duration: 0.6, delay: 1.1 }}
               >
-                <NodSmile size={40} color="blue" />
+                <NodSmile size={45} color="blue" />
               </motion.div>
             </div>
             
             <motion.p
-              className="text-nod-blue text-lg md:text-xl italic font-light"
+              className="text-nod-blue text-lg md:text-xl italic"
+              style={{ fontFamily: "'Be Vietnam Pro', sans-serif" }}
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : {}}
-              transition={{ duration: 0.6, delay: 1.1 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
             >
               {t('signature.tagline')}
             </motion.p>
