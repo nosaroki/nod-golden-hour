@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { NodSmile } from './NodSmile';
+import smileLogo from '@/assets/smiles/smile_dark-orange.png';
 
 interface LoaderProps {
   onComplete: () => void;
@@ -29,26 +29,14 @@ export const Loader: React.FC<LoaderProps> = ({ onComplete }) => {
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ 
-              opacity: 1,
-              scale: 1,
-            }}
-            transition={{ 
-              duration: 0.6,
-              ease: "easeOut"
-            }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
           >
             <motion.div
-              animate={{ 
-                scale: [1, 1.05, 1],
-              }}
-              transition={{ 
-                duration: 1.2,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
+              animate={{ scale: [1, 1.05, 1] }}
+              transition={{ duration: 1.2, repeat: Infinity, ease: "easeInOut" }}
             >
-              <NodSmile size={120} color="orange" />
+              <img src={smileLogo} alt="NOD Consulting" style={{ width: 120, height: 'auto' }} />
             </motion.div>
           </motion.div>
         </motion.div>
