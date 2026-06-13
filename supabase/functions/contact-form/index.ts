@@ -1,3 +1,5 @@
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
@@ -11,7 +13,6 @@ Deno.serve(async (req) => {
   try {
     const { name, email, phone, message } = await req.json();
 
-    // Validation
     if (!name || !email || !message) {
       return new Response(
         JSON.stringify({ status: "error", message: "Champs requis manquants" }),
@@ -19,9 +20,19 @@ Deno.serve(async (req) => {
       );
     }
 
+    // Stocke dans Supabase
+    const supabase = createClient(
+      Deno.env.get("SUPABASE_URL")!,
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!
+    );
+
+    await supabase
+      .from("contact_submissions")
+      .insert({ name, email, phone: phone || null, message });
+
+    // Envoie le mail via Resend
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
 
-    // Envoie le message à contact@nod-consulting.com
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -39,7 +50,6 @@ Deno.serve(async (req) => {
               <span style="font-size: 24px; font-weight: 800; font-style: italic; color: #E8642C;">NOD</span>
               <span style="font-size: 14px; color: #8A7A6A; margin-left: 8px;">nouveau message</span>
             </div>
-
             <table style="width: 100%; border-collapse: collapse; margin-bottom: 24px;">
               <tr>
                 <td style="padding: 8px 0; font-size: 13px; color: #8A7A6A; width: 100px; vertical-align: top;">Nom</td>
@@ -56,12 +66,10 @@ Deno.serve(async (req) => {
                 <td style="padding: 8px 0; font-size: 15px;">${phone || "Non renseigné"}</td>
               </tr>
             </table>
-
             <div style="background: #FBF6F1; padding: 20px; border-left: 3px solid #E8642C; margin-bottom: 24px;">
               <p style="font-size: 13px; color: #8A7A6A; margin: 0 0 8px 0;">Message</p>
               <p style="font-size: 15px; line-height: 1.7; margin: 0; white-space: pre-line;">${message}</p>
             </div>
-
             <p style="font-size: 13px; color: #8A7A6A;">
               Répondre directement à cet email écrira à ${email}
             </p>
