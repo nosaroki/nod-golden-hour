@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { NodSmile } from '@/components/NodSmile';
 
 const NotFound = () => {
   const { t, language, setLanguage } = useLanguage();
@@ -36,7 +35,6 @@ const NotFound = () => {
           transition={{ duration: 0.6 }}
           className="mb-8"
         >
-          <NodSmile size={100} color="blue" className="mx-auto transform rotate-180" />
         </motion.div>
 
         <motion.h1

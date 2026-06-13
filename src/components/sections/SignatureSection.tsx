@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { NodLogo } from '../NodLogo';
-import { NodSmile } from '../NodSmile';
 
 const signatureItems = [
   'signature.item1',

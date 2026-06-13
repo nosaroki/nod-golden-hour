@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { NodSmile } from '../NodSmile';
 
 export const CTASection: React.FC = () => {
   const { t } = useLanguage();
@@ -27,7 +26,6 @@ export const CTASection: React.FC = () => {
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <NodSmile size={80} color="orange" />
           </motion.div>
 
           <motion.h2

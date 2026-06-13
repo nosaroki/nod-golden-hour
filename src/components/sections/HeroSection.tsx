@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { NodLogo } from '@/components/NodLogo';
-import { NodSmile } from '@/components/NodSmile';
 
 export const HeroSection: React.FC = () => {
   const { t } = useLanguage();
@@ -26,7 +25,6 @@ export const HeroSection: React.FC = () => {
                 animate={{ opacity: 1, scale: 1, rotate: 0 }}
                 transition={{ duration: 0.8, delay: 0.8, ease: [0.33, 1, 0.68, 1] }}
               >
-                <NodSmile size={60} color="blue" />
               </motion.div>
             </div>
           </motion.div>
