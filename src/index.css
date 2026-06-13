@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
 
 /* 2. Fonts locales (Migra) */
 /* Normal */
@@ -79,6 +79,7 @@
 
     --muted: 32 40% 90%;
     --muted-foreground: 18 40% 40%;
+    --muted-foreground-footer: 18 40% 40% 85%;
 
     --accent: 35 100% 65%;
     --accent-foreground: 18 60% 20%;
@@ -93,8 +94,9 @@
     --radius: 0rem;
     
     /* Typography */
-    --font-display: 'Migra', Georgia, serif;
-    --font-body: 'Be Vietnam Pro', sans-serif;
+    --font-display: 'Bricolage Grotesque', sans-serif;
+    --font-body: 'Spectral', Georgia, serif;
+    --font-logo: 'Migra', 'Didot', 'Bodoni MT', serif;
     
     /* Spacing */
     --section-padding: clamp(5rem, 12vw, 10rem);
@@ -124,73 +126,6 @@
     --input: 18 30% 20%;
     --ring: 16 85% 52%;
   }
-
-    /* Semantic tokens
-    --background: 24 100% 95%;
-    --foreground: 213 61% 16%;
-
-    --card: 24 100% 97%;
-    --card-foreground: 213 61% 16%;
-
-    --popover: 24 100% 97%;
-    --popover-foreground: 213 61% 16%;
-
-    --primary: 13 91% 58%;
-    --primary-foreground: 24 100% 95%;
-
-    --secondary: 23 100% 65%;
-    --secondary-foreground: 213 61% 16%;
-
-    --muted: 24 60% 90%;
-    --muted-foreground: 213 40% 35%;
-
-    --accent: 44 100% 68%;
-    --accent-foreground: 213 61% 16%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 24 40% 85%;
-    --input: 24 40% 85%;
-    --ring: 13 91% 58%;
-
-    --radius: 0.25rem;
-    
-    /* Gold glitter effect */
-    /* --glitter-color: 44 100% 68%; */
-    
-    /* Typography */
-    /* --font-display: 'Migra', Georgia, serif;
-    --font-body: 'Be Vietnam Pro', sans-serif; */
-    
-    /* Spacing */
-    /* --section-padding: clamp(4rem, 10vw, 8rem);
-    --content-max-width: 1200px; */
-    
-    /* Animations */
-    /* --transition-elegant: cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-smooth: cubic-bezier(0.33, 1, 0.68, 1);
-  } */
-
-  /* .dark {
-    --background: 213 61% 10%;
-    --foreground: 24 100% 95%;
-    --card: 213 61% 12%;
-    --card-foreground: 24 100% 95%;
-    --popover: 213 61% 12%;
-    --popover-foreground: 24 100% 95%;
-    --primary: 13 91% 58%;
-    --primary-foreground: 24 100% 95%;
-    --secondary: 23 100% 65%;
-    --secondary-foreground: 24 100% 95%;
-    --muted: 213 40% 20%;
-    --muted-foreground: 24 60% 75%;
-    --accent: 44 100% 68%;
-    --accent-foreground: 213 61% 16%;
-    --border: 213 40% 20%;
-    --input: 213 40% 20%;
-    --ring: 13 91% 58%;
-  } */ 
 }
 
 @layer base {
@@ -213,9 +148,9 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-body);
-    font-weight: 400;
-    letter-spacing: -0.02em;
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
     line-height: 1.2;
   }
   
@@ -295,34 +230,6 @@
     transform: scaleX(1);
     transform-origin: left;
   }
-  
-  /* Gold glitter particle */
-  /* .glitter-particle {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: radial-gradient(circle, hsl(var(--nod-gold)) 0%, transparent 70%);
-    border-radius: 50%;
-    pointer-events: none;
-    animation: glitter-float 8s ease-in-out infinite;
-  }
-  
-  @keyframes glitter-float {
-    0%, 100% {
-      transform: translateY(0) rotate(0deg);
-      opacity: 0.3;
-    }
-    25% {
-      opacity: 0.8;
-    }
-    50% {
-      transform: translateY(-20px) rotate(180deg);
-      opacity: 0.5;
-    }
-    75% {
-      opacity: 0.9;
-    }
-  } */
   
   /* Loader animation */
   @keyframes loader-pulse {
@@ -452,5 +359,578 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+  }
+}
+
+/* =============================================================
+   COMING SOON — Shared (nav, footer, page shell)
+   ============================================================= */
+ 
+.cs-page {
+  min-height: 100vh;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-body);
+  font-weight: 300;
+}
+ 
+/* --- Nav --- */
+ 
+.cs-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 2.5rem;
+  z-index: 50;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  background: hsl(var(--background) / 0.85);
+}
+ 
+.cs-lang-switcher {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 80px;
+}
+ 
+.cs-lang-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+ 
+.cs-lang-btn.active {
+  color: hsl(var(--primary));
+}
+ 
+.cs-lang-btn:hover {
+  color: hsl(var(--foreground));
+}
+ 
+.cs-lang-sep {
+  color: hsl(var(--muted-foreground) / 0.4);
+  font-size: 0.85rem;
+}
+
+/* Smile + liens nav côté droit */
+
+.cs-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+}
+
+.cs-nav-smile {
+  height: 24px;
+  width: auto;
+  object-fit: contain;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.cs-nav-smile:hover {
+  opacity: 0.7;
+}
+ 
+.cs-nav-link {
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+  cursor: pointer;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color 0.3s ease;
+}
+ 
+.cs-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 1.5px;
+  background: hsl(var(--primary));
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+ 
+.cs-nav-link:hover {
+  color: hsl(var(--foreground));
+}
+ 
+.cs-nav-link.active {
+  color: hsl(var(--foreground));
+}
+ 
+.cs-nav-link.active::after {
+  transform: scaleX(1);
+}
+ 
+/* --- Footer --- */
+ 
+.cs-footer {
+  padding: 2rem;
+  text-align: center;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  color: hsl(var(--muted-foreground-footer) / 0.4);
+  letter-spacing: 0.1em;
+}
+ 
+ 
+/* =============================================================
+   COMING SOON — Home (hero, email capture)
+   ============================================================= */
+ 
+.cs-hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8rem 1.5rem 3rem;
+  position: relative;
+}
+ 
+.cs-hero::before {
+  content: '';
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, hsl(var(--primary) / 0.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+ 
+.cs-hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 540px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+ 
+.cs-logo-wrapper {
+  margin-bottom: 2.5rem;
+  overflow: visible;
+  padding: 0 1.5rem;
+}
+ 
+.migra-font {
+  font-family: var(--font-logo);
+  font-weight: 800;
+  font-style: italic;
+  letter-spacing: -0.04em;
+}
+ 
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+ 
+.shimmer-text {
+  background: linear-gradient(
+    90deg,
+    #F55E30,
+    #FF914D,
+    #FFD35E,
+    #FF914D,
+    #F55E30
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 5s linear infinite;
+}
+ 
+.cs-divider {
+  width: 56px;
+  height: 1.5px;
+  background: hsl(var(--primary));
+  opacity: 0.4;
+  margin-bottom: 2rem;
+}
+ 
+.cs-tagline {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 300;
+  color: hsl(var(--muted-foreground));
+  letter-spacing: 0.01em;
+  line-height: 1.9;
+  margin-bottom: 3rem;
+}
+ 
+.cs-tagline strong {
+  font-family: var(--font-display);
+  color: hsl(var(--foreground));
+  font-weight: 600;
+  font-size: 1.15rem;
+}
+ 
+/* --- Email capture --- */
+ 
+.cs-email-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 3rem;
+}
+ 
+.cs-email-label {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+  font-weight: 500;
+}
+ 
+.cs-email-row {
+  display: flex;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid hsl(var(--border));
+  border-radius: 10px;
+  overflow: hidden;
+  background: hsl(var(--card) / 0.6);
+  transition: border-color 0.3s ease;
+}
+ 
+.cs-email-row:focus-within {
+  border-color: hsl(var(--primary) / 0.5);
+}
+ 
+.cs-email-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 0.9rem 1.4rem;
+  color: hsl(var(--foreground));
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  outline: none;
+  letter-spacing: 0.01em;
+}
+ 
+.cs-email-input::placeholder {
+  color: hsl(var(--muted-foreground) / 0.4);
+}
+ 
+.cs-email-btn {
+  background: hsl(var(--primary));
+  border: none;
+  padding: 0.9rem 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 0 10px 10px 0;
+  transition: background 0.3s ease;
+}
+ 
+.cs-email-btn:hover {
+  background: hsl(var(--primary) / 0.85);
+}
+ 
+.cs-email-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: hsl(var(--primary-foreground));
+  transition: transform 0.2s ease;
+}
+ 
+.cs-email-btn:hover svg {
+  transform: translateX(2px);
+}
+ 
+.cs-email-error {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: hsl(0 70% 55%);
+  font-weight: 400;
+}
+ 
+.cs-email-success {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: hsl(var(--primary));
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  animation: cs-fade-up 0.4s ease;
+}
+ 
+@keyframes cs-fade-up {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+ 
+/* --- Mailto + Socials (home) --- */
+ 
+.cs-mailto {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 300;
+  color: hsl(var(--muted-foreground));
+  margin-bottom: 2.5rem;
+}
+ 
+.cs-mailto a {
+  color: hsl(var(--primary));
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+ 
+.cs-mailto a:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+ 
+.cs-social-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+}
+ 
+.cs-social-label {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: hsl(var(--muted-foreground));
+}
+ 
+.cs-social-icons {
+  display: flex;
+  gap: 1.2rem;
+}
+ 
+.cs-social-icons a {
+  color: hsl(var(--muted-foreground));
+  font-size: 1.4rem;
+  transition: color 0.3s ease;
+}
+ 
+.cs-social-icons a:hover {
+  color: hsl(var(--primary));
+}
+ 
+ 
+/* =============================================================
+   COMING SOON — Contact page
+   ============================================================= */
+ 
+.cs-contact-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem 3rem;
+}
+ 
+.cs-contact-inner {
+  max-width: 480px;
+  width: 100%;
+}
+ 
+.cs-contact-title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 2.8rem;
+  color: hsl(var(--primary));
+  margin-bottom: 0.6rem;
+}
+ 
+.cs-contact-sub {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  font-weight: 300;
+  color: hsl(var(--muted-foreground));
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+ 
+.cs-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+ 
+.cs-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+ 
+.cs-field label {
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: hsl(var(--muted-foreground));
+  font-weight: 500;
+}
+ 
+.cs-field input,
+.cs-field textarea {
+  width: 100%;
+  background: hsl(var(--card) / 0.5);
+  border: 1px solid hsl(var(--border));
+  border-radius: 12px;
+  padding: 0.95rem 1.15rem;
+  color: hsl(var(--foreground));
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 300;
+  outline: none;
+  transition: border-color 0.3s ease;
+  letter-spacing: 0.01em;
+}
+ 
+.cs-field input:focus,
+.cs-field textarea:focus {
+  border-color: hsl(var(--primary) / 0.5);
+}
+ 
+.cs-field input::placeholder,
+.cs-field textarea::placeholder {
+  color: hsl(var(--muted-foreground) / 0.4);
+}
+ 
+.cs-field textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+ 
+.cs-field-error {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  color: hsl(0 70% 55%);
+  font-weight: 400;
+  margin-top: 0.1rem;
+}
+ 
+.cs-send-btn {
+  align-self: center;
+  margin-top: 0.75rem;
+  background: hsl(var(--foreground));
+  color: hsl(var(--primary-foreground));
+  border: none;
+  padding: 0.95rem 2.8rem;
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+ 
+.cs-send-btn:hover {
+  background: hsl(var(--primary) / 0.85);
+  transform: translateY(-1px);
+}
+ 
+.cs-send-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+ 
+.cs-contact-success {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: hsl(var(--primary));
+  font-weight: 400;
+  line-height: 1.8;
+  white-space: pre-line;
+  animation: cs-fade-up 0.4s ease;
+}
+ 
+/* --- Socials bloc contact page --- */
+ 
+.cs-contact-socials {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3.5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid hsl(var(--border) / 0.5);
+}
+ 
+.cs-contact-mailto {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  color: hsl(var(--primary));
+  text-decoration: none;
+  font-weight: 400;
+  transition: opacity 0.3s ease;
+}
+ 
+.cs-contact-mailto:hover {
+  opacity: 0.8;
+}
+ 
+ 
+/* =============================================================
+   Responsive
+   ============================================================= */
+ 
+@media (max-width: 480px) {
+  .cs-nav {
+    padding: 1rem 1.25rem;
+  }
+
+  .cs-nav-right {
+    gap: 1.2rem;
+  }
+
+  .cs-nav-smile {
+    height: 20px;
+  }
+ 
+  .cs-contact-title {
+    font-size: 2.2rem;
+  }
+ 
+  .cs-email-row {
+    max-width: 100%;
+  }
+}
+ 
+@media (prefers-reduced-motion: reduce) {
+  .shimmer-text {
+    animation: none;
+  }
+ 
+  .cs-email-success,
+  .cs-contact-success {
+    animation: none;
   }
 }
