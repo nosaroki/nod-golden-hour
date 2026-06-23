@@ -57,7 +57,7 @@ const ComingSoon = () => {
 
   const txt = language === "fr" ? {
     tagline: "On se réinvente.",
-    subtitle: "Un nouveau modèle créatif arrive.",
+    // subtitle: "Un nouveau modèle créatif arrive.",
     emailLabel: "Être informé·e en premier",
     emailPlaceholder: "votre@email.com",
     emailSuccess: "C'est noté. On se retrouve bientôt.",
@@ -66,7 +66,7 @@ const ComingSoon = () => {
     rgpd: "Vos données servent uniquement à vous informer du lancement.",
   } : {
     tagline: "We're reinventing ourselves.",
-    subtitle: "A new creative model is coming.",
+    // subtitle: "A new creative model is coming.",
     emailLabel: "Be the first to know",
     emailPlaceholder: "your@email.com",
     emailSuccess: "Noted. See you soon.",
@@ -107,7 +107,7 @@ const ComingSoon = () => {
           >
             {txt.tagline}
             <br />
-            <strong>{txt.subtitle}</strong>
+            {/* <strong>{txt.subtitle}</strong> */}
           </motion.p>
 
           <motion.div
@@ -160,7 +160,7 @@ const ComingSoon = () => {
             )}
           </motion.div>
 
-          <motion.p
+          {/* <motion.p
             className="cs-mailto"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -168,7 +168,7 @@ const ComingSoon = () => {
           >
             {txt.meanwhile}{" "}
             <a href="mailto:contact@nod-consulting.com">contact@nod-consulting.com</a>
-          </motion.p>
+          </motion.p> */}
 
           <motion.div
             className="cs-social-block"
