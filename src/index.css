@@ -1,41 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,300;12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap');
 
 /* 2. Fonts locales (Migra) */
-/* Normal */
+/* Extralight */
 @font-face {
   font-family: 'Migra';
-  src: url('/fonts/Migra-Regular.woff2') format('woff2'),
-       url('/fonts/Migra-Regular.woff') format('woff');
-  font-weight: 400;
+  src: url('/fonts/Migra-Extralight.woff2') format('woff2'),
+       url('/fonts/Migra-Extralight.woff') format('woff');
+  font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 
-/* Italic */
+/* Extralight Italic */
 @font-face {
   font-family: 'Migra';
-  src: url('/fonts/Migra-Italic.woff2') format('woff2'),
-       url('/fonts/Migra-Italic.woff') format('woff');
-  font-weight: 400;
+  src: url('/fonts/MigraItalic-ExtralightItalic.woff2') format('woff2'),
+       url('/fonts/MigraItalic-ExtralightItalic.woff') format('woff');
+  font-weight: 200;
   font-style: italic;
   font-display: swap;
 }
 
-/* Bold */
+/* Extrabold */
 @font-face {
   font-family: 'Migra';
-  src: url('/fonts/Migra-Bold.woff2') format('woff2'),
-       url('/fonts/Migra-Bold.woff') format('woff');
-  font-weight: 700;
+  src: url('/fonts/Migra-Extrabold.woff2') format('woff2'),
+       url('/fonts/Migra-Extrabold.woff') format('woff');
+  font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
-/* Bold Italic / Extrabold */
+/* Extrabold Italic */
 @font-face {
   font-family: 'Migra';
-  src: url('/fonts/Migra-ExtraboldItalic.woff2') format('woff2'),
-       url('/fonts/Migra-ExtraboldItalic.woff') format('woff');
+  src: url('/fonts/MigraItalic-ExtraboldItalic.woff2') format('woff2'),
+       url('/fonts/MigraItalic-ExtraboldItalic.woff') format('woff');
   font-weight: 800;
   font-style: italic;
   font-display: swap;
