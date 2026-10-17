@@ -2,10 +2,10 @@ import { useState, type CSSProperties } from 'react';
 import { Link } from 'react-router-dom';
 import Nav from '@/components/Navbar';
 import NodFooter from '@/components/NodFooter';
-import idalaImg from '@/assets/idala.png';
-import jasminkaImg from '@/assets/jasminka.png';
-import unmatchedImg from '@/assets/unmatched.png';
-import charlyGaulImg from '@/assets/charly-gaul.png';
+import idalaImg from '@/assets/idala.webp';
+import jasminkaImg from '@/assets/jasminka.webp';
+import unmatchedImg from '@/assets/unmatched.webp';
+import charlyGaulImg from '@/assets/charly-gaul.webp';
 
 type Project = {
   id: string;

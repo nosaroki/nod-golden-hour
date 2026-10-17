@@ -3,7 +3,7 @@ import NodFooter from '@/components/NodFooter';
 import SectionHeader from '@/components/SectionHeader';
 import Reveal from '@/components/Reveal';
 import { Link } from 'react-router-dom';
-import nnenaImg from '@/assets/nnena.png';
+import nnenaImg from '@/assets/nnena.webp';
 
 export default function Principe() {
   return (

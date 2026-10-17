@@ -4,8 +4,8 @@ import SectionHeader from '../components/SectionHeader';
 import ProjectFan from '../components/ProjectFan';
 import Reveal from '../components/Reveal';
 import { Link } from 'react-router-dom';
-import heroImg from '@/assets/hero.png';
-import nnenaImg from '@/assets/nnena.png';
+import heroImg from '@/assets/hero.webp';
+import nnenaImg from '@/assets/nnena.webp';
 
 export default function Home() {
   return (
@@ -14,7 +14,6 @@ export default function Home() {
 
       {/* ---------- Accueil · Hero ---------- */}
       <section id="top" className="hero">
-        <div className="hero__glow" aria-hidden="true" />
         <div className="hero__grid">
           <div className="hero__col">
             <Reveal as="p" className="hero__tagline" delay={0}>

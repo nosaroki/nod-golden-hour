@@ -1,7 +1,7 @@
-import idalaImg from "@/assets/idala.png";
-import jasminkaImg from "@/assets/jasminka.png";
-import unmatchedImg from "@/assets/unmatched.png";
-import charlyGaulImg from "@/assets/charly-gaul.png";
+import idalaImg from "@/assets/idala.webp";
+import jasminkaImg from "@/assets/jasminka.webp";
+import unmatchedImg from "@/assets/unmatched.webp";
+import charlyGaulImg from "@/assets/charly-gaul.webp";
 
 // Données de l'éventail de cartes projets (accueil).
 // Position, rotation, z-index, dégradé, image restent en data (propres à chaque
