@@ -4543,3 +4543,24 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
    aligné à gauche comme tous les en-têtes du site. */
 .contact-head.is-recu { min-height: 100svh; align-items: center; }
 .contact-head.is-recu .page-head__body { padding-top: calc(var(--header-h, 71px) + var(--space-12)); padding-bottom: var(--space-12); }
+
+/* En-tête plein écran (404) : message centré dans la hauteur, qui se pose
+   en fondu comme l'écran de confirmation du contact. */
+.page-head--plein { min-height: 100svh; align-items: center; }
+.page-head__body--plein { padding-top: calc(var(--header-h, 71px) + var(--space-12)); padding-bottom: var(--space-12); }
+.page-head__title--plein { max-width: 16ch; }
+.page-head__body--plein > * {
+  opacity: 0; transform: translateY(14px); filter: blur(4px);
+  animation: recu-arrivee 900ms var(--ease-recu) forwards;
+}
+.page-head__body--plein > :nth-child(1) { animation-delay: 150ms; }
+.page-head__body--plein > :nth-child(2) { animation-delay: 320ms; }
+.page-head__body--plein > :nth-child(3) { animation-delay: 480ms; }
+@media (prefers-reduced-motion: reduce) {
+  .page-head__body--plein > * { animation: none; opacity: 1; transform: none; filter: none; }
+}
+/* Le texte est au centre de l'image : on approfondit l'orange derrière lui,
+   avec le même ton que les blocs crème sur orange. */
+.page-head--plein .page-head__veil {
+  background: linear-gradient(90deg, rgba(150, 45, 15, 0.5) 0%, rgba(150, 45, 15, 0.28) 45%, rgba(150, 45, 15, 0) 75%);
+}
