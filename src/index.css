@@ -4416,3 +4416,6 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
   .home-summary__row { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); padding-block: var(--space-6); }
   .home-summary__text { opacity: 1; }
 }
+
+/* Champ piège du formulaire : hors écran, jamais affiché. */
+.contact__piege { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }

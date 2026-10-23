@@ -17,6 +17,7 @@ interface Formulaire {
   phone: string;
   message: string;
   brochure: boolean;
+  website: string;
 }
 
 const FAQ_FR = [
@@ -59,7 +60,7 @@ export default function Contact() {
   const { language } = useLanguage();
   const t = (fr: string, en: string) => (language === 'fr' ? fr : en);
 
-  const [form, setForm] = useState<Formulaire>({ name: '', email: '', phone: '', message: '', brochure: false });
+  const [form, setForm] = useState<Formulaire>({ name: '', email: '', phone: '', message: '', brochure: false, website: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [envoye, setEnvoye] = useState(false);
   const [envoi, setEnvoi] = useState(false);
@@ -176,6 +177,19 @@ export default function Contact() {
               </span>
               {errors.message ? <span className="nod-field__error">{errors.message}</span> : null}
             </label>
+
+            {/* Champ piège : invisible pour un humain, rempli par les robots. */}
+            <div className="contact__piege" aria-hidden="true">
+              <label htmlFor="contact-website">Site web</label>
+              <input
+                id="contact-website"
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={form.website}
+                onChange={(e) => maj('website', e.target.value)}
+              />
+            </div>
 
             <Checkbox
               label={t('Je veux aussi recevoir la brochure NOD par mail.', 'Also send me the NOD brochure by email.')}

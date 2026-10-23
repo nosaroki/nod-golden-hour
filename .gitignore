@@ -26,3 +26,8 @@ bun.lockb
 
 # Telechargements Claude
 Claude outputs/
+
+# Supabase CLI
+supabase/.temp/
+.env
+.env.*

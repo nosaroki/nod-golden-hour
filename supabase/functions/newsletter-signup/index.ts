@@ -1,19 +1,24 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-
-const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
-};
+import { EMAIL, enTetes, origineAutorisee, tropDEnvois } from "../_shared/securite.ts";
 
 Deno.serve(async (req) => {
+  const corsHeaders = enTetes(req);
   if (req.method === "OPTIONS") {
     return new Response("ok", { headers: corsHeaders });
   }
 
-  try {
-    const { email } = await req.json();
+  if (req.method !== "POST" || !origineAutorisee(req) || tropDEnvois(req)) {
+    return new Response(JSON.stringify({ status: "error" }), { status: 403, headers: corsHeaders });
+  }
 
-    if (!email || !email.includes("@")) {
+  try {
+    const corps = await req.json();
+    const email = String(corps.email ?? "").trim().toLowerCase();
+    if (corps.website) {
+      return new Response(JSON.stringify({ status: "ok" }), { headers: corsHeaders });
+    }
+
+    if (!EMAIL.test(email)) {
       return new Response(
         JSON.stringify({ status: "error", message: "Email invalide" }),
         { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
@@ -29,7 +34,7 @@ Deno.serve(async (req) => {
       .from("newsletter_subscribers")
       .select("id")
       .eq("email", email.toLowerCase().trim())
-      .single();
+      .maybeSingle();
 
     if (existing) {
       return new Response(
@@ -133,7 +138,7 @@ Deno.serve(async (req) => {
 
   } catch (error) {
     return new Response(
-      JSON.stringify({ status: "error", message: error.message }),
+      JSON.stringify({ status: "error" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
