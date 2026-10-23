@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 import NodNav from '@/components/NodNav';
 import NodFooter from '@/components/NodFooter';
@@ -77,7 +78,9 @@ export default function Contact() {
 
   const [form, setForm] = useState<Formulaire>({ name: '', email: '', phone: '', message: '', brochure: false, website: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
-  const [envoye, setEnvoye] = useState(false);
+  /* form : le formulaire. sortie : il s'efface (0,5 s). recu : l'écran de confirmation. */
+  const [etape, setEtape] = useState<'form' | 'sortie' | 'recu'>('form');
+  const recuRef = useRef<HTMLElement>(null);
   const [envoi, setEnvoi] = useState(false);
   const [erreurEnvoi, setErreurEnvoi] = useState('');
   const [faqOuverte, setFaqOuverte] = useState<number | null>(null);
@@ -108,7 +111,11 @@ export default function Contact() {
         body: JSON.stringify(form),
       });
       const data = await res.json();
-      if (data.status === 'ok') setEnvoye(true);
+      if (data.status === 'ok') {
+        const calme = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        setEtape(calme ? 'recu' : 'sortie');
+        if (!calme) window.setTimeout(() => setEtape('recu'), 520);
+      }
       else throw new Error(data.message);
     } catch {
       setErreurEnvoi(
@@ -128,6 +135,12 @@ export default function Contact() {
   };
 
   const faq = language === 'fr' ? FAQ_FR : FAQ_EN;
+  const prenom = (form.name.trim().split(/\s+/)[0] || '').replace(/^./, (c) => c.toUpperCase());
+  const extrait = form.message.trim().length > 320 ? form.message.trim().slice(0, 320) + '…' : form.message.trim();
+
+  useEffect(() => {
+    if (etape === 'recu') recuRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [etape]);
 
   return (
     <>
@@ -153,8 +166,9 @@ export default function Contact() {
         </div>
       </section>
 
-      <section className="contact">
-        {!envoye ? (
+      {etape !== 'recu' ? (
+      <>
+      <section className={'contact' + (etape === 'sortie' ? ' is-sortie' : '')}>
           <form className="contact__form" onSubmit={envoyer} noValidate>
             <Input
               label={t('Nom *', 'Name *')}
@@ -226,11 +240,6 @@ export default function Contact() {
               </span>
             </div>
           </form>
-        ) : (
-          <p className="contact__success">
-            {t('Message bien reçu.\nJe reviens vers toi rapidement.', "Message received.\nI'll get back to you shortly.")}
-          </p>
-        )}
 
         <aside className="contact__aside">
           <Eyebrow tone="inverse">{t('Contact direct', 'Direct contact')}</Eyebrow>
@@ -244,7 +253,7 @@ export default function Contact() {
       </section>
 
       {/* ---------- FAQ : les objections qui empêchent d'écrire ---------- */}
-      <section className="faq">
+      <section className={'faq' + (etape === 'sortie' ? ' is-sortie' : '')}>
         <div className="faq__head">
           <Eyebrow>FAQ</Eyebrow>
           <h2 className="faq__title">{t('Les questions qu’on me pose avant d’écrire.', 'The questions people ask before writing.')}</h2>
@@ -269,6 +278,58 @@ export default function Contact() {
           })}
         </div>
       </section>
+      </>
+      ) : (
+        <section className="recu" ref={recuRef} aria-live="polite">
+          <div className="recu__inner">
+            <svg className="recu__horizon" viewBox="0 0 1000 2" preserveAspectRatio="none" aria-hidden="true">
+              <defs>
+                <linearGradient id="recu-degrade" x1="0" x2="1000" y1="1" y2="1" gradientUnits="userSpaceOnUse">
+                  <stop offset="0" stopColor="#F55F31" />
+                  <stop offset="0.5" stopColor="#FF914D" />
+                  <stop offset="1" stopColor="#FFD35F" />
+                </linearGradient>
+              </defs>
+              <line x1="0" y1="1" x2="1000" y2="1" stroke="url(#recu-degrade)" strokeWidth="2" pathLength={1} />
+            </svg>
+
+            <p className="recu__ligne recu__eyebrow" style={vars({ '--i': '0' })}>
+              <span>{t('Message reçu', 'Message received')}</span>
+            </p>
+            <h2 className="recu__titre">
+              <span className="recu__ligne" style={vars({ '--i': '1' })}>
+                <span>{prenom ? t(`Merci, ${prenom}.`, `Thank you, ${prenom}.`) : t('Merci.', 'Thank you.')}</span>
+              </span>
+              <span className="recu__ligne" style={vars({ '--i': '2' })}>
+                <span>{t("Ton idée est arrivée jusqu'à NOD.", 'Your idea has reached NOD.')}</span>
+              </span>
+            </h2>
+
+            <div className="recu__corps">
+              <figure className="recu__extrait">
+                <figcaption>{t('Ce que tu as écrit', 'What you wrote')}</figcaption>
+                <blockquote>{extrait}</blockquote>
+              </figure>
+
+              <div className="recu__suite">
+                <h3>{t('La suite', 'What happens next')}</h3>
+                <ol>
+                  <li><span>01</span>{t('Je lis ton message et je reviens vers toi sous 24 h, avec mes questions.', 'I read your message and come back to you within 24 h with my questions.')}</li>
+                  <li><span>02</span>{t("On en parle, de vive voix ou par écrit, le temps qu'il faut.", 'We talk it through, by call or in writing, for as long as it takes.')}</li>
+                  <li><span>03</span>{t("Je t'envoie une proposition claire : ce qui sera fait, en combien de temps, pour quel budget.", 'I send you a clear proposal: what will be done, how long, for what budget.')}</li>
+                </ol>
+              </div>
+            </div>
+
+            <div className="recu__actions">
+              <Link to="/travail" className="nod-btn nod-btn--night nod-btn--lg">
+                {t('Voir le travail en attendant', 'See the work meanwhile')} <Icon name="arrow-right" size={20} />
+              </Link>
+              <Link to="/" className="recu__retour">{t("Retour à l'accueil", 'Back to home')}</Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       <NodFooter />
     </>
