@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 import NodNav from '@/components/NodNav';
@@ -80,7 +80,6 @@ export default function Contact() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   /* form : le formulaire. sortie : il s'efface (0,5 s). recu : l'écran de confirmation. */
   const [etape, setEtape] = useState<'form' | 'sortie' | 'recu'>('form');
-  const recuRef = useRef<HTMLElement>(null);
   const [envoi, setEnvoi] = useState(false);
   const [erreurEnvoi, setErreurEnvoi] = useState('');
   const [faqOuverte, setFaqOuverte] = useState<number | null>(null);
@@ -136,34 +135,65 @@ export default function Contact() {
 
   const faq = language === 'fr' ? FAQ_FR : FAQ_EN;
   const prenom = (form.name.trim().split(/\s+/)[0] || '').replace(/^./, (c) => c.toUpperCase());
-  const extrait = form.message.trim().length > 320 ? form.message.trim().slice(0, 320) + '…' : form.message.trim();
 
+  /* Pendant que le formulaire s'efface, la page remonte : l'en-tête va
+     s'agrandir jusqu'à occuper tout l'écran. */
   useEffect(() => {
-    if (etape === 'recu') recuRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (etape === 'form') return;
+    const calme = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    window.scrollTo({ top: 0, behavior: calme ? 'auto' : 'smooth' });
   }, [etape]);
 
   return (
     <>
       <NodNav overImage />
 
-      <section className="page-head" style={vars({ '--nod-head-image': url(gradientFold) })}>
+      <section
+        className={'page-head contact-head' + (etape !== 'form' ? ' is-sortie' : '') + (etape === 'recu' ? ' is-recu' : '')}
+        style={vars({ '--nod-head-image': url(gradientFold) })}
+      >
         <div className="page-head__image" />
         <div className="page-head__veil" />
         <div className="page-head__foot" />
-        <div className="page-head__body">
-          <Eyebrow tone="light">{t('Entrer en contact', 'Get in touch')}</Eyebrow>
-          <h1 className="page-head__title">
-            {t('Un projet en tête ?', 'A project in mind?')}
-            <br />
-            {t('Écris-moi.', 'Write to me.')}
-          </h1>
-          <p className="page-head__lede">
-            {t(
-              "Pas besoin d'un projet déjà ficelé. Une idée suffit pour lancer la conversation.",
-              'No need for a finished project. An idea is enough to start the conversation.',
-            )}
-          </p>
-        </div>
+
+        {etape !== 'recu' ? (
+          <div className="page-head__body contact-head__depart">
+            <Eyebrow tone="light">{t('Entrer en contact', 'Get in touch')}</Eyebrow>
+            <h1 className="page-head__title">
+              {t('Un projet en tête ?', 'A project in mind?')}
+              <br />
+              {t('Écris-moi.', 'Write to me.')}
+            </h1>
+            <p className="page-head__lede">
+              {t(
+                "Pas besoin d'un projet déjà ficelé. Une idée suffit pour lancer la conversation.",
+                'No need for a finished project. An idea is enough to start the conversation.',
+              )}
+            </p>
+          </div>
+        ) : (
+          <div className="page-head__body contact-head__arrivee" role="status">
+            <h1 className="page-head__title contact-head__titre">
+              {prenom
+                ? t(`Merci ${prenom}, ton message est bien arrivé.`, `Thank you ${prenom}, your message has arrived.`)
+                : t('Merci, ton message est bien arrivé.', 'Thank you, your message has arrived.')}
+            </h1>
+            <p className="page-head__lede">
+              {t(
+                "Je reviens vers toi dans les meilleurs délais. Le récapitulatif t'attend dans ta boîte mail.",
+                "I'll get back to you as soon as possible. A summary is waiting in your inbox.",
+              )}
+            </p>
+            <div className="page-hero__actions">
+              <Link to="/travail" className="nod-btn nod-btn--inverse nod-btn--lg">
+                {t('Voir le travail', 'See the work')} <Icon name="arrow-right" size={20} />
+              </Link>
+              <Link to="/" className="nod-btn nod-btn--on-image nod-btn--lg">
+                {t("Retour à l'accueil", 'Back to home')}
+              </Link>
+            </div>
+          </div>
+        )}
       </section>
 
       {etape !== 'recu' ? (
@@ -279,64 +309,7 @@ export default function Contact() {
         </div>
       </section>
       </>
-      ) : (
-        <section className="recu" ref={recuRef} aria-live="polite">
-          <div className="recu__inner">
-            <svg className="recu__horizon" viewBox="0 0 1000 2" preserveAspectRatio="none" aria-hidden="true">
-              <defs>
-                <linearGradient id="recu-degrade" x1="0" x2="1000" y1="1" y2="1" gradientUnits="userSpaceOnUse">
-                  <stop offset="0" stopColor="#F55F31" />
-                  <stop offset="0.5" stopColor="#FF914D" />
-                  <stop offset="1" stopColor="#FFD35F" />
-                </linearGradient>
-              </defs>
-              <line x1="0" y1="1" x2="1000" y2="1" stroke="url(#recu-degrade)" strokeWidth="2" pathLength={1} />
-            </svg>
-
-            <p className="recu__ligne recu__eyebrow" style={vars({ '--i': '0' })}>
-              <span>{t('Message reçu', 'Message received')}</span>
-            </p>
-            <h2 className="recu__titre">
-              <span className="recu__ligne" style={vars({ '--i': '1' })}>
-                <span>{prenom ? t(`Merci, ${prenom}.`, `Thank you, ${prenom}.`) : t('Merci.', 'Thank you.')}</span>
-              </span>
-              <span className="recu__ligne" style={vars({ '--i': '2' })}>
-                <span>{t("Ton idée est arrivée jusqu'à NOD.", 'Your idea has reached NOD.')}</span>
-              </span>
-            </h2>
-
-            <div className="recu__corps">
-              <figure className="recu__extrait">
-                <figcaption>{t('Ce que tu as écrit', 'What you wrote')}</figcaption>
-                <blockquote>{extrait}</blockquote>
-              </figure>
-
-              <div className="recu__suite">
-                <h3>{t('La suite', 'What happens next')}</h3>
-                <ol>
-                  <li><span>01</span>{t('Je lis ton message avec attention et je reviens vers toi dans les meilleurs délais, avec mes questions.', 'I read your message carefully and come back to you as soon as possible, with my questions.')}</li>
-                  <li><span>02</span>{t("On en parle, de vive voix ou par écrit, le temps qu'il faut.", 'We talk it through, by call or in writing, for as long as it takes.')}</li>
-                  <li><span>03</span>{t("Je t'envoie une proposition claire : ce qui sera fait, en combien de temps, pour quel budget.", 'I send you a clear proposal: what will be done, how long, for what budget.')}</li>
-                </ol>
-              </div>
-            </div>
-
-            <p className="recu__mail">
-              {t(
-                'Un récapitulatif de ta demande vient de partir dans ta boîte mail.',
-                'A summary of your request is on its way to your inbox.',
-              )}
-            </p>
-
-            <div className="recu__actions">
-              <Link to="/travail" className="nod-btn nod-btn--night nod-btn--lg">
-                {t('Voir le travail en attendant', 'See the work meanwhile')} <Icon name="arrow-right" size={20} />
-              </Link>
-              <Link to="/" className="recu__retour">{t("Retour à l'accueil", 'Back to home')}</Link>
-            </div>
-          </div>
-        </section>
-      )}
+      ) : null}
 
       <NodFooter />
     </>

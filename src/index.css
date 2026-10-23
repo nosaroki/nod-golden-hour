@@ -4500,8 +4500,8 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
 /* =============================================================================
    CONTACT : après l'envoi
    1. Le formulaire, l'encart et la FAQ s'effacent vers le haut, en cascade.
-   2. Un horizon doré se trace d'un bord à l'autre.
-   3. Les lignes du message montent de derrière un masque, l'une après l'autre.
+   2. L'en-tête doré s'agrandit jusqu'à remplir l'écran.
+   3. Le texte d'accueil laisse place à un seul message, qui se pose doucement.
    Une seule courbe pour tout : rapide au départ, très amortie à l'arrivée.
    ============================================================================= */
 
@@ -4520,74 +4520,22 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
 .contact.is-sortie .contact__aside { transition-delay: 80ms; }
 .faq.is-sortie { transition-delay: 140ms; }
 
-.recu {
-  scroll-margin-top: calc(var(--header-h, 72px) + 16px);
-  padding: clamp(72px, 12vh, 140px) var(--pad-x) clamp(96px, 14vh, 160px);
-}
-.recu__inner { max-width: var(--container-md); margin-inline: auto; }
 
-.recu__horizon { display: block; width: 100%; height: 2px; overflow: visible; margin-bottom: var(--space-12); }
-.recu__horizon line {
-  stroke-dasharray: 1; stroke-dashoffset: 1;
-  animation: recu-trace 1100ms var(--ease-recu) forwards;
+/* L'en-tête de la page contact devient l'écran de confirmation. */
+.contact-head { transition: min-height 1000ms var(--ease-recu); }
+.contact-head.is-recu { min-height: calc(100svh - var(--header-h, 71px)); }
+.contact-head__depart { transition: opacity 380ms var(--ease-recu), transform 480ms var(--ease-recu), filter 480ms var(--ease-recu); }
+.contact-head.is-sortie .contact-head__depart { opacity: 0; transform: translateY(-12px); filter: blur(3px); }
+.contact-head__arrivee > * {
+  opacity: 0; transform: translateY(14px); filter: blur(4px);
+  animation: recu-arrivee 900ms var(--ease-recu) forwards;
 }
-@keyframes recu-trace { to { stroke-dashoffset: 0; } }
-
-/* Chaque ligne est un masque : le texte monte de derrière son propre bord. */
-.recu__ligne { display: block; overflow: hidden; padding-bottom: 0.08em; }
-.recu__ligne > span {
-  display: block; transform: translateY(105%);
-  animation: recu-monte 900ms var(--ease-recu) forwards;
-  animation-delay: calc(500ms + var(--i, 0) * 110ms);
-}
-@keyframes recu-monte { to { transform: translateY(0); } }
-
-.recu__eyebrow { margin: 0 0 var(--space-5); font: var(--type-eyebrow); letter-spacing: var(--track-eyebrow); text-transform: uppercase; color: var(--red); }
-.recu__titre {
-  margin: 0; font-family: var(--font-serif); font-weight: 300;
-  font-size: clamp(2.4rem, 5.6vw, 4.6rem); line-height: 1.04; letter-spacing: var(--track-display); color: var(--navy);
-}
-.recu__titre .recu__ligne:nth-child(2) { color: var(--red); font-style: italic; }
-
-.recu__corps {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(32px, 6vw, 80px); margin-top: var(--space-16);
-  opacity: 0; transform: translateY(16px);
-  animation: recu-pose 800ms var(--ease-recu) 950ms forwards;
-}
-@keyframes recu-pose { to { opacity: 1; transform: none; } }
-
-.recu__extrait { margin: 0; padding: var(--space-8); border-radius: var(--radius-card); background: rgba(255, 255, 255, 0.45); }
-.recu__extrait figcaption, .recu__suite h3 {
-  margin: 0 0 var(--space-4); font: var(--type-eyebrow); letter-spacing: var(--track-eyebrow); text-transform: uppercase; color: var(--text-subtle);
-}
-.recu__extrait blockquote {
-  margin: 0; font-family: var(--font-serif); font-style: italic; font-size: 1.05rem; line-height: 1.65;
-  color: var(--text-muted); white-space: pre-line; overflow-wrap: anywhere;
-}
-.recu__suite ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
-.recu__suite li {
-  display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: var(--space-3);
-  padding: var(--space-4) 0; border-bottom: 1px solid var(--line);
-  font: var(--type-body-serif); color: var(--navy);
-}
-.recu__suite li span { font: var(--type-label); color: var(--red); padding-top: 3px; }
-
-.recu__actions {
-  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-6); margin-top: var(--space-16);
-  opacity: 0; animation: recu-pose 700ms var(--ease-recu) 1200ms forwards;
-}
-.recu__retour { font-family: var(--font-serif); font-style: italic; color: var(--text-muted); }
-.recu__retour:hover { color: var(--red); }
-
-@media (max-width: 760px) {
-  .recu__corps { grid-template-columns: minmax(0, 1fr); }
-}
+.contact-head__arrivee > :nth-child(1) { animation-delay: 450ms; }
+.contact-head__arrivee > :nth-child(2) { animation-delay: 620ms; }
+.contact-head__arrivee > :nth-child(3) { animation-delay: 780ms; }
+@keyframes recu-arrivee { to { opacity: 1; transform: none; filter: none; } }
+.contact-head__titre { max-width: 18ch; }
 @media (prefers-reduced-motion: reduce) {
-  .recu__horizon line, .recu__ligne > span, .recu__corps, .recu__actions { animation: none; transform: none; opacity: 1; stroke-dashoffset: 0; }
+  .contact-head, .contact-head__depart { transition: none; }
+  .contact-head__arrivee > * { animation: none; opacity: 1; transform: none; filter: none; }
 }
-.recu__mail {
-  margin: var(--space-12) 0 0; font-family: var(--font-serif); font-style: italic; color: var(--text-muted);
-  opacity: 0; animation: recu-pose 700ms var(--ease-recu) 1100ms forwards;
-}
-@media (prefers-reduced-motion: reduce) { .recu__mail { animation: none; opacity: 1; } }
