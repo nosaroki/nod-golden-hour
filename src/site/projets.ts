@@ -57,13 +57,6 @@ export const projets: Projet[] = [
     tags: ['Stratégie', 'Opérations', 'Digital'],
   },
   {
-    id: 'charly', famille: 'sites', titre: 'La Charly Gaul', sousTitre: 'Site événementiel',
-    kicker: 'Site événementiel', image: charlyGaul,
-    texte: 'Randonnée cycliste et pédestre mise en récit. Site événementiel, de la structure à la mise en ligne.',
-    role: 'Direction artistique et développement',
-    tags: ['Direction artistique', 'Développement', 'Contenu'],
-  },
-  {
     id: 'mangrove', famille: 'encours', titre: 'Mangrove', sousTitre: 'Site photo de surf',
     kicker: 'Site · En cours', image: gradientFold, placeholder: true,
     texte: 'Site de photographie de surf, en cours de création. Structure, identité visuelle et mise en ligne.',
@@ -85,18 +78,11 @@ export const projets: Projet[] = [
     tags: ['Contenu'],
   },
   {
-    id: 'charly-affiche', famille: 'editorial', titre: 'La Charly Gaul', sousTitre: 'Affiche événementielle',
-    kicker: 'Édition · Affiche', image: charlyGaul,
-    texte: "L'affiche de la randonnée mise en récit : direction artistique, composition et déclinaisons pour l'événement.",
-    role: 'Direction artistique · affiche',
-    tags: ['Affiche', 'Direction artistique', 'Édition'],
-  },
-  {
-    id: 'charly-presse', famille: 'editorial', titre: 'Dossier de presse', sousTitre: 'La Charly Gaul',
-    kicker: 'Édition · Presse', image: inkOrange, placeholder: true,
-    texte: "Dossier de presse complet de l'événement : mise en page, hiérarchie éditoriale et cohérence avec l'affiche.",
-    role: 'Conception et mise en page éditoriale',
-    tags: ['Édition', 'Mise en page', 'Contenu'],
+    id: 'charly', famille: 'editorial', titre: 'La Charly Gaul', sousTitre: 'Affiche & dossier de presse',
+    kicker: 'Édition · Événementiel', image: charlyGaul,
+    texte: "Randonnée cycliste et pédestre. L'affiche de l'événement et son dossier de presse, pensés ensemble : direction artistique, composition, mise en page éditoriale.",
+    role: 'Direction artistique et mise en page',
+    tags: ['Affiche', 'Dossier de presse', 'Direction artistique'],
   },
   {
     id: 'pierres', famille: 'editorial', titre: 'Pierres vertes', sousTitre: 'Livre',

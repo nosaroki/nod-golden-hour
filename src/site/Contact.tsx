@@ -64,7 +64,7 @@ export default function Contact() {
   const [envoye, setEnvoye] = useState(false);
   const [envoi, setEnvoi] = useState(false);
   const [erreurEnvoi, setErreurEnvoi] = useState('');
-  const [faqOuverte, setFaqOuverte] = useState<number | null>(0);
+  const [faqOuverte, setFaqOuverte] = useState<number | null>(null);
 
   const emailValide = (valeur: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valeur);
 

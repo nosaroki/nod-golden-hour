@@ -56,7 +56,7 @@ export default function Maison() {
       </section>
 
       {/* ---------- Le manifeste ---------- */}
-      <section className="home-manifesto" style={vars({ '--nod-manifesto-image': url(orangePressee) })}>
+      <section className="home-manifesto home-manifesto--encre" style={vars({ '--nod-manifesto-image': url(orangePressee) })}>
         <div className="home-manifesto__image" />
         <div className="home-manifesto__veil" />
         <div className="home-manifesto__body nod-grain">
@@ -92,7 +92,7 @@ export default function Maison() {
 
           <p className="home-manifesto__text">
             {t(
-              "Une seule personne prend ton idée là où elle n'est encore qu'une pensée, et la mène jusqu'au jour où elle existe pour de vrai.",
+              "Une seule personne prend ton idée là où elle n'est encore qu'une pensée. Elle la mène jusqu'au jour où elle existe pour de vrai.",
               'One person takes your idea while it is still only a thought, and carries it to the day it exists for real.',
             )}
           </p>

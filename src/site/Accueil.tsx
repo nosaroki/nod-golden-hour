@@ -82,8 +82,8 @@ export default function Accueil() {
           </p>
           <p className="home-manifesto__text">
             {t(
-              "Ce n'est pas une agence. C'est une maison. Un interlocuteur, un cercle choisi derrière lui, et ton projet qui avance sans que tu aies à coordonner cinq prestataires.",
-              "It is not an agency. It is a house. One contact, a chosen circle behind them, and your project moving without you coordinating five suppliers.",
+              "Ce n'est pas une agence. C'est une maison. Un interlocuteur, un cercle choisi derrière lui. Ton projet avance sans que tu aies à coordonner cinq prestataires.",
+              "It is not an agency. It is a house. One contact, a chosen circle behind them. Your project moves without you coordinating five suppliers.",
             )}
           </p>
           <p className="home-manifesto__text">
@@ -107,25 +107,21 @@ export default function Accueil() {
             )}
           </p>
 
-          <div className="home-summary__list">
+          <ul className="home-summary__list">
             {INTENTIONS.map((item) => (
-              <button
-                type="button"
+              <li
                 key={item.n}
                 className={'home-summary__item' + (ouvert === item.n ? ' is-open' : '')}
                 onMouseEnter={() => setOuvert(item.n)}
-                onFocus={() => setOuvert(item.n)}
               >
                 <span className="home-summary__row">
-                  <span className="home-summary__index">{item.n}</span>
                   <span className="home-summary__title">{t(item.fr, item.en)}</span>
                   <span className="home-summary__text">{t(item.frTexte, item.enTexte)}</span>
-                  <Icon name="arrow-up-right" size={22} className="home-summary__arrow" />
                 </span>
-                <span className="home-summary__rule" />
-              </button>
+                <span className="home-summary__rule" aria-hidden="true" />
+              </li>
             ))}
-          </div>
+          </ul>
         </div>
       </section>
 

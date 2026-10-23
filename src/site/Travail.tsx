@@ -51,8 +51,8 @@ export default function Travail() {
           </h1>
           <p className="page-head__lede">
             {t(
-              'Onze projets, dans des univers très différents. Survole pour voir, clique pour lire.',
-              'Eleven projects across very different worlds. Hover to see, click to read.',
+              'Des projets dans des univers très différents. Survole pour voir, clique pour lire.',
+              'Projects across very different worlds. Hover to see, click to read.',
             )}
           </p>
         </div>

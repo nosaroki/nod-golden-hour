@@ -2198,7 +2198,7 @@ a:hover { color: #F55F31; }
   --container-lg: 1180px;
 
   --radius-xs: 2px;
-  --radius-media: 0px;
+  --radius-media: var(--radius-card);
   --radius-pill: 999px;
 
   --font-display: var(--font-serif);
@@ -3374,12 +3374,12 @@ a:hover { color: #F55F31; }
   border-bottom: 1px solid var(--line-hairline);
   background: none;
   text-align: left;
-  cursor: pointer;
+  cursor: default;
 }
 
 .home-summary__row {
   display: grid;
-  grid-template-columns: 72px minmax(0, 1fr) minmax(0, 1.1fr) 40px;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
   align-items: center;
   gap: var(--space-6);
   padding-block: var(--space-8);
@@ -4384,4 +4384,35 @@ a:hover { color: #F55F31; }
   font-family: var(--font-serif); font-weight: 300;
   font-size: clamp(1.4rem, 2.8vw, 2.1rem); line-height: 1.3;
   max-width: 30ch; margin: var(--space-8) 0 0; color: var(--text-body);
+}
+
+
+/* =============================================================================
+   LISIBILITÉ : retours à la ligne
+   Les titres se répartissent en lignes de longueur égale, les paragraphes
+   évitent le mot seul en fin de bloc. Largeur de lecture bornée.
+   ============================================================================= */
+
+h1, h2, h3,
+.page-hero__title, .page-head__title, .home-manifesto__lead,
+.home-summary__intro, .home-cta__title, .travail__cta-title, .faq__title {
+  text-wrap: balance;
+}
+p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
+  text-wrap: pretty;
+}
+.page-head__lede, .home-manifesto__text, .home-cta__text,
+.travail__cta-text, .faq__a, .index-travail__texte { max-width: 62ch; }
+
+/* La liste « Ce que fait NOD » est une lecture, pas une action. */
+.home-summary__list { list-style: none; padding: 0; }
+
+/* Sur l'aplat orange, le texte passe en encre : le crème n'y est pas lisible. */
+.home-manifesto--encre .home-manifesto__lead,
+.home-manifesto--encre .home-manifesto__text,
+.home-manifesto--encre .principe-raison__h,
+.home-manifesto--encre .principe-raison__p { color: var(--navy); opacity: 1; }
+@media (max-width: 760px) {
+  .home-summary__row { grid-template-columns: minmax(0, 1fr); gap: var(--space-3); padding-block: var(--space-6); }
+  .home-summary__text { opacity: 1; }
 }
