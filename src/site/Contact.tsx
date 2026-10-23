@@ -56,7 +56,7 @@ const FAQ_FR = [
   },
   {
     q: 'Comment ça commence ?',
-    a: "Tu remplis le formulaire. Je reviens vers toi sous 24 h avec mes questions, on échange, je t'envoie un devis. À la signature et au premier acompte, le projet démarre.",
+    a: "Tu remplis le formulaire. Je reviens vers toi dans les meilleurs délais avec mes questions. On échange, je t'envoie un devis. À la signature et au premier acompte, le projet démarre.",
   },
 ];
 
@@ -69,7 +69,7 @@ const FAQ_EN = [
   { q: 'Do you work remotely?', a: 'Yes. We talk by video call, wherever you are. For projects around Paris, we can also meet in person.' },
   { q: 'What happens after the launch?', a: 'The project does not stop on launch day. Follow-up can be planned: site maintenance, content, adjustments. We decide it together in the quote.' },
   { q: 'Who owns the files at the end?', a: 'You do. At the end of the project you receive the source files along with the usage rights set out in the quote.' },
-  { q: 'How does it start?', a: 'Fill in the form. I come back within 24 h with questions, we talk, I send a quote. Once signed, the project starts.' },
+  { q: 'How does it start?', a: 'Fill in the form. I come back to you as soon as possible with questions. We talk, I send a quote. Once signed, the project starts.' },
 ];
 
 export default function Contact() {
@@ -314,12 +314,19 @@ export default function Contact() {
               <div className="recu__suite">
                 <h3>{t('La suite', 'What happens next')}</h3>
                 <ol>
-                  <li><span>01</span>{t('Je lis ton message et je reviens vers toi sous 24 h, avec mes questions.', 'I read your message and come back to you within 24 h with my questions.')}</li>
+                  <li><span>01</span>{t('Je lis ton message avec attention et je reviens vers toi dans les meilleurs délais, avec mes questions.', 'I read your message carefully and come back to you as soon as possible, with my questions.')}</li>
                   <li><span>02</span>{t("On en parle, de vive voix ou par écrit, le temps qu'il faut.", 'We talk it through, by call or in writing, for as long as it takes.')}</li>
                   <li><span>03</span>{t("Je t'envoie une proposition claire : ce qui sera fait, en combien de temps, pour quel budget.", 'I send you a clear proposal: what will be done, how long, for what budget.')}</li>
                 </ol>
               </div>
             </div>
+
+            <p className="recu__mail">
+              {t(
+                'Un récapitulatif de ta demande vient de partir dans ta boîte mail.',
+                'A summary of your request is on its way to your inbox.',
+              )}
+            </p>
 
             <div className="recu__actions">
               <Link to="/travail" className="nod-btn nod-btn--night nod-btn--lg">

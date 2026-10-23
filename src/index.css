@@ -4586,3 +4586,8 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
 @media (prefers-reduced-motion: reduce) {
   .recu__horizon line, .recu__ligne > span, .recu__corps, .recu__actions { animation: none; transform: none; opacity: 1; stroke-dashoffset: 0; }
 }
+.recu__mail {
+  margin: var(--space-12) 0 0; font-family: var(--font-serif); font-style: italic; color: var(--text-muted);
+  opacity: 0; animation: recu-pose 700ms var(--ease-recu) 1100ms forwards;
+}
+@media (prefers-reduced-motion: reduce) { .recu__mail { animation: none; opacity: 1; } }

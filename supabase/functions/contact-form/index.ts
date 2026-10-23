@@ -71,7 +71,7 @@ const C = {
 const SERIF = "Spectral, Georgia, 'Times New Roman', serif";
 const SANS = "'Bricolage Grotesque', 'Helvetica Neue', Helvetica, Arial, sans-serif";
 
-function mailNotification(d: { n: string; prenom: string; e: string; p: string; m: string; brochure: boolean; quand: string; emailBrut: string; telBrut: string }) {
+function mailNotification(d: { n: string; prenom: string; e: string; p: string; m: string; brochure: boolean; brochureEnvoyee: boolean; quand: string; emailBrut: string; telBrut: string }) {
   const sujetReponse = encodeURIComponent("Ton projet, en réponse");
   const ligne = (cle: string, valeur: string) => `
             <tr>
@@ -111,7 +111,7 @@ function mailNotification(d: { n: string; prenom: string; e: string; p: string; 
             ${ligne("Nom", d.n)}
             ${ligne("Email", `<a href="mailto:${d.emailBrut}" style="color:${C.rouge};text-decoration:none;">${d.e}</a>`)}
             ${ligne("Téléphone", d.p ? `<a href="tel:${d.telBrut}" style="color:${C.nuit};text-decoration:none;">${d.p}</a>` : `<span style="color:${C.doux};font-style:italic;">Non renseigné</span>`)}
-            ${ligne("Brochure", d.brochure ? "Demandée" : `<span style="color:${C.doux};font-style:italic;">Non demandée</span>`)}
+            ${ligne("Brochure", d.brochure ? (d.brochureEnvoyee ? "Demandée, envoyée avec le récapitulatif" : "Demandée, <em>à envoyer à la main</em> (brochure pas encore en ligne)") : `<span style="color:${C.doux};font-style:italic;">Non demandée</span>`)}
           </table>
         </td></tr>
 
@@ -121,7 +121,6 @@ function mailNotification(d: { n: string; prenom: string; e: string; p: string; 
               <a href="mailto:${d.emailBrut}?subject=${sujetReponse}" style="display:inline-block;padding:15px 30px;font-family:${SANS};font-size:15px;font-weight:600;color:${C.creme};text-decoration:none;">Répondre à ${d.prenom}</a>
             </td>
           </tr></table>
-          <p style="margin:14px 0 0;font-family:${SERIF};font-size:14px;color:${C.doux};">Promesse du site : une réponse sous 24 h.</p>
         </td></tr>
 
         <tr><td style="padding:56px 8px 0;">
@@ -135,6 +134,80 @@ function mailNotification(d: { n: string; prenom: string; e: string; p: string; 
   </table>
 </body>
 </html>`;
+}
+
+// Le mail que reçoit la personne qui a écrit : simple, chaleureux, un
+// récapitulatif de sa demande et la brochure si elle l'a demandée.
+function mailConfirmation(d: { prenom: string; n: string; p: string; m: string; brochureUrl: string | null }) {
+  return `<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"></head>
+<body style="margin:0;padding:0;background:${C.creme};">
+  <div style="display:none;max-height:0;overflow:hidden;">Ta demande est bien arrivée chez NOD.</div>
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.creme};">
+    <tr><td align="center" style="padding:48px 16px;">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="width:100%;max-width:560px;">
+
+        <tr><td style="padding:0 8px 40px;">
+          <img src="cid:nod-logo" width="110" height="40" alt="NOD" style="display:block;border:0;width:110px;height:auto;">
+        </td></tr>
+
+        <tr><td style="padding:0 8px;">
+          <p style="margin:0 0 14px;font-family:${SANS};font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:${C.rouge};">Demande bien reçue</p>
+          <h1 style="margin:0;font-family:${SERIF};font-weight:300;font-size:34px;line-height:1.15;color:${C.nuit};">Merci, ${d.prenom}.</h1>
+          <p style="margin:18px 0 0;font-family:${SERIF};font-size:17px;line-height:1.7;color:${C.nuit};">Ton message est bien arrivé. Je le lis avec attention et je reviens vers toi dans les meilleurs délais.</p>
+        </td></tr>
+
+        ${d.brochureUrl ? `
+        <tr><td style="padding:32px 8px 0;">
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.nuit};border-radius:20px;">
+            <tr><td style="padding:28px 32px;">
+              <p style="margin:0 0 8px;font-family:${SANS};font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:${C.jaune};">La brochure NOD</p>
+              <p style="margin:0 0 20px;font-family:${SERIF};font-size:16px;line-height:1.6;color:${C.creme};">Comme demandé, la voici : la maison, la méthode, les accompagnements.</p>
+              <table role="presentation" cellpadding="0" cellspacing="0"><tr>
+                <td style="background:${C.rouge};border-radius:999px;">
+                  <a href="${d.brochureUrl}" style="display:inline-block;padding:13px 26px;font-family:${SANS};font-size:15px;font-weight:600;color:${C.creme};text-decoration:none;">Ouvrir la brochure</a>
+                </td>
+              </tr></table>
+            </td></tr>
+          </table>
+        </td></tr>` : ""}
+
+        <tr><td style="padding:36px 8px 0;">
+          <p style="margin:0 0 12px;font-family:${SANS};font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:${C.doux};">Ta demande</p>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.papier};border-radius:20px;">
+            <tr><td style="padding:26px 30px 28px;">
+              <p style="margin:0;font-family:${SERIF};font-style:italic;font-size:16px;line-height:1.7;color:${C.nuit};white-space:pre-line;">${d.m}</p>
+              <p style="margin:18px 0 0;font-family:${SANS};font-size:13px;color:${C.doux};">${d.n}${d.p ? ` · ${d.p}` : ""}</p>
+            </td></tr>
+          </table>
+          <p style="margin:14px 0 0;font-family:${SERIF};font-size:14px;line-height:1.6;color:${C.doux};">Un détail à ajouter ? Il suffit de répondre à ce mail.</p>
+        </td></tr>
+
+        <tr><td style="padding:48px 8px 0;">
+          <p style="margin:0;font-family:${SERIF};font-size:16px;color:${C.nuit};">À très vite,</p>
+          <p style="margin:4px 0 0;font-family:${SERIF};font-size:16px;color:${C.nuit};">Nnéna, NOD</p>
+        </td></tr>
+
+        <tr><td style="padding:40px 8px 0;">
+          <div style="height:2px;line-height:2px;font-size:0;background:${C.rouge};background-image:linear-gradient(90deg,${C.rouge},${C.orange},${C.jaune});">&nbsp;</div>
+          <p style="margin:18px 0 0;font-family:${SERIF};font-style:italic;font-size:15px;color:${C.nuit};">NOD, say yes to new projects</p>
+          <p style="margin:6px 0 0;font-family:${SANS};font-size:12px;"><a href="https://nod-consulting.com" style="color:${C.rouge};text-decoration:none;">nod-consulting.com</a></p>
+        </td></tr>
+
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>`;
+}
+
+async function envoyer(cle: string | undefined, contenu: Record<string, unknown>) {
+  return await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: { Authorization: `Bearer ${cle}`, "Content-Type": "application/json" },
+    body: JSON.stringify(contenu),
+  });
 }
 
 Deno.serve(async (req) => {
@@ -183,6 +256,10 @@ Deno.serve(async (req) => {
       weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit",
     }).replace(":", " h ");
 
+    // Lien vers la brochure : variable d'environnement BROCHURE_URL dans
+    // Supabase. Tant qu'elle est vide, la brochure n'est pas envoyée.
+    const brochureUrl = Deno.env.get("BROCHURE_URL") || null;
+
     const html = mailNotification({
       n: echapper(name),
       prenom,
@@ -190,35 +267,47 @@ Deno.serve(async (req) => {
       p: echapper(phone),
       m: echapper(message),
       brochure,
+      brochureEnvoyee: brochure && !!brochureUrl,
       quand: "le " + quand,
       emailBrut: encodeURIComponent(email).replace(/%40/g, "@"),
       telBrut: phone.replace(/[^+\d]/g, ""),
     });
 
     const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+    const logo = { filename: "nod-logo.png", content: LOGO_PNG, content_id: "nod-logo", content_type: "image/png" };
 
-    const res = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${RESEND_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        from: "NOD Consulting <contact@nod-consulting.com>",
-        to: ["contact@nod-consulting.com"],
-        reply_to: email,
-        subject: `Nouveau projet : ${name.replace(/[\r\n]/g, " ").slice(0, 80)}`,
-        html,
-        attachments: [
-          { filename: "nod-logo.png", content: LOGO_PNG, content_id: "nod-logo", content_type: "image/png" },
-        ],
-      }),
+    const res = await envoyer(RESEND_API_KEY, {
+      from: "NOD Consulting <contact@nod-consulting.com>",
+      to: ["contact@nod-consulting.com"],
+      reply_to: email,
+      subject: `Nouveau projet : ${name.replace(/[\r\n]/g, " ").slice(0, 80)}`,
+      html,
+      attachments: [logo],
     });
 
     if (!res.ok) {
       console.error("Resend:", await res.text());
       return reponse({ status: "error" }, 502, entetes);
     }
+
+    // Le récapitulatif pour la personne. Le message est échappé et coupé :
+    // le formulaire ne doit pas servir à envoyer du contenu libre à un tiers.
+    const extrait = message.length > 600 ? message.slice(0, 600) + "…" : message;
+    const confirmation = await envoyer(RESEND_API_KEY, {
+      from: "NOD Consulting <contact@nod-consulting.com>",
+      to: [email],
+      reply_to: "contact@nod-consulting.com",
+      subject: "Ta demande est bien arrivée chez NOD",
+      html: mailConfirmation({
+        prenom,
+        n: echapper(name),
+        p: echapper(phone),
+        m: echapper(extrait),
+        brochureUrl: brochure ? brochureUrl : null,
+      }),
+      attachments: [logo],
+    });
+    if (!confirmation.ok) console.error("Resend confirmation:", await confirmation.text());
 
     return reponse({ status: "ok" }, 200, entetes);
   } catch (error) {
