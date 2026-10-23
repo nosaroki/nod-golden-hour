@@ -165,24 +165,21 @@ export default function Accueil() {
       <div className="home-golden-block nod-grain">
         <section className="home-golden" style={vars({ '--nod-golden-image': url(orangePressee) })}>
           <div className="home-golden__texture" />
-          <div className="home-golden__body">
-            <div className="home-golden__head">
+          <div className="home-golden__body home-golden__body--compact">
+            <div className="home-golden__lead">
               <Eyebrow tone="light">{t("L'heure dorée", 'Golden hour')}</Eyebrow>
-              <Eyebrow tone="light">2026</Eyebrow>
+              <h2 className="home-golden__title">
+                {t('La lumière rend tout plus juste, plus beau, plus vivant.', 'Light makes everything truer, more beautiful, more alive.')}
+              </h2>
             </div>
-            <h2 className="home-golden__title">
-              {t('La lumière rend tout', 'Light makes everything')}
-              <br />{t('plus juste, plus beau,', 'truer, more beautiful,')}
-              <br />{t('plus vivant.', 'more alive.')}
-            </h2>
-            <div className="home-golden__rows">
+            <dl className="home-golden__rows">
               {HEURE.map((ligne) => (
                 <div className="home-golden__row" key={ligne.fr}>
-                  <span className="home-golden__key">{t(ligne.fr, ligne.en)}</span>
-                  <span className="home-golden__value">{t(ligne.frV, ligne.enV)}</span>
+                  <dt className="home-golden__key">{t(ligne.fr, ligne.en)}</dt>
+                  <dd className="home-golden__value">{t(ligne.frV, ligne.enV)}</dd>
                 </div>
               ))}
-            </div>
+            </dl>
           </div>
         </section>
 

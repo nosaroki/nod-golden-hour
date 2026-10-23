@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import NodNav from '@/components/NodNav';
 import NodFooter from '@/components/NodFooter';
-import { Eyebrow, Icon, QuotePanel, url, vars } from '@/components/nod';
+import { Eyebrow, Icon, url, vars } from '@/components/nod';
 import { useLanguage } from '@/contexts/LanguageContext';
 import lightFold from '@/assets/brand/light-fold-warm.webp';
 import orangePressee from '@/assets/brand/orange-pressee.webp';
@@ -15,22 +15,36 @@ import nnenaImg from '@/assets/nnena.webp';
 export default function Maison() {
   const { language } = useLanguage();
   const t = (fr: string, en: string) => (language === 'fr' ? fr : en);
+  /* Comparaison temporaire : /la-maison?creme garde le texte crème sur un
+     voile plus dense. À retirer une fois le choix fait. */
+  const creme = new URLSearchParams(useLocation().search).has('creme');
 
-  const methode = [
+  /* Le déroulé d'un projet, dans l'ordre : ici la numérotation a un sens. */
+  const deroule = [
     {
-      fr: 'Un interlocuteur', en: 'One contact',
-      frV: "Une seule personne prend ton idée et la mène jusqu'au bout.",
-      enV: 'One person takes your idea and carries it through.',
+      fr: 'Le premier échange', en: 'The first conversation',
+      frV: "Une conversation pour comprendre l'idée, ses enjeux, ce qu'elle doit devenir.",
+      enV: 'A conversation to understand the idea, what is at stake, what it should become.',
     },
     {
-      fr: 'Un cercle choisi', en: 'A chosen circle',
-      frV: 'Les bons créatifs derrière, quand le projet en a besoin.',
-      enV: 'The right creatives behind, when the project needs them.',
+      fr: 'Le devis', en: 'The quote',
+      frV: 'Une proposition claire : ce qui sera fait, en combien de temps, pour quel budget.',
+      enV: 'A clear proposal: what will be done, how long it takes, for what budget.',
     },
     {
-      fr: 'Une direction', en: 'One direction',
-      frV: "Ton projet avance sans que tu aies à coordonner cinq prestataires.",
-      enV: 'Your project moves without you coordinating five suppliers.',
+      fr: 'La direction', en: 'The direction',
+      frV: 'Stratégie, positionnement, univers visuel. Le cap est posé avant la moindre production.',
+      enV: 'Strategy, positioning, visual world. The course is set before anything is produced.',
+    },
+    {
+      fr: 'La production', en: 'The making',
+      frV: "Identité, contenus, site. Tout est fabriqué d'une même main, avec le cercle quand le projet le demande.",
+      enV: 'Identity, content, website. Everything made by one hand, with the circle when the project needs it.',
+    },
+    {
+      fr: 'Le lancement', en: 'The launch',
+      frV: 'La mise en ligne, la prise en main, puis le suivi.',
+      enV: 'Going live, the handover, then the follow-up.',
     },
   ];
 
@@ -56,7 +70,7 @@ export default function Maison() {
       </section>
 
       {/* ---------- Le manifeste ---------- */}
-      <section className="home-manifesto home-manifesto--encre" style={vars({ '--nod-manifesto-image': url(orangePressee) })}>
+      <section className={'home-manifesto ' + (creme ? 'home-manifesto--voile' : 'home-manifesto--encre')} style={vars({ '--nod-manifesto-image': url(orangePressee) })}>
         <div className="home-manifesto__image" />
         <div className="home-manifesto__veil" />
         <div className="home-manifesto__body nod-grain">
@@ -99,19 +113,19 @@ export default function Maison() {
         </div>
       </section>
 
-      {/* ---------- La méthode ---------- */}
+      {/* ---------- Le déroulé ---------- */}
       <section className="house-method nod-grain">
         <div className="house-method__inner">
-          <Eyebrow tone="light">{t('La méthode', 'The method')}</Eyebrow>
-          <div className="house-method__rows">
-            {methode.map((ligne, index) => (
-              <div className="house-method__row" key={ligne.fr}>
+          <Eyebrow tone="light">{t('Le déroulé', 'How it goes')}</Eyebrow>
+          <ol className="house-method__rows">
+            {deroule.map((ligne, index) => (
+              <li className="house-method__row" key={ligne.fr}>
                 <span className="house-method__index">{String(index + 1).padStart(2, '0')}</span>
                 <span className="house-method__key">{t(ligne.fr, ligne.en)}</span>
                 <span className="house-method__value">{t(ligne.frV, ligne.enV)}</span>
-              </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
       </section>
 
@@ -138,13 +152,26 @@ export default function Maison() {
         <div className="house-founder__image" />
       </section>
 
-      {/* ---------- L'heure dorée ---------- */}
-      <QuotePanel image={atelier} align="start" className="principe-quote">
-        {t(
-          "On appelle golden hour ce moment où la lumière rend tout plus juste, plus beau, plus vivant. C'est l'instant que NOD cherche pour ton projet. Celui où il existe enfin.",
-          'Golden hour is the moment when light makes everything truer, more beautiful, more alive. That is the moment NOD looks for in your project.',
-        )}
-      </QuotePanel>
+      {/* ---------- L'heure dorée, puis l'invitation ---------- */}
+      <section
+        className="nod-quote-panel nod-quote-panel--start principe-quote"
+        style={vars({ '--nod-quote-image': url(atelier) })}
+      >
+        <div className="nod-quote-panel__box nod-grain house-golden">
+          <p className="house-golden__phrase">
+            {t(
+              "On appelle golden hour ce moment où la lumière rend tout plus juste, plus beau, plus vivant. C'est l'instant que NOD cherche pour ton projet. Celui où il existe enfin.",
+              'Golden hour is the moment when light makes everything truer, more beautiful, more alive. That is the moment NOD looks for in your project.',
+            )}
+          </p>
+          <p className="house-golden__suite">
+            {t('Une idée, même floue, suffit pour commencer.', 'An idea, even a blurry one, is enough to start.')}
+          </p>
+          <Link to="/contact" className="nod-btn nod-btn--night">
+            {t('Parler de ton projet', 'Talk about your project')} <Icon name="arrow-right" size={18} />
+          </Link>
+        </div>
+      </section>
 
       <NodFooter />
     </>

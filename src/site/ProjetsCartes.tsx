@@ -15,14 +15,11 @@ interface Carte {
 }
 
 const PLACES: Carte[] = [
-  { id: 'idala', tx: '-273px', rot: '-9deg', z: 10, fond: 'linear-gradient(150deg,#F55F31,#FF914D)' },
-  { id: 'jasminka', tx: '-195px', rot: '-6.5deg', z: 20, fond: 'linear-gradient(150deg,#112542,#2a4f7a)' },
-  { id: 'unmatched', tx: '-117px', rot: '-4deg', z: 30, fond: 'linear-gradient(150deg,#FF914D,#FFD35F)' },
-  { id: 'charly', tx: '-39px', rot: '-1.3deg', z: 38, fond: 'linear-gradient(150deg,#F55F31,#FF914D)' },
-  { id: 'eva', tx: '39px', rot: '1.3deg', z: 40, fond: 'linear-gradient(150deg,#112542,#2a4f7a)' },
-  { id: 'saloua', tx: '117px', rot: '4deg', z: 30, fond: 'linear-gradient(150deg,#FF914D,#FFD35F)' },
-  { id: 'mangrove', tx: '195px', rot: '6.5deg', z: 20, fond: 'linear-gradient(150deg,#F55F31,#FF914D)' },
-  { id: 'oda', tx: '273px', rot: '9deg', z: 10, fond: 'linear-gradient(150deg,#112542,#2a4f7a)' },
+  { id: 'idala', tx: '-312px', rot: '-6deg', z: 10, fond: 'linear-gradient(150deg,#F55F31,#FF914D)' },
+  { id: 'jasminka', tx: '-156px', rot: '-3deg', z: 20, fond: 'linear-gradient(150deg,#112542,#2a4f7a)' },
+  { id: 'unmatched', tx: '0px', rot: '0deg', z: 40, fond: 'linear-gradient(150deg,#FF914D,#FFD35F)' },
+  { id: 'eva', tx: '156px', rot: '3deg', z: 20, fond: 'linear-gradient(150deg,#112542,#2a4f7a)' },
+  { id: 'oda', tx: '312px', rot: '6deg', z: 10, fond: 'linear-gradient(150deg,#F55F31,#FF914D)' },
 ];
 
 export default function ProjetsCartes() {

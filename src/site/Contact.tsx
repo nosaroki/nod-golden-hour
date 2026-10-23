@@ -27,7 +27,7 @@ const FAQ_FR = [
   },
   {
     q: 'Combien ça coûte ?',
-    a: "Ça dépend de ce que le projet demande. Une direction de marque démarre autour de 2 400 €, une identité complète autour de 4 800 €, un site sur mesure autour de 7 200 €. Écris-moi avec deux lignes sur ton projet et je te réponds avec une fourchette.",
+    a: "Chaque projet a son devis, construit sur ce qu'il demande vraiment. Écris-moi deux lignes sur ton projet : je te réponds avec une fourchette.",
   },
   {
     q: 'Combien de temps ça prend ?',
@@ -42,6 +42,18 @@ const FAQ_FR = [
     a: "Non, c'est même le meilleur moment. Poser la direction avant tout le reste évite de construire sur une base qu'il faudra défaire.",
   },
   {
+    q: 'Tu travailles à distance ?',
+    a: "Oui. Les échanges se font en visio, où que tu sois. Pour les projets en Île-de-France, on peut aussi se voir en personne.",
+  },
+  {
+    q: 'Et après le lancement ?',
+    a: "Le projet ne s'arrête pas le jour de la mise en ligne. Un suivi peut être prévu : maintenance du site, contenus, ajustements. Il se décide ensemble au moment du devis.",
+  },
+  {
+    q: 'À qui appartiennent les fichiers à la fin ?',
+    a: "À toi. À la fin du projet, tu reçois les fichiers sources ainsi que les droits d'utilisation prévus au devis.",
+  },
+  {
     q: 'Comment ça commence ?',
     a: "Tu remplis le formulaire. Je reviens vers toi sous 24 h avec mes questions, on échange, je t'envoie un devis. À la signature et au premier acompte, le projet démarre.",
   },
@@ -49,10 +61,13 @@ const FAQ_FR = [
 
 const FAQ_EN = [
   { q: 'Do you work alone?', a: 'Yes. One single contact from beginning to end. When a project needs a skill I do not have, I call on a chosen circle of creatives, but you always have one contact.' },
-  { q: 'What does it cost?', a: 'It depends on the project. Brand direction starts around €2,400, a full identity around €4,800, a custom site around €7,200. Write two lines about your project and I will answer with a range.' },
+  { q: 'What does it cost?', a: 'Every project gets its own quote, built on what it really needs. Write two lines about your project: I will answer with a range.' },
   { q: 'How long does it take?', a: 'Three weeks for brand direction, six for a full identity, eight for a site. A full launch runs over months.' },
   { q: 'Can I take only part of it?', a: 'Yes. Many projects start with strategy alone, or identity alone.' },
   { q: 'I have no name, no logo, no site. Is it too early?', a: 'No, it is the best moment. Setting the direction first avoids building on a base you will have to undo.' },
+  { q: 'Do you work remotely?', a: 'Yes. We talk by video call, wherever you are. For projects around Paris, we can also meet in person.' },
+  { q: 'What happens after the launch?', a: 'The project does not stop on launch day. Follow-up can be planned: site maintenance, content, adjustments. We decide it together in the quote.' },
+  { q: 'Who owns the files at the end?', a: 'You do. At the end of the project you receive the source files along with the usage rights set out in the quote.' },
   { q: 'How does it start?', a: 'Fill in the form. I come back within 24 h with questions, we talk, I send a quote. Once signed, the project starts.' },
 ];
 
@@ -191,6 +206,8 @@ export default function Contact() {
               />
             </div>
 
+            {/* À RETIRER AU LANCEMENT si la brochure n'est pas prête : la case
+                n'envoie encore rien. */}
             <Checkbox
               label={t('Je veux aussi recevoir la brochure NOD par mail.', 'Also send me the NOD brochure by email.')}
               checked={form.brochure}

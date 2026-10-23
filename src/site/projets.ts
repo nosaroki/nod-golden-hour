@@ -1,7 +1,6 @@
 import idala from '@/assets/idala.webp';
 import jasminka from '@/assets/jasminka.webp';
 import unmatched from '@/assets/unmatched.webp';
-import charlyGaul from '@/assets/charly-gaul.webp';
 import lightFold from '@/assets/brand/light-fold-warm.webp';
 import inkOrange from '@/assets/brand/texture-ink-orange.webp';
 import marbleOrange from '@/assets/brand/texture-marble-orange.webp';
@@ -24,6 +23,9 @@ export interface Projet {
   texte: string;
   role: string;
   tags: string[];
+  /** Lien vers le site ou le contenu publié, ouvert dans un nouvel onglet. */
+  lien?: string;
+  lienLabel?: { fr: string; en: string };
 }
 
 export const familles: { id: Projet['famille'] | 'tout'; fr: string; en: string }[] = [
@@ -41,6 +43,7 @@ export const projets: Projet[] = [
     texte: "Plateforme qui met en relation praticiens du bien-être et clients. De la stratégie de marque à l'identité, jusqu'au site développé et mis en ligne.",
     role: 'Direction créative complète, du brief au lancement',
     tags: ['Stratégie', 'Identité', 'Développement', 'Contenu'],
+    lien: 'https://theidalafamily.com', lienLabel: { fr: 'Voir le site', en: 'See the site' },
   },
   {
     id: 'jasminka', famille: 'sites', titre: 'Jasminka', sousTitre: 'Médium · identité & réseaux',
@@ -55,6 +58,7 @@ export const projets: Projet[] = [
     texte: 'Marque cosmétique lancée de zéro. Opérations, stratégie digitale et coordination du lancement, du nom au premier jour public.',
     role: 'Chief Operations & Digital Strategist Officer',
     tags: ['Stratégie', 'Opérations', 'Digital'],
+    lien: 'https://unmatchedbeautyglobal.com', lienLabel: { fr: 'Voir le site', en: 'See the site' },
   },
   {
     id: 'mangrove', famille: 'encours', titre: 'Mangrove', sousTitre: 'Site photo de surf',
@@ -78,13 +82,6 @@ export const projets: Projet[] = [
     tags: ['Contenu'],
   },
   {
-    id: 'charly', famille: 'editorial', titre: 'La Charly Gaul', sousTitre: 'Affiche & dossier de presse',
-    kicker: 'Édition · Événementiel', image: charlyGaul,
-    texte: "Randonnée cycliste et pédestre. L'affiche de l'événement et son dossier de presse, pensés ensemble : direction artistique, composition, mise en page éditoriale.",
-    role: 'Direction artistique et mise en page',
-    tags: ['Affiche', 'Dossier de presse', 'Direction artistique'],
-  },
-  {
     id: 'pierres', famille: 'editorial', titre: 'Pierres vertes', sousTitre: 'Livre',
     kicker: 'Édition · Livre', image: marbleOrange, placeholder: true,
     texte: "Conception d'un livre sur les pierres vertes : direction éditoriale, mise en page et fabrication de l'objet imprimé.",
@@ -97,5 +94,6 @@ export const projets: Projet[] = [
     texte: 'Plateforme de tarot et astrologie : tirages, compatibilité des signes, thème natal et astrocartographie. Projet maison, de A à Z.',
     role: 'Projet NOD, de A à Z',
     tags: ['Stratégie', 'Identité', 'Développement', 'Contenu'],
+    lien: 'https://oracledesarcanes.com', lienLabel: { fr: 'Voir le site', en: 'See the site' },
   },
 ];

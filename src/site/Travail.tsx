@@ -8,7 +8,7 @@ import { familles, projets } from './projets';
 import inkOrange from '@/assets/brand/texture-ink-orange.webp';
 
 /* Le travail. Index éditorial : la liste numérotée porte la page, le visuel du
-   projet survolé s'affiche à droite, le clic ouvre la fiche sous le visuel.
+   projet survolé s'affiche à droite, le clic ouvre la fiche sous le nom.
    Aucune carte, aucune ombre : de l'alignement et de la typographie. */
 
 export default function Travail() {
@@ -34,6 +34,7 @@ export default function Travail() {
      souris, sinon l'image et le texte parlent de deux projets différents. */
   const vu = fiche ?? projets.find((p) => p.id === actif) ?? projets[0];
 
+
   return (
     <>
       <NodNav overImage />
@@ -51,8 +52,8 @@ export default function Travail() {
           </h1>
           <p className="page-head__lede">
             {t(
-              'Des projets dans des univers très différents. Survole pour voir, clique pour lire.',
-              'Projects across very different worlds. Hover to see, click to read.',
+              'Des projets dans des univers très différents. Ouvre chacun pour lire ce qui a été fait.',
+              'Projects across very different worlds. Open each one to read what was done.',
             )}
           </p>
         </div>
@@ -77,33 +78,66 @@ export default function Travail() {
             ))}
           </div>
 
-          <div className="index-travail__liste">
-            {liste.map((projet, index) => (
-              <div
-                className={'index-travail__item' + (actif === projet.id ? ' is-actif' : '')}
-                key={projet.id}
-                onMouseEnter={() => setActif(projet.id)}
-              >
-                <button
-                  type="button"
-                  className="index-travail__bouton"
-                  aria-expanded={ouvert === projet.id}
-                  onFocus={() => setActif(projet.id)}
-                  onClick={() => setOuvert(ouvert === projet.id ? null : projet.id)}
+          <ul className="index-travail__liste">
+            {liste.map((projet, index) => {
+              const estOuvert = ouvert === projet.id;
+              return (
+                <li
+                  className={'index-travail__item' + (actif === projet.id ? ' is-actif' : '') + (estOuvert ? ' is-ouvert' : '')}
+                  key={projet.id}
+                  onMouseEnter={() => { if (!ouvert) setActif(projet.id); }}
                 >
-                  <span className="index-travail__n">{String(index + 1).padStart(2, '0')}</span>
-                  <span>
-                    <span className="index-travail__nom">{projet.titre}</span>
-                    <span className="index-travail__sous">{projet.sousTitre}</span>
-                  </span>
-                  <Icon name="arrow-up-right" size={20} className="index-travail__fleche" />
-                </button>
-              </div>
-            ))}
-          </div>
+                  <button
+                    type="button"
+                    className="index-travail__bouton"
+                    aria-expanded={estOuvert}
+                    aria-controls={`fiche-${projet.id}`}
+                    onFocus={() => { if (!ouvert) setActif(projet.id); }}
+                    onClick={() => {
+                      setActif(projet.id);
+                      setOuvert(estOuvert ? null : projet.id);
+                    }}
+                  >
+                    <span className="index-travail__n">{String(index + 1).padStart(2, '0')}</span>
+                    <span>
+                      <span className="index-travail__nom">{projet.titre}</span>
+                      <span className="index-travail__sous">{projet.sousTitre}</span>
+                    </span>
+                    <Icon name={estOuvert ? 'minus' : 'plus'} size={20} className="index-travail__signe" />
+                  </button>
+
+                  {estOuvert ? (
+                    <div className="index-travail__fiche" id={`fiche-${projet.id}`}>
+                      <Eyebrow>{projet.kicker}</Eyebrow>
+                      <p className="index-travail__texte">{projet.texte}</p>
+                      <dl className="index-travail__role">
+                        <dt>{t('Rôle NOD', 'NOD role')}</dt>
+                        <dd>{projet.role}</dd>
+                      </dl>
+                      <ul className="index-travail__tags">
+                        {projet.tags.map((tag) => <li key={tag}>{tag}</li>)}
+                      </ul>
+                      {projet.lien ? (
+                        <a
+                          href={projet.lien}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="index-travail__lien"
+                        >
+                          {projet.lienLabel ? t(projet.lienLabel.fr, projet.lienLabel.en) : t('Voir', 'See')}
+                          <Icon name="arrow-up-right" size={18} />
+                          <span className="nod-sr">{t('(nouvel onglet)', '(new tab)')}</span>
+                        </a>
+                      ) : null}
+                    </div>
+                  ) : null}
+                </li>
+              );
+            })}
+          </ul>
         </div>
 
-        <aside className="index-travail__panneau">
+        <aside className="index-travail__panneau" aria-hidden="true">
           <div className="index-travail__media">
             <MediaFrame src={vu.image} ratio="4 / 3" scrim={vu.placeholder ? 'bottom' : 'none'} />
             {vu.placeholder ? (
@@ -112,25 +146,6 @@ export default function Travail() {
               </span>
             ) : null}
           </div>
-
-          {fiche ? (
-            <div className="index-travail__fiche">
-              <Eyebrow>{fiche.kicker}</Eyebrow>
-              <h2 className="index-travail__titre">{fiche.titre}</h2>
-              <p className="index-travail__texte">{fiche.texte}</p>
-              <dl className="index-travail__role">
-                <dt>{t('Rôle NOD', 'NOD role')}</dt>
-                <dd>{fiche.role}</dd>
-              </dl>
-              <ul className="index-travail__tags">
-                {fiche.tags.map((tag) => <li key={tag}>{tag}</li>)}
-              </ul>
-            </div>
-          ) : (
-            <p className="index-travail__texte">
-              {t('Clique un projet pour lire la fiche.', 'Click a project to read the case.')}
-            </p>
-          )}
         </aside>
       </div>
 
