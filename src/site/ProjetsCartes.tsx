@@ -42,12 +42,16 @@ export default function ProjetsCartes() {
             })}
             aria-label={`${projet.titre}, ${projet.sousTitre}`}
           >
-            <span className="carte__nom" aria-hidden="true">{projet.titre}</span>
-            <span className="carte__visuel" aria-hidden="true" />
-            <span className="carte__voile" aria-hidden="true" />
-            <span className="carte__legende">
-              <span className="carte__titre">{projet.titre}</span>
-              <span className="carte__sous">{projet.sousTitre}</span>
+            {/* Le lien garde sa place ; seul le corps bouge au survol. Sinon la
+                carte se dérobe sous la souris et le survol clignote. */}
+            <span className="carte__corps">
+              <span className="carte__nom" aria-hidden="true">{projet.titre}</span>
+              <span className="carte__visuel" aria-hidden="true" />
+              <span className="carte__voile" aria-hidden="true" />
+              <span className="carte__legende">
+                <span className="carte__titre">{projet.titre}</span>
+                <span className="carte__sous">{projet.sousTitre}</span>
+              </span>
             </span>
           </Link>
         );

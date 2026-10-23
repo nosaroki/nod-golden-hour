@@ -66,6 +66,7 @@ export const projets: Projet[] = [
     texte: 'Site de photographie de surf, en cours de création. Structure, identité visuelle et mise en ligne.',
     role: 'Conception et développement du site',
     tags: ['Développement', 'Direction artistique'],
+    lien: 'https://mangrovesurfphotography.com', lienLabel: { fr: 'Voir le site', en: 'See the site' },
   },
   {
     id: 'eva', famille: 'contenu', titre: 'Eva Defives', sousTitre: 'Captation & montage',
@@ -73,6 +74,7 @@ export const projets: Projet[] = [
     texte: 'Drainage lymphatique mis en images. Captation, montage vidéo et création de contenu, voix off comprise.',
     role: 'Réalisation et contenu vidéo',
     tags: ['Vidéo', 'Contenu'],
+    lien: 'https://www.instagram.com/evadfvs/', lienLabel: { fr: 'Voir les vidéos', en: 'See the videos' },
   },
   {
     id: 'saloua', famille: 'contenu', titre: 'Saloua', sousTitre: 'Réels & posts',

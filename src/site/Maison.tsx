@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import NodNav from '@/components/NodNav';
 import NodFooter from '@/components/NodFooter';
 import { Eyebrow, Icon, url, vars } from '@/components/nod';
@@ -15,9 +15,6 @@ import nnenaImg from '@/assets/nnena.webp';
 export default function Maison() {
   const { language } = useLanguage();
   const t = (fr: string, en: string) => (language === 'fr' ? fr : en);
-  /* Comparaison temporaire : /la-maison?creme garde le texte crème sur un
-     voile plus dense. À retirer une fois le choix fait. */
-  const creme = new URLSearchParams(useLocation().search).has('creme');
 
   /* Le déroulé d'un projet, dans l'ordre : ici la numérotation a un sens. */
   const deroule = [
@@ -70,10 +67,10 @@ export default function Maison() {
       </section>
 
       {/* ---------- Le manifeste ---------- */}
-      <section className={'home-manifesto ' + (creme ? 'home-manifesto--voile' : 'home-manifesto--encre')} style={vars({ '--nod-manifesto-image': url(orangePressee) })}>
+      <section className="home-manifesto home-manifesto--creme nod-grain" style={vars({ '--nod-manifesto-image': url(orangePressee) })}>
         <div className="home-manifesto__image" />
         <div className="home-manifesto__veil" />
-        <div className="home-manifesto__body nod-grain">
+        <div className="home-manifesto__body">
           <p className="home-manifesto__lead">
             {t(
               "Un projet ne meurt presque jamais par manque d'idée. Il meurt avant même d'exister, pour deux raisons.",
@@ -114,9 +111,9 @@ export default function Maison() {
       </section>
 
       {/* ---------- Le déroulé ---------- */}
-      <section className="house-method nod-grain">
+      <section className="house-method house-method--creme">
         <div className="house-method__inner">
-          <Eyebrow tone="light">{t('Le déroulé', 'How it goes')}</Eyebrow>
+          <Eyebrow>{t('Le déroulé', 'How it goes')}</Eyebrow>
           <ol className="house-method__rows">
             {deroule.map((ligne, index) => (
               <li className="house-method__row" key={ligne.fr}>
@@ -138,6 +135,12 @@ export default function Maison() {
             {t(
               "Elle vient de l'événementiel et de la communication, code en autodidacte depuis 2022. NOD est né à la croisée des trois : le sens de l'orchestration, le goût de l'image, la main qui construit.",
               'She comes from events and communication, and has been coding self-taught since 2022. NOD was born at the crossroads of the three.',
+            )}
+          </p>
+          <p className="house-founder__text">
+            {t(
+              "En agence, elle a mené des comités de pilotage, encadré des équipes, tenu les délais et analysé les retombées sur les réseaux.",
+              'In agencies, she ran steering committees, led teams, held deadlines and analysed social media results.',
             )}
           </p>
           <p className="house-founder__text">

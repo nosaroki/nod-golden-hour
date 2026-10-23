@@ -7,7 +7,6 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import ProjetsCartes from './ProjetsCartes';
 import silhouette from '@/assets/brand/golden-hour-silhouette.webp';
 import orangePressee from '@/assets/brand/orange-pressee.webp';
-import atelier from '@/assets/hero.webp';
 
 /* Accueil. La forme vient du design system, le texte vient du site NOD. */
 
@@ -69,10 +68,10 @@ export default function Accueil() {
       </section>
 
       {/* ---------- Le principe ---------- */}
-      <section className="home-manifesto" style={vars({ '--nod-manifesto-image': url(orangePressee) })}>
+      <section className="home-manifesto nod-grain" style={vars({ '--nod-manifesto-image': url(orangePressee) })}>
         <div className="home-manifesto__image" />
         <div className="home-manifesto__veil" />
-        <div className="home-manifesto__body nod-grain">
+        <div className="home-manifesto__body">
           <Eyebrow tone="light">{t('La maison', 'The house')}</Eyebrow>
           <p className="home-manifesto__lead">
             {t(
@@ -141,45 +140,28 @@ export default function Accueil() {
         </p>
       </section>
 
-      {/* ---------- Qui ---------- */}
-      <section className="home-founder" style={vars({ '--nod-founder-image': url(atelier) })}>
-        <div className="home-founder__image" />
-        <div className="home-founder__body">
-          <Eyebrow>{t('Qui', 'Who')}</Eyebrow>
-          <h2 className="home-founder__title">{t('Nnéna a fondé NOD en 2025.', 'Nnéna founded NOD in 2025.')}</h2>
-          <p className="home-founder__text">
-            {t(
-              "Elle vient de l'événementiel et de la communication, code en autodidacte depuis 2022. NOD est né à la croisée des trois : le sens de l'orchestration, le goût de l'image, la main qui construit.",
-              'She comes from events and communication, and has been coding self-taught since 2022. NOD was born at the crossroads of the three.',
-            )}
-          </p>
-          <p>
-            <Link to="/la-maison#qui" className="nod-btn nod-btn--secondary">
-              {t('Lire le principe', 'Read the principle')} <Icon name="arrow-right" size={18} />
-            </Link>
-          </p>
-        </div>
-      </section>
-
       {/* ---------- L'heure dorée, puis l'appel ---------- */}
       <div className="home-golden-block nod-grain">
         <section className="home-golden" style={vars({ '--nod-golden-image': url(orangePressee) })}>
           <div className="home-golden__texture" />
-          <div className="home-golden__body home-golden__body--compact">
-            <div className="home-golden__lead">
+          <div className="home-golden__body">
+            <div className="home-golden__head">
               <Eyebrow tone="light">{t("L'heure dorée", 'Golden hour')}</Eyebrow>
-              <h2 className="home-golden__title">
-                {t('La lumière rend tout plus juste, plus beau, plus vivant.', 'Light makes everything truer, more beautiful, more alive.')}
-              </h2>
+              <Eyebrow tone="light">2026</Eyebrow>
             </div>
-            <dl className="home-golden__rows">
+            <h2 className="home-golden__title">
+              {t('La lumière rend tout', 'Light makes everything')}
+              <br />{t('plus juste, plus beau,', 'truer, more beautiful,')}
+              <br />{t('plus vivant.', 'more alive.')}
+            </h2>
+            <div className="home-golden__rows">
               {HEURE.map((ligne) => (
                 <div className="home-golden__row" key={ligne.fr}>
-                  <dt className="home-golden__key">{t(ligne.fr, ligne.en)}</dt>
-                  <dd className="home-golden__value">{t(ligne.frV, ligne.enV)}</dd>
+                  <span className="home-golden__key">{t(ligne.fr, ligne.en)}</span>
+                  <span className="home-golden__value">{t(ligne.frV, ligne.enV)}</span>
                 </div>
               ))}
-            </dl>
+            </div>
           </div>
         </section>
 

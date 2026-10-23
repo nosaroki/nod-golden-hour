@@ -4,11 +4,11 @@ import NodNav from '@/components/NodNav';
 import NodFooter from '@/components/NodFooter';
 import { Eyebrow, Icon, MediaFrame, Tag, url, vars } from '@/components/nod';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { familles, projets } from './projets';
+import { familles, projets, type Projet } from './projets';
 import inkOrange from '@/assets/brand/texture-ink-orange.webp';
 
-/* Le travail. Index éditorial : la liste numérotée porte la page, le visuel du
-   projet survolé s'affiche à droite, le clic ouvre la fiche sous le nom.
+/* Le travail. Index éditorial : la liste numérotée porte la page. Le clic
+   ouvre le projet : image et fiche à droite, ou sous le nom sur mobile.
    Aucune carte, aucune ombre : de l'alignement et de la typographie. */
 
 export default function Travail() {
@@ -17,7 +17,7 @@ export default function Travail() {
   const { hash } = useLocation();
 
   const [famille, setFamille] = useState('tout');
-  const [actif, setActif] = useState(projets[0].id);
+  const [actif, setActif] = useState('');
   const [ouvert, setOuvert] = useState<string | null>(null);
 
   useEffect(() => {
@@ -30,9 +30,6 @@ export default function Travail() {
 
   const liste = famille === 'tout' ? projets : projets.filter((p) => p.famille === famille);
   const fiche = ouvert ? projets.find((p) => p.id === ouvert) : undefined;
-  /* Quand une fiche est ouverte, le visuel reste le sien : il ne suit plus la
-     souris, sinon l'image et le texte parlent de deux projets différents. */
-  const vu = fiche ?? projets.find((p) => p.id === actif) ?? projets[0];
 
 
   return (
@@ -70,7 +67,7 @@ export default function Travail() {
                   setFamille(item.id);
                   setOuvert(null);
                   const premier = item.id === 'tout' ? projets[0] : projets.find((p) => p.famille === item.id);
-                  if (premier) setActif(premier.id);
+                  if (premier) setActif('');
                 }}
               >
                 {t(item.fr, item.en)}
@@ -107,28 +104,9 @@ export default function Travail() {
                   </button>
 
                   {estOuvert ? (
-                    <div className="index-travail__fiche" id={`fiche-${projet.id}`}>
-                      <Eyebrow>{projet.kicker}</Eyebrow>
-                      <p className="index-travail__texte">{projet.texte}</p>
-                      <dl className="index-travail__role">
-                        <dt>{t('Rôle NOD', 'NOD role')}</dt>
-                        <dd>{projet.role}</dd>
-                      </dl>
-                      <ul className="index-travail__tags">
-                        {projet.tags.map((tag) => <li key={tag}>{tag}</li>)}
-                      </ul>
-                      {projet.lien ? (
-                        <a
-                          href={projet.lien}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="index-travail__lien"
-                        >
-                          {projet.lienLabel ? t(projet.lienLabel.fr, projet.lienLabel.en) : t('Voir', 'See')}
-                          <Icon name="arrow-up-right" size={18} />
-                          <span className="nod-sr">{t('(nouvel onglet)', '(new tab)')}</span>
-                        </a>
-                      ) : null}
+                    <div className="index-travail__fiche index-travail__fiche--mobile" id={`fiche-${projet.id}`}>
+                      <MediaFrame src={projet.image} ratio="4 / 3" scrim={projet.placeholder ? 'bottom' : 'none'} />
+                      <FicheProjet projet={projet} t={t} />
                     </div>
                   ) : null}
                 </li>
@@ -137,15 +115,25 @@ export default function Travail() {
           </ul>
         </div>
 
-        <aside className="index-travail__panneau" aria-hidden="true">
-          <div className="index-travail__media">
-            <MediaFrame src={vu.image} ratio="4 / 3" scrim={vu.placeholder ? 'bottom' : 'none'} />
-            {vu.placeholder ? (
-              <span className="index-travail__placeholder">
-                {t('Visuel à venir', 'Visual to come')}
-              </span>
-            ) : null}
-          </div>
+        <aside className="index-travail__panneau" aria-live="polite">
+          {fiche ? (
+            <>
+              <div className="index-travail__media" key={fiche.id}>
+                <MediaFrame src={fiche.image} ratio="4 / 3" scrim={fiche.placeholder ? 'bottom' : 'none'} />
+                {fiche.placeholder ? (
+                  <span className="index-travail__placeholder">{t('Visuel à venir', 'Visual to come')}</span>
+                ) : null}
+              </div>
+              <div className="index-travail__fiche">
+                <h2 className="index-travail__titre">{fiche.titre}</h2>
+                <FicheProjet projet={fiche} t={t} />
+              </div>
+            </>
+          ) : (
+            <p className="index-travail__invite">
+              {t('Ouvre un projet pour découvrir le travail.', 'Open a project to discover the work.')}
+            </p>
+          )}
         </aside>
       </div>
 
@@ -167,6 +155,30 @@ export default function Travail() {
       </section>
 
       <NodFooter />
+    </>
+  );
+}
+
+/* Le contenu d'une fiche, partagé entre le panneau de droite et la version mobile. */
+function FicheProjet({ projet, t }: { projet: Projet; t: (fr: string, en: string) => string }) {
+  return (
+    <>
+      <Eyebrow>{projet.kicker}</Eyebrow>
+      <p className="index-travail__texte">{projet.texte}</p>
+      <dl className="index-travail__role">
+        <dt>{t('Rôle NOD', 'NOD role')}</dt>
+        <dd>{projet.role}</dd>
+      </dl>
+      <ul className="index-travail__tags">
+        {projet.tags.map((tag) => <li key={tag}>{tag}</li>)}
+      </ul>
+      {projet.lien ? (
+        <a href={projet.lien} target="_blank" rel="noopener noreferrer" className="index-travail__lien">
+          {projet.lienLabel ? t(projet.lienLabel.fr, projet.lienLabel.en) : t('Voir', 'See')}
+          <Icon name="arrow-up-right" size={18} />
+          <span className="nod-sr">{t('(nouvel onglet)', '(new tab)')}</span>
+        </a>
+      ) : null}
     </>
   );
 }

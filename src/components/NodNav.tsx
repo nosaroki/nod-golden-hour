@@ -15,8 +15,8 @@ interface NodNavProps {
 
 const LIENS = [
   { to: '/', fr: 'Accueil', en: 'Home' },
-  { to: '/la-maison', fr: 'La maison', en: 'The house' },
   { to: '/travail', fr: 'Le travail', en: 'The work' },
+  { to: '/la-maison', fr: 'La maison', en: 'The house' },
   { to: '/contact', fr: 'Contact', en: 'Contact' },
 ];
 
