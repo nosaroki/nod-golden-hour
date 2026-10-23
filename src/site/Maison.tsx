@@ -6,7 +6,7 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import lightFold from '@/assets/brand/light-fold-warm.webp';
 import orangePressee from '@/assets/brand/orange-pressee.webp';
 import atelier from '@/assets/hero.webp';
-import nnenaImg from '@/assets/nnena.webp';
+import nnenaImg from '@/assets/nnena-portrait.webp';
 
 /* La maison. Le manifeste du site NOD (le doute, le manque d'accompagnement)
    posé dans la forme du design system, suivi de la méthode et du portrait.

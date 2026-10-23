@@ -4493,3 +4493,6 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
 .house-method--creme .house-method__index { color: var(--red); }
 .house-method--creme .house-method__value { color: var(--text-muted); }
 .house-method--creme + .house-founder { border-top: 1px solid var(--line); }
+
+/* Portrait : le regard reste dans le cadre quel que soit le format. */
+.house-founder__image { background-position: center 38%; }
