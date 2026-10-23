@@ -71,7 +71,7 @@ const C = {
 const SERIF = "Spectral, Georgia, 'Times New Roman', serif";
 const SANS = "'Bricolage Grotesque', 'Helvetica Neue', Helvetica, Arial, sans-serif";
 
-function mailNotification(d: { n: string; prenom: string; e: string; p: string; m: string; brochure: boolean; brochureEnvoyee: boolean; quand: string; emailBrut: string; telBrut: string }) {
+function mailNotification(d: { n: string; prenom: string; e: string; p: string; m: string; brochure: boolean; brochureEnvoyee: boolean; anglais: boolean; quand: string; emailBrut: string; telBrut: string }) {
   const sujetReponse = encodeURIComponent("Ton projet, en réponse");
   const ligne = (cle: string, valeur: string) => `
             <tr>
@@ -112,6 +112,7 @@ function mailNotification(d: { n: string; prenom: string; e: string; p: string; 
             ${ligne("Email", `<a href="mailto:${d.emailBrut}" style="color:${C.rouge};text-decoration:none;">${d.e}</a>`)}
             ${ligne("Téléphone", d.p ? `<a href="tel:${d.telBrut}" style="color:${C.nuit};text-decoration:none;">${d.p}</a>` : `<span style="color:${C.doux};font-style:italic;">Non renseigné</span>`)}
             ${ligne("Brochure", d.brochure ? (d.brochureEnvoyee ? "Demandée, envoyée avec le récapitulatif" : "Demandée, <em>à envoyer à la main</em> (brochure pas encore en ligne)") : `<span style="color:${C.doux};font-style:italic;">Non demandée</span>`)}
+            ${d.anglais ? ligne("Langue", "Anglais : site consulté en anglais") : ""}
           </table>
         </td></tr>
 
@@ -138,12 +139,41 @@ function mailNotification(d: { n: string; prenom: string; e: string; p: string; 
 
 // Le mail que reçoit la personne qui a écrit : simple, chaleureux, un
 // récapitulatif de sa demande et la brochure si elle l'a demandée.
-function mailConfirmation(d: { prenom: string; n: string; p: string; m: string; brochureUrl: string | null }) {
+const TEXTES = {
+  fr: {
+    objet: "Demande bien reçue",
+    apercu: "Ton message est bien arrivé chez NOD.",
+    merci: (prenom: string) => `Merci, ${prenom}.`,
+    intro: "Ton message est bien arrivé. Je le lis avec attention et je reviens vers toi dans les meilleurs délais.",
+    brochureTitre: "La brochure NOD",
+    brochureTexte: "Comme demandé, la voici : la maison, la méthode, les accompagnements.",
+    brochureBouton: "Ouvrir la brochure",
+    demande: "Ta demande",
+    detail: "Un détail à ajouter ? Il suffit de répondre à ce mail.",
+    salut: "À très vite,",
+  },
+  en: {
+    objet: "Request received",
+    apercu: "Your message has reached NOD.",
+    merci: (prenom: string) => `Thank you, ${prenom}.`,
+    intro: "Your message has arrived. I will read it carefully and get back to you as soon as possible.",
+    brochureTitre: "The NOD brochure",
+    brochureTexte: "As requested, here it is: the house, the method, the ways we work together.",
+    brochureBouton: "Open the brochure",
+    demande: "Your request",
+    detail: "Anything to add? Simply reply to this email.",
+    salut: "Speak soon,",
+  },
+};
+type Langue = keyof typeof TEXTES;
+
+function mailConfirmation(d: { prenom: string; n: string; p: string; m: string; brochureUrl: string | null; langue: Langue }) {
+  const T = TEXTES[d.langue];
   return `<!DOCTYPE html>
-<html lang="fr">
+<html lang="${d.langue}">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"></head>
 <body style="margin:0;padding:0;background:${C.creme};">
-  <div style="display:none;max-height:0;overflow:hidden;">Ta demande est bien arrivée chez NOD.</div>
+  <div style="display:none;max-height:0;overflow:hidden;">${T.apercu}</div>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.creme};">
     <tr><td align="center" style="padding:48px 16px;">
       <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="width:100%;max-width:560px;">
@@ -153,20 +183,19 @@ function mailConfirmation(d: { prenom: string; n: string; p: string; m: string; 
         </td></tr>
 
         <tr><td style="padding:0 8px;">
-          <p style="margin:0 0 14px;font-family:${SANS};font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:${C.rouge};">Demande bien reçue</p>
-          <h1 style="margin:0;font-family:${SERIF};font-weight:300;font-size:34px;line-height:1.15;color:${C.nuit};">Merci, ${d.prenom}.</h1>
-          <p style="margin:18px 0 0;font-family:${SERIF};font-size:17px;line-height:1.7;color:${C.nuit};">Ton message est bien arrivé. Je le lis avec attention et je reviens vers toi dans les meilleurs délais.</p>
+          <h1 style="margin:0;font-family:${SERIF};font-weight:300;font-size:34px;line-height:1.15;color:${C.nuit};">${T.merci(d.prenom)}</h1>
+          <p style="margin:18px 0 0;font-family:${SERIF};font-size:17px;line-height:1.7;color:${C.nuit};">${T.intro}</p>
         </td></tr>
 
         ${d.brochureUrl ? `
         <tr><td style="padding:32px 8px 0;">
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.nuit};border-radius:20px;">
             <tr><td style="padding:28px 32px;">
-              <p style="margin:0 0 8px;font-family:${SANS};font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:${C.jaune};">La brochure NOD</p>
-              <p style="margin:0 0 20px;font-family:${SERIF};font-size:16px;line-height:1.6;color:${C.creme};">Comme demandé, la voici : la maison, la méthode, les accompagnements.</p>
+              <p style="margin:0 0 8px;font-family:${SANS};font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:${C.jaune};">${T.brochureTitre}</p>
+              <p style="margin:0 0 20px;font-family:${SERIF};font-size:16px;line-height:1.6;color:${C.creme};">${T.brochureTexte}</p>
               <table role="presentation" cellpadding="0" cellspacing="0"><tr>
                 <td style="background:${C.rouge};border-radius:999px;">
-                  <a href="${d.brochureUrl}" style="display:inline-block;padding:13px 26px;font-family:${SANS};font-size:15px;font-weight:600;color:${C.creme};text-decoration:none;">Ouvrir la brochure</a>
+                  <a href="${d.brochureUrl}" style="display:inline-block;padding:13px 26px;font-family:${SANS};font-size:15px;font-weight:600;color:${C.creme};text-decoration:none;">${T.brochureBouton}</a>
                 </td>
               </tr></table>
             </td></tr>
@@ -174,18 +203,18 @@ function mailConfirmation(d: { prenom: string; n: string; p: string; m: string; 
         </td></tr>` : ""}
 
         <tr><td style="padding:36px 8px 0;">
-          <p style="margin:0 0 12px;font-family:${SANS};font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:${C.doux};">Ta demande</p>
+          <p style="margin:0 0 12px;font-family:${SANS};font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:${C.doux};">${T.demande}</p>
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.papier};border-radius:20px;">
             <tr><td style="padding:26px 30px 28px;">
               <p style="margin:0;font-family:${SERIF};font-style:italic;font-size:16px;line-height:1.7;color:${C.nuit};white-space:pre-line;">${d.m}</p>
               <p style="margin:18px 0 0;font-family:${SANS};font-size:13px;color:${C.doux};">${d.n}${d.p ? ` · ${d.p}` : ""}</p>
             </td></tr>
           </table>
-          <p style="margin:14px 0 0;font-family:${SERIF};font-size:14px;line-height:1.6;color:${C.doux};">Un détail à ajouter ? Il suffit de répondre à ce mail.</p>
+          <p style="margin:14px 0 0;font-family:${SERIF};font-size:14px;line-height:1.6;color:${C.doux};">${T.detail}</p>
         </td></tr>
 
         <tr><td style="padding:48px 8px 0;">
-          <p style="margin:0;font-family:${SERIF};font-size:16px;color:${C.nuit};">À très vite,</p>
+          <p style="margin:0;font-family:${SERIF};font-size:16px;color:${C.nuit};">${T.salut}</p>
           <p style="margin:4px 0 0;font-family:${SERIF};font-size:16px;color:${C.nuit};">Nnéna, NOD</p>
         </td></tr>
 
@@ -224,6 +253,7 @@ Deno.serve(async (req) => {
     const phone = String(corps.phone ?? "").trim();
     const message = String(corps.message ?? "").trim();
     const brochure = corps.brochure === true;
+    const langue: Langue = corps.langue === "en" ? "en" : "fr";
     const piege = String(corps.website ?? "");
 
     // Champ piège rempli : c'est un robot. On répond « ok » sans rien faire.
@@ -268,6 +298,7 @@ Deno.serve(async (req) => {
       m: echapper(message),
       brochure,
       brochureEnvoyee: brochure && !!brochureUrl,
+      anglais: langue === "en",
       quand: "le " + quand,
       emailBrut: encodeURIComponent(email).replace(/%40/g, "@"),
       telBrut: phone.replace(/[^+\d]/g, ""),
@@ -297,13 +328,14 @@ Deno.serve(async (req) => {
       from: "NOD Consulting <contact@nod-consulting.com>",
       to: [email],
       reply_to: "contact@nod-consulting.com",
-      subject: "Ta demande est bien arrivée chez NOD",
+      subject: TEXTES[langue].objet,
       html: mailConfirmation({
         prenom,
         n: echapper(name),
         p: echapper(phone),
         m: echapper(extrait),
         brochureUrl: brochure ? brochureUrl : null,
+        langue,
       }),
       attachments: [logo],
     });

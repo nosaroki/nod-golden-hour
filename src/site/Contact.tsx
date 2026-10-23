@@ -108,7 +108,7 @@ export default function Contact() {
       const res = await fetch(CONTACT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(form),
+        body: JSON.stringify({ ...form, langue: language }),
       });
       const data = await res.json();
       if (data.status === 'ok') {
