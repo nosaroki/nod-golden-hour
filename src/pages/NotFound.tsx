@@ -27,8 +27,8 @@ export default function NotFound() {
             </h1>
             <p className="page-head__lede">
               {t(
-                "Elle a peut-être changé de place, ou n'a jamais vu le jour. Faire exister ce qui manque, c'est justement le métier de NOD.",
-                'It may have moved, or never seen the light of day. Bringing what is missing to life is exactly what NOD does.',
+                "Elle a peut-être changé de place, ou n'a jamais vu le jour.",
+                'It may have moved, or never seen the light of day.',
               )}
             </p>
             <div className="page-hero__actions">
