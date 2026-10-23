@@ -144,7 +144,7 @@ const TEXTES = {
     objet: "Demande bien reçue",
     apercu: "Ton message est bien arrivé chez NOD.",
     merci: (prenom: string) => `Merci, ${prenom}.`,
-    intro: "Ton message est bien arrivé. Je le lis avec attention et je reviens vers toi dans les meilleurs délais.",
+    intro: "Ton message est bien arrivé.<br>Je le lis avec attention et je reviens vers toi dans les meilleurs délais.",
     brochureTitre: "La brochure NOD",
     brochureTexte: "Comme demandé, la voici : la maison, la méthode, les accompagnements.",
     brochureBouton: "Ouvrir la brochure",
@@ -156,7 +156,7 @@ const TEXTES = {
     objet: "Request received",
     apercu: "Your message has reached NOD.",
     merci: (prenom: string) => `Thank you, ${prenom}.`,
-    intro: "Your message has arrived. I will read it carefully and get back to you as soon as possible.",
+    intro: "Your message has arrived.<br>I will read it carefully and get back to you as soon as possible.",
     brochureTitre: "The NOD brochure",
     brochureTexte: "As requested, here it is: the house, the method, the ways we work together.",
     brochureBouton: "Open the brochure",
@@ -215,7 +215,7 @@ function mailConfirmation(d: { prenom: string; n: string; p: string; m: string; 
 
         <tr><td style="padding:48px 8px 0;">
           <p style="margin:0;font-family:${SERIF};font-size:16px;color:${C.nuit};">${T.salut}</p>
-          <p style="margin:4px 0 0;font-family:${SERIF};font-size:16px;color:${C.nuit};">Nnéna, NOD</p>
+          <p style="margin:4px 0 0;font-family:${SERIF};font-size:16px;color:${C.nuit};">Nnéna</p>
         </td></tr>
 
         <tr><td style="padding:40px 8px 0;">
