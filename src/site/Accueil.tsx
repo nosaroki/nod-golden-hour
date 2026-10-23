@@ -68,7 +68,7 @@ export default function Accueil() {
       </section>
 
       {/* ---------- Le principe ---------- */}
-      <section className="home-manifesto nod-grain" style={vars({ '--nod-manifesto-image': url(orangePressee) })}>
+      <section className="home-manifesto home-manifesto--creme nod-grain" style={vars({ '--nod-manifesto-image': url(orangePressee) })}>
         <div className="home-manifesto__image" />
         <div className="home-manifesto__veil" />
         <div className="home-manifesto__body">
