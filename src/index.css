@@ -4539,3 +4539,7 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
   .contact-head, .contact-head__depart { transition: none; }
   .contact-head__arrivee > * { animation: none; opacity: 1; transform: none; filter: none; }
 }
+/* La confirmation tient sur un écran : message centré dans la hauteur,
+   aligné à gauche comme tous les en-têtes du site. */
+.contact-head.is-recu { min-height: 100svh; align-items: center; }
+.contact-head.is-recu .page-head__body { padding-top: calc(var(--header-h, 71px) + var(--space-12)); padding-bottom: var(--space-12); }
