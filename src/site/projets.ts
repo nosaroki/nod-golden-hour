@@ -1,6 +1,7 @@
 import idala from '@/assets/idala.webp';
 import jasminka from '@/assets/jasminka.webp';
-import unmatched from '@/assets/unmatched.webp';
+import unmatched from '@/assets/unmatched-fiche.webp';
+import unmatchedCarte from '@/assets/unmatched-carte.webp';
 import drugsImg from '@/assets/drugs.webp';
 import mangroveImg from '@/assets/mangrove.webp';
 import odaImg from '@/assets/oda.webp';
@@ -60,7 +61,7 @@ export const projets: Projet[] = [
   },
   {
     id: 'unmatched', famille: 'strategie', titre: 'Unmatched', sousTitre: 'Maison de beauté au matcha',
-    kicker: 'Lancement de marque', image: unmatched,
+    kicker: 'Lancement de marque', image: unmatched, carte: unmatchedCarte,
     texte: "Une maison de beauté au matcha, partie d'une page blanche. NOD a pris la direction des opérations : stratégie digitale, organisation du lancement, première vitrine en ligne pour créer l'attente avant l'ouverture.",
     role: 'Direction des opérations et stratégie digitale',
     tags: ['Stratégie', 'Opérations', 'Figma', 'Shopify'],
