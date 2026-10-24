@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { url, vars } from '@/components/nod';
-import { projets } from './projets';
+import { enLangue, projets } from './projets';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 /* Éventail de cartes projets. Au repos : un aplat dégradé de la marque et le
    nom du projet en filigrane. Au survol la carte se redresse et son visuel
@@ -23,11 +24,13 @@ const PLACES: Carte[] = [
 ];
 
 export default function ProjetsCartes() {
+  const { language } = useLanguage();
   return (
     <div className="cartes">
       {PLACES.map((place) => {
-        const projet = projets.find((p) => p.id === place.id);
-        if (!projet) return null;
+        const trouve = projets.find((p) => p.id === place.id);
+        if (!trouve) return null;
+        const projet = enLangue(trouve, language);
         return (
           <Link
             key={projet.id}

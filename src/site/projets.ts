@@ -39,6 +39,16 @@ export interface Projet {
   tags: string[];
   /** Lien vers le site ou le contenu publié, ouvert dans un nouvel onglet. */
   lien?: string;
+  /** Version anglaise des textes. */
+  en: {
+    titre?: string;
+    sousTitre: string;
+    kicker: string;
+    besoin: string;
+    texte: string;
+    role: string;
+    tags: string[];
+  };
   lienLabel?: { fr: string; en: string };
 }
 
@@ -61,6 +71,7 @@ export const projets: Projet[] = [
     texte: "NOD a conçu puis développé la plateforme entière, 100 % bilingue français et anglais : annuaire des praticiens, réservation et paiement en ligne, séances en visio, espace d'administration.",
     role: 'Conception et développement, du cahier des charges à la mise en ligne',
     tags: ['Développement web', 'Paiement en ligne', 'Bilingue'],
+    en: {"sousTitre": "Wellness platform", "kicker": "Web platform", "besoin": "Bringing wellness practitioners and their clients together on one site, in person, at home or by video.", "texte": "NOD designed and built the entire platform, fully bilingual in French and English: practitioner directory, online booking and payment, video sessions, admin area.", "role": "Design and development, from specification to launch", "tags": ["Web development", "Online payment", "Bilingual"]},
     lien: 'https://theidalafamily.com', lienLabel: VOIR_SITE,
   },
   {
@@ -70,6 +81,7 @@ export const projets: Projet[] = [
     texte: "NOD a pris la direction des opérations : stratégie digitale, organisation du lancement, création des maquettes web puis développement du site. Jusqu'aux coulisses : briefs créatifs, nom de domaine, adresses mail.",
     role: 'Direction des opérations et stratégie digitale',
     tags: ['Stratégie', 'Opérations', 'Figma', 'Shopify'],
+    en: {"sousTitre": "Matcha beauty house", "kicker": "Brand launch", "besoin": "Launching a beauty house built around matcha as its key ingredient.", "texte": "NOD led operations: digital strategy, launch planning, web mock-ups then site development. Down to the groundwork: creative briefs, domain name, email addresses.", "role": "Operations lead and digital strategy", "tags": ["Strategy", "Operations", "Figma", "Shopify"]},
     lien: 'https://unmatchedbeautyglobal.com', lienLabel: VOIR_SITE,
   },
   {
@@ -79,6 +91,7 @@ export const projets: Projet[] = [
     texte: "NOD a créé son identité visuelle complète, puis lancé son compte Instagram dans la même voix : premiers posts, stories à la une, ligne éditoriale.",
     role: 'Identité visuelle et direction éditoriale',
     tags: ['Identité', 'Instagram'],
+    en: {"sousTitre": "Identity & Instagram", "kicker": "Identity and social media", "besoin": "A medium and energy healer wanted a presence that truly reflected her.", "texte": "NOD created her complete visual identity, then launched her Instagram account in the same voice: first posts, story highlights, editorial line.", "role": "Visual identity and editorial direction", "tags": ["Identity", "Instagram"]},
   },
   {
     id: 'drugs', famille: 'identite', titre: 'Drugs and Sports', sousTitre: 'Identité de podcast',
@@ -87,6 +100,7 @@ export const projets: Projet[] = [
     texte: "NOD a construit tout son univers : logo, brandbook, miniatures d'épisodes, bannière YouTube, pistes de contenus pour TikTok, Instagram et YouTube, plaquette pour les sponsors, guide de communication.",
     role: 'Direction artistique et stratégie de contenu',
     tags: ['Identité', 'Brandbook', 'Contenu', 'Partenariats'],
+    en: {"sousTitre": "Podcast identity", "kicker": "Identity and content", "besoin": "A podcast was changing its name and needed an image to match.", "texte": "NOD built its whole world: logo, brand book, episode thumbnails, YouTube banner, content ideas for TikTok, Instagram and YouTube, sponsorship deck, communication guide.", "role": "Art direction and content strategy", "tags": ["Identity", "Brand book", "Content", "Partnerships"]},
     lien: 'https://www.instagram.com/thedrugsandsportspodcast/', lienLabel: { fr: 'Voir le compte', en: 'See the account' },
   },
   {
@@ -96,6 +110,7 @@ export const projets: Projet[] = [
     texte: "NOD a construit son site : galeries par séance, boutique de tirages, paiement en ligne. Ses clients retrouvent leurs photos puis les achètent au même endroit.",
     role: 'Conception et mise en ligne',
     tags: ['Site', 'E-commerce', 'Pixieset'],
+    en: {"sousTitre": "Surf photographer website", "kicker": "Website", "besoin": "A surf photographer based in Costa Rica wanted one place to show his work and sell it.", "texte": "NOD built his site: galleries by session, print shop, online payment. His clients find their photos and buy them in the same place.", "role": "Design and launch", "tags": ["Website", "E-commerce", "Pixieset"]},
     lien: 'https://mangrovesurfphotography.com', lienLabel: VOIR_SITE,
   },
   {
@@ -105,6 +120,7 @@ export const projets: Projet[] = [
     texte: "NOD l'a imaginée, dessinée puis développée de bout en bout : tirages, thème astral, astrocartographie, plusieurs langues. Une idée devenue un produit complet, de l'identité au code.",
     role: 'Concept, identité, développement',
     tags: ['Produit', 'Identité', 'Développement'],
+    en: {"sousTitre": "Tarot & astrology", "kicker": "In-house project", "besoin": "Giving shape to an in-house idea: a tarot and astrology platform.", "texte": "NOD imagined, designed and developed it end to end: readings, birth chart, astrocartography, several languages. An idea turned into a complete product, from identity to code.", "role": "Concept, identity, development", "tags": ["Product", "Identity", "Development"]},
     lien: 'https://oracledesarcanes.com', lienLabel: VOIR_SITE,
   },
   {
@@ -114,6 +130,7 @@ export const projets: Projet[] = [
     texte: "Du simple carrousel Instagram à la captation complète suivie du montage, NOD accompagne des indépendants dans des univers très différents : food, bien-être, tourisme. Tournage, montage, voix off, audit de compte, carrousels, jusqu'en portugais.",
     role: 'Réalisation, montage, stratégie de contenu',
     tags: ['Vidéo', 'Montage', 'Carrousels', 'Stories', 'Audit'],
+    en: {"titre": "Social media content", "sousTitre": "Video, carousels, audit", "kicker": "Content", "besoin": "Independent professionals who wanted to show up on social media with content that looks like them.", "texte": "From a simple Instagram carousel to a full shoot followed by editing, NOD supports independent professionals across very different fields: food, wellness, travel. Filming, editing, voice-over, account audits, carousels, even in Portuguese.", "role": "Filming, editing, content strategy", "tags": ["Video", "Editing", "Carousels", "Stories", "Audit"]},
   },
   {
     id: 'pierres', famille: 'edition', titre: 'Pierres vertes', sousTitre: 'Livre',
@@ -122,6 +139,7 @@ export const projets: Projet[] = [
     texte: "NOD a mené les recherches, écrit le texte, composé chaque page, puis préparé le livre pour l'impression. Un objet pensé de la première ligne à la reliure.",
     role: 'Recherche, écriture, mise en page',
     tags: ['Édition', 'Rédaction', 'Mise en page'],
+    en: {"sousTitre": "Book", "kicker": "Publishing", "besoin": "Offering a one-of-a-kind book, with a title and a theme: green stones. Everything else had to be invented.", "texte": "NOD did the research, wrote the text, laid out every page, then prepared the book for print. An object considered from the first line to the binding.", "role": "Research, writing, layout", "tags": ["Publishing", "Writing", "Layout"]},
   },
   {
     id: 'stan', famille: 'strategie', titre: 'Stan', sousTitre: 'Marque de spiritueux',
@@ -130,5 +148,12 @@ export const projets: Projet[] = [
     texte: "NOD a construit sa stratégie de lancement.",
     role: 'Stratégie de lancement',
     tags: ['Stratégie', 'Lancement'],
+    en: {"sousTitre": "Spirits brand", "kicker": "Strategy", "besoin": "A bartender is launching his own spirits brand.", "texte": "NOD built his launch strategy.", "role": "Launch strategy", "tags": ["Strategy", "Launch"]},
   },
 ];
+
+/* Le projet dans la langue du site. */
+export function enLangue(projet: Projet, langue: string): Projet {
+  if (langue !== 'en') return projet;
+  return { ...projet, ...projet.en, titre: projet.en.titre ?? projet.titre };
+}

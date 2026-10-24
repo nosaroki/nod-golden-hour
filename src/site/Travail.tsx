@@ -4,7 +4,7 @@ import NodNav from '@/components/NodNav';
 import NodFooter from '@/components/NodFooter';
 import { Eyebrow, Icon, MediaFrame, Tag, url, vars } from '@/components/nod';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { familles, projets, type Projet } from './projets';
+import { enLangue, familles, projets as projetsFr, type Projet } from './projets';
 import inkOrange from '@/assets/brand/texture-ink-orange.webp';
 
 /* Le travail. Index éditorial : la liste numérotée porte la page. Le clic
@@ -15,6 +15,7 @@ export default function Travail() {
   const { language } = useLanguage();
   const t = (fr: string, en: string) => (language === 'fr' ? fr : en);
   const { hash } = useLocation();
+  const projets = projetsFr.map((p) => enLangue(p, language));
 
   const [famille, setFamille] = useState('tout');
   const [actif, setActif] = useState('');
