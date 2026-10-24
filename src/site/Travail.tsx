@@ -120,7 +120,7 @@ export default function Travail() {
             <>
               <div className="index-travail__media" key={fiche.id}>
                 <MediaFrame src={fiche.image} ratio="4 / 3" scrim={fiche.placeholder ? 'bottom' : 'none'} />
-                {fiche.placeholder ? (
+                {fiche.aVenir ? (
                   <span className="index-travail__placeholder">{t('Visuel à venir', 'Visual to come')}</span>
                 ) : null}
               </div>
