@@ -164,7 +164,6 @@ export default function Travail() {
 function FicheProjet({ projet, t }: { projet: Projet; t: (fr: string, en: string) => string }) {
   return (
     <>
-      <Eyebrow>{projet.kicker}</Eyebrow>
       <dl className="index-travail__details">
         <div>
           <dt>{t('Le besoin', 'The need')}</dt>
