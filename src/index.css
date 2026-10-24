@@ -4594,3 +4594,4 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
 .legal-nod__prose h2 { margin: 0 0 var(--space-3); font-family: var(--font-serif); font-weight: 400; font-size: 1.35rem; color: var(--navy); }
 .legal-nod__prose p { margin: 0; font: var(--type-body-serif); color: var(--text-muted); }
 .legal-nod__prose a { color: var(--red); }
+.contact__aside-note { margin: 0; font-family: var(--font-serif); font-style: italic; color: rgba(255, 240, 229, 0.75); }

@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FaInstagram, FaLinkedin } from 'react-icons/fa';
 import NodNav from '@/components/NodNav';
 import NodFooter from '@/components/NodFooter';
 import { Checkbox, Eyebrow, Icon, Input, url, vars } from '@/components/nod';
@@ -259,11 +258,9 @@ export default function Contact() {
         <aside className="contact__aside">
           <Eyebrow tone="inverse">{t('Contact direct', 'Direct contact')}</Eyebrow>
           <a href="mailto:contact@nod-consulting.com" className="contact__aside-mail">contact@nod-consulting.com</a>
-          <div className="contact__socials">
-            <a href="https://www.instagram.com/nodconsulting/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
-            <a href="https://www.linkedin.com/company/nodconsulting/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
-          </div>
-          <p className="contact__slogan">NOD, say yes to new projects</p>
+          <p className="contact__aside-note">
+            {t('Pour écrire sans passer par le formulaire.', 'To write without using the form.')}
+          </p>
         </aside>
       </section>
 
