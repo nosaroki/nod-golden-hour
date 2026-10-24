@@ -66,7 +66,7 @@ export const projets: Projet[] = [
   {
     id: 'unmatched', famille: 'strategie', titre: 'Unmatched', sousTitre: 'Maison de beauté au matcha',
     kicker: 'Lancement de marque', image: unmatched, carte: unmatchedCarte,
-    besoin: "Lancer une maison de beauté dont l'ingrédient principal est le matcha, partie d'une page blanche.",
+    besoin: "Lancer une maison de beauté dont l'ingrédient principal est le matcha.",
     texte: "NOD a pris la direction des opérations : stratégie digitale, organisation du lancement, création des maquettes web puis développement du site. Jusqu'aux coulisses : briefs créatifs, nom de domaine, adresses mail.",
     role: 'Direction des opérations et stratégie digitale',
     tags: ['Stratégie', 'Opérations', 'Figma', 'Shopify'],
