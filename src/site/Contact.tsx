@@ -55,6 +55,10 @@ const FAQ_FR = [
     a: "À toi. À la fin du projet, tu reçois les fichiers sources ainsi que les droits d'utilisation prévus au devis.",
   },
   {
+    q: "Tu utilises l'IA ?",
+    a: "Oui, comme un outil parmi d'autres : pour prototyper, produire des visuels ou automatiser ce qui peut l'être. Jamais à la place de la direction créative, qui reste humaine du début à la fin.",
+  },
+  {
     q: 'Comment ça commence ?',
     a: "Tu remplis le formulaire. Je reviens vers toi dans les meilleurs délais avec mes questions. On échange, je t'envoie un devis. À la signature et au premier acompte, le projet démarre.",
   },
@@ -69,6 +73,7 @@ const FAQ_EN = [
   { q: 'Do you work remotely?', a: 'Yes. We talk by video call, wherever you are. For projects around Paris, we can also meet in person.' },
   { q: 'What happens after the launch?', a: 'The project does not stop on launch day. Follow-up can be planned: site maintenance, content, adjustments. We decide it together in the quote.' },
   { q: 'Who owns the files at the end?', a: 'You do. At the end of the project you receive the source files along with the usage rights set out in the quote.' },
+  { q: 'Do you use AI?', a: 'Yes, as one tool among others: to prototype, produce visuals or automate what can be. Never in place of creative direction, which stays human from start to finish.' },
   { q: 'How does it start?', a: 'Fill in the form. I come back to you as soon as possible with questions. We talk, I send a quote. Once signed, the project starts.' },
 ];
 
