@@ -164,10 +164,19 @@ function FicheProjet({ projet, t }: { projet: Projet; t: (fr: string, en: string
   return (
     <>
       <Eyebrow>{projet.kicker}</Eyebrow>
-      <p className="index-travail__texte">{projet.texte}</p>
-      <dl className="index-travail__role">
-        <dt>{t('Rôle NOD', 'NOD role')}</dt>
-        <dd>{projet.role}</dd>
+      <dl className="index-travail__details">
+        <div>
+          <dt>{t('Le besoin', 'The need')}</dt>
+          <dd className="index-travail__texte">{projet.besoin}</dd>
+        </div>
+        <div>
+          <dt>{t('Ce que NOD a fait', 'What NOD did')}</dt>
+          <dd className="index-travail__texte">{projet.texte}</dd>
+        </div>
+        <div>
+          <dt>{t('Rôle NOD', 'NOD role')}</dt>
+          <dd>{projet.role}</dd>
+        </div>
       </dl>
       <ul className="index-travail__tags">
         {projet.tags.map((tag) => <li key={tag}>{tag}</li>)}

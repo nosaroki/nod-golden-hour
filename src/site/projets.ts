@@ -31,6 +31,9 @@ export interface Projet {
   placeholder?: boolean;
   /** true quand un vrai visuel est attendu ; affiche « Visuel à venir ». */
   aVenir?: boolean;
+  /** Le besoin du client, en une phrase. */
+  besoin: string;
+  /** Ce que NOD a fait. */
   texte: string;
   role: string;
   tags: string[];
@@ -54,7 +57,8 @@ export const projets: Projet[] = [
   {
     id: 'idala', famille: 'sites', titre: 'Idala', sousTitre: 'Plateforme bien-être',
     kicker: 'Plateforme web', image: idala,
-    texte: "Réunir des praticiens du bien-être et leurs clients sur un seul site, en cabinet, à domicile ou en visio. NOD a conçu puis développé la plateforme entière : annuaire des praticiens, réservation et paiement en ligne, séances en visio, espace d'administration. Le tout fonctionne en français comme en anglais.",
+    besoin: "Réunir des praticiens du bien-être et leurs clients sur un seul site, en cabinet, à domicile ou en visio.",
+    texte: "NOD a conçu puis développé la plateforme entière : annuaire des praticiens, réservation et paiement en ligne, séances en visio, espace d'administration. Le tout fonctionne en français comme en anglais.",
     role: 'Conception et développement, du cahier des charges à la mise en ligne',
     tags: ['Développement web', 'Paiement en ligne', 'Bilingue'],
     lien: 'https://theidalafamily.com', lienLabel: VOIR_SITE,
@@ -62,7 +66,8 @@ export const projets: Projet[] = [
   {
     id: 'unmatched', famille: 'strategie', titre: 'Unmatched', sousTitre: 'Maison de beauté au matcha',
     kicker: 'Lancement de marque', image: unmatched, carte: unmatchedCarte,
-    texte: "Une maison de beauté au matcha, partie d'une page blanche. NOD a pris la direction des opérations : stratégie digitale, organisation du lancement, première vitrine en ligne pour créer l'attente avant l'ouverture.",
+    besoin: "Lancer une maison de beauté au matcha, partie d'une page blanche.",
+    texte: "NOD a pris la direction des opérations : stratégie digitale, organisation du lancement, première vitrine en ligne pour créer l'attente avant l'ouverture.",
     role: 'Direction des opérations et stratégie digitale',
     tags: ['Stratégie', 'Opérations', 'Figma', 'Shopify'],
     lien: 'https://unmatchedbeautyglobal.com', lienLabel: VOIR_SITE,
@@ -70,14 +75,16 @@ export const projets: Projet[] = [
   {
     id: 'jasminka', famille: 'identite', titre: 'Jasminka', sousTitre: 'Identité & Instagram',
     kicker: 'Identité et réseaux', image: jasminka,
-    texte: "Une médium et praticienne en soin énergétique qui voulait une présence à son image. NOD a créé son identité visuelle complète, puis lancé son compte Instagram dans la même voix : premiers posts, stories à la une, ligne éditoriale.",
+    besoin: "Une médium et praticienne en soin énergétique voulait une présence à son image.",
+    texte: "NOD a créé son identité visuelle complète, puis lancé son compte Instagram dans la même voix : premiers posts, stories à la une, ligne éditoriale.",
     role: 'Identité visuelle et direction éditoriale',
     tags: ['Identité', 'Instagram'],
   },
   {
     id: 'drugs', famille: 'identite', titre: 'Drugs and Sports', sousTitre: 'Identité de podcast',
     kicker: 'Identité et contenu', image: drugsImg, carte: drugsCarte,
-    texte: "Un podcast qui changeait de nom et avait besoin d'une image à la hauteur. NOD a construit tout son univers : logo, brandbook, miniatures d'épisodes, bannière YouTube, pistes de contenus pour TikTok, Instagram et YouTube, plaquette pour les sponsors, guide de communication.",
+    besoin: "Un podcast changeait de nom et avait besoin d'une image à la hauteur.",
+    texte: "NOD a construit tout son univers : logo, brandbook, miniatures d'épisodes, bannière YouTube, pistes de contenus pour TikTok, Instagram et YouTube, plaquette pour les sponsors, guide de communication.",
     role: 'Direction artistique et stratégie de contenu',
     tags: ['Identité', 'Brandbook', 'Contenu', 'Partenariats'],
     lien: 'https://www.instagram.com/thedrugsandsportspodcast/', lienLabel: { fr: 'Voir le compte', en: 'See the account' },
@@ -85,7 +92,8 @@ export const projets: Projet[] = [
   {
     id: 'mangrove', famille: 'sites', titre: 'Mangrove', sousTitre: 'Site de photographe de surf',
     kicker: 'Site', image: mangroveImg,
-    texte: "Un photographe de surf installé au Costa Rica voulait un seul lieu pour montrer son travail et le vendre. NOD a construit son site : galeries par séance, boutique de tirages, paiement en ligne. Ses clients retrouvent leurs photos puis les achètent au même endroit.",
+    besoin: "Un photographe de surf installé au Costa Rica voulait un seul lieu pour montrer son travail et le vendre.",
+    texte: "NOD a construit son site : galeries par séance, boutique de tirages, paiement en ligne. Ses clients retrouvent leurs photos puis les achètent au même endroit.",
     role: 'Conception et mise en ligne',
     tags: ['Site', 'E-commerce', 'Pixieset'],
     lien: 'https://mangrovesurfphotography.com', lienLabel: VOIR_SITE,
@@ -93,7 +101,8 @@ export const projets: Projet[] = [
   {
     id: 'oda', famille: 'sites', titre: 'ODA', sousTitre: 'Tarot & astrologie',
     kicker: 'Projet maison', image: odaImg, carte: odaCarte,
-    texte: "Une plateforme de tarot et d'astrologie imaginée, dessinée puis développée par NOD de bout en bout : tirages, thème natal, astrocartographie, plusieurs langues. Une idée devenue un produit complet, de l'identité au code.",
+    besoin: "Donner corps à une idée maison : une plateforme de tarot et d'astrologie.",
+    texte: "NOD l'a imaginée, dessinée puis développée de bout en bout : tirages, thème natal, astrocartographie, plusieurs langues. Une idée devenue un produit complet, de l'identité au code.",
     role: 'Concept, identité, développement',
     tags: ['Produit', 'Identité', 'Développement'],
     lien: 'https://oracledesarcanes.com', lienLabel: VOIR_SITE,
@@ -101,21 +110,24 @@ export const projets: Projet[] = [
   {
     id: 'contenus', famille: 'contenu', titre: 'Contenus pour les réseaux', sousTitre: 'Vidéo, carrousels, audit',
     kicker: 'Contenus', image: contenusImg, video: contenusVideo,
-    texte: "Des contenus pensés pour chaque voix. Pour une praticienne en drainage lymphatique, captation, montage et voix off. Pour une cheffe à domicile, des réels tirés de longues captations, puis des carrousels. Pour une sophrologue, un audit de son compte, puis un carrousel en portugais pour annoncer sa retraite. En dehors des commandes, des recettes filmées et des carnets de voyage.",
+    besoin: "Des indépendantes qui voulaient exister sur les réseaux avec des contenus à leur image.",
+    texte: "Pour une praticienne en drainage lymphatique, captation, montage et voix off. Pour une cheffe à domicile, des réels tirés de longues captations, puis des carrousels. Pour une sophrologue, un audit de son compte, puis un carrousel en portugais pour annoncer sa retraite. En dehors des commandes, des recettes filmées et des carnets de voyage.",
     role: 'Réalisation, montage, stratégie de contenu',
     tags: ['Vidéo', 'Montage', 'Carrousels', 'Stories', 'Audit'],
   },
   {
     id: 'pierres', famille: 'edition', titre: 'Pierres vertes', sousTitre: 'Livre',
     kicker: 'Édition', image: pierresImg,
-    texte: "Un cadeau à offrir, un titre, un thème : les pierres vertes. Tout le reste était à inventer. NOD a mené les recherches, écrit le texte, composé chaque page, puis préparé le livre pour l'impression. Un objet pensé de la première ligne à la reliure.",
+    besoin: "Offrir un livre unique, avec un titre et un thème : les pierres vertes. Tout le reste était à inventer.",
+    texte: "NOD a mené les recherches, écrit le texte, composé chaque page, puis préparé le livre pour l'impression. Un objet pensé de la première ligne à la reliure.",
     role: 'Recherche, écriture, mise en page',
     tags: ['Édition', 'Rédaction', 'Mise en page'],
   },
   {
     id: 'stan', famille: 'strategie', titre: 'Stan', sousTitre: 'Marque de spiritueux',
     kicker: 'Stratégie', image: orangePressee, placeholder: true,
-    texte: "Un barman qui lance sa propre marque de spiritueux. NOD a construit sa stratégie de lancement.",
+    besoin: "Un barman lance sa propre marque de spiritueux.",
+    texte: "NOD a construit sa stratégie de lancement.",
     role: 'Stratégie de lancement',
     tags: ['Stratégie', 'Lancement'],
   },

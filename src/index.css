@@ -4574,3 +4574,10 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
   border-radius: var(--radius-media); background: var(--surface-sunken);
 }
 @media (max-width: 900px) { .index-travail__video { height: min(78vh, 640px); } }
+
+/* Fiche projet : le besoin, ce que NOD a fait, le rôle. */
+.index-travail__details { display: grid; gap: var(--space-5); margin: 0; }
+.index-travail__details > div { display: grid; gap: 6px; }
+.index-travail__details dt { font: var(--type-eyebrow); letter-spacing: var(--track-eyebrow); text-transform: uppercase; color: var(--red); }
+.index-travail__details dd { margin: 0; }
+.index-travail__details dd:not(.index-travail__texte) { font: var(--type-body); }
