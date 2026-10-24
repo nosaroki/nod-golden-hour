@@ -1,68 +1,82 @@
-import Nav from "@/components/Navbar";
-import NodFooter from "@/components/NodFooter";
+import NodNav from '@/components/NodNav';
+import NodFooter from '@/components/NodFooter';
+import { Eyebrow } from '@/components/nod';
 
-// Politique de confidentialite. Modele a verifier, adapte a la collecte via formulaires.
-const Confidentialite = () => {
+/* Politique de confidentialité, adaptée à la collecte via le formulaire de contact. */
+
+export default function Confidentialite() {
   return (
-    <div className="page legal">
-      <Nav />
-      <section className="legal__inner">
-        <div className="eyebrow">
-          <span className="eyebrow__tick" />
-          <span className="eyebrow__label">Tes données</span>
+    <>
+      <NodNav />
+      <main className="legal-nod">
+        <header className="legal-nod__head">
+          <Eyebrow>Tes données</Eyebrow>
+          <h1 className="legal-nod__title">Politique de confidentialité</h1>
+        </header>
+
+        <div className="legal-nod__prose">
+          <section>
+            <h2>Responsable du traitement</h2>
+            <p>
+              NOD Consulting, représentée par Nnéna. SIRET : 913 549 499 00014.<br />
+              Contact : <a href="mailto:contact@nod-consulting.com">contact@nod-consulting.com</a>
+            </p>
+          </section>
+
+          <section>
+            <h2>Données collectées</h2>
+            <p>
+              NOD collecte uniquement les données transmises via le formulaire de contact :
+              nom, email, téléphone facultatif, message. Si tu demandes la brochure, ton email
+              sert aussi à te l'envoyer.
+            </p>
+          </section>
+
+          <section>
+            <h2>Finalité et base légale</h2>
+            <p>
+              Ces données servent à répondre à ta demande, sur la base de ton intérêt à être
+              recontacté. L'envoi de la brochure repose sur ton consentement, que tu peux
+              retirer à tout moment.
+            </p>
+          </section>
+
+          <section>
+            <h2>Sous-traitants</h2>
+            <p>
+              Les données sont stockées par Supabase. Les emails sont envoyés via Resend. Le site
+              est hébergé par Gandi. Aucune donnée n'est vendue ni cédée à des tiers.
+            </p>
+          </section>
+
+          <section>
+            <h2>Durée de conservation</h2>
+            <p>
+              Les messages sont conservés trois ans à compter du dernier échange, puis supprimés.
+              Tu peux demander leur suppression avant ce délai.
+            </p>
+          </section>
+
+          <section>
+            <h2>Tes droits</h2>
+            <p>
+              Tu disposes d'un droit d'accès, de rectification, d'effacement, de limitation et
+              d'opposition sur tes données. Pour les exercer, écris à{' '}
+              <a href="mailto:contact@nod-consulting.com">contact@nod-consulting.com</a>. Tu peux
+              aussi adresser une réclamation à la CNIL (cnil.fr).
+            </p>
+          </section>
+
+          <section>
+            <h2>Cookies</h2>
+            <p>
+              Ce site ne dépose que les cookies nécessaires à son fonctionnement. Aucune mesure
+              d'audience ni traçage publicitaire n'est utilisé à ce jour.
+            </p>
+          </section>
         </div>
-        <h1 className="legal__title">Politique de confidentialité</h1>
-
-        <div className="legal__prose">
-          <h2>Données collectées</h2>
-          <p>
-            NOD collecte uniquement les données que tu transmets via ses formulaires : nom,
-            email, téléphone facultatif et message pour le formulaire de contact ; email pour
-            la demande de brochure.
-          </p>
-
-          <h2>Finalité</h2>
-          <p>
-            Le formulaire de contact sert uniquement à te répondre. L’email laissé pour la
-            brochure sert à te l’envoyer et à t’informer de l’actualité de NOD.
-          </p>
-
-          <h2>Base légale</h2>
-          <p>
-            Répondre à ta demande repose sur ton intérêt à être recontacté. L’envoi de la
-            brochure et des informations repose sur ton consentement, que tu peux retirer à
-            tout moment.
-          </p>
-
-          <h2>Traitement et stockage</h2>
-          <p>
-            Les données sont traitées et stockées via Supabase. Les envois d’emails passent
-            par Resend. Aucune donnée n’est vendue ni cédée à des tiers.
-          </p>
-
-          <h2>Durée de conservation</h2>
-          <p>
-            Les données sont conservées le temps nécessaire au traitement de ta demande, puis
-            supprimées sur simple demande.
-          </p>
-
-          <h2>Tes droits</h2>
-          <p>
-            Tu disposes d’un droit d’accès, de rectification, d’effacement et d’opposition sur
-            tes données. Pour les exercer, écris à{" "}
-            <a href="mailto:contact@nod-consulting.com">contact@nod-consulting.com</a>.
-          </p>
-
-          <h2>Cookies</h2>
-          <p>
-            Ce site ne dépose que les cookies nécessaires à son bon fonctionnement. Aucune
-            mesure d’audience ni traçage publicitaire n’est utilisé à ce jour.
-          </p>
-        </div>
-      </section>
+      </main>
       <NodFooter />
-    </div>
+    </>
   );
-};
-
-export default Confidentialite;
+}
