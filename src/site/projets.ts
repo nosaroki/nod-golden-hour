@@ -39,9 +39,9 @@ export const familles: { id: Projet['famille'] | 'tout'; fr: string; en: string 
 export const projets: Projet[] = [
   {
     id: 'idala', famille: 'sites', titre: 'Idala', sousTitre: 'Plateforme bien-être',
-    kicker: 'Site et marque', image: idala,
-    texte: "Plateforme qui met en relation praticiens du bien-être et clients. De la stratégie de marque à l'identité, jusqu'au site développé et mis en ligne.",
-    role: 'Direction créative complète, du brief au lancement',
+    kicker: 'Plateforme web', image: idala,
+    texte: "Une plateforme qui réunit praticiens du bien-être et clients, en cabinet, à domicile ou en visio. Annuaire, réservation et paiement en ligne, séances en visio, rappels automatiques en deux langues, espace d'administration.",
+    role: 'Conception et développement, du cahier des charges à la mise en ligne',
     tags: ['Stratégie', 'Identité', 'Développement', 'Contenu'],
     lien: 'https://theidalafamily.com', lienLabel: { fr: 'Voir le site', en: 'See the site' },
   },
@@ -61,10 +61,10 @@ export const projets: Projet[] = [
     lien: 'https://unmatchedbeautyglobal.com', lienLabel: { fr: 'Voir le site', en: 'See the site' },
   },
   {
-    id: 'mangrove', famille: 'encours', titre: 'Mangrove', sousTitre: 'Site photo de surf',
-    kicker: 'Site · En cours', image: gradientFold, placeholder: true,
-    texte: 'Site de photographie de surf, en cours de création. Structure, identité visuelle et mise en ligne.',
-    role: 'Conception et développement du site',
+    id: 'mangrove', famille: 'sites', titre: 'Mangrove', sousTitre: 'Site de photographe de surf',
+    kicker: 'Site', image: gradientFold, placeholder: true,
+    texte: "Le site d'un photographe de surf installé au Costa Rica : galeries de séances, boutique de tirages, paiement en ligne, photos protégées par filigrane.",
+    role: 'Conception et mise en ligne du site',
     tags: ['Développement', 'Direction artistique'],
     lien: 'https://mangrovesurfphotography.com', lienLabel: { fr: 'Voir le site', en: 'See the site' },
   },

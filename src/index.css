@@ -4548,7 +4548,8 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
    en fondu comme l'écran de confirmation du contact. */
 .page-head--plein { min-height: 100svh; align-items: center; }
 .page-head__body--plein { padding-top: calc(var(--header-h, 71px) + var(--space-12)); padding-bottom: var(--space-12); }
-.page-head__title--plein { max-width: 16ch; }
+.page-head__title--plein { max-width: none; }
+@media (min-width: 900px) { .page-head__title--plein { white-space: nowrap; } }
 .page-head__body--plein > * {
   opacity: 0; transform: translateY(14px); filter: blur(4px);
   animation: recu-arrivee 900ms var(--ease-recu) forwards;

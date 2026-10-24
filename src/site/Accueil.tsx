@@ -28,12 +28,6 @@ const INTENTIONS = [
   },
 ];
 
-const HEURE = [
-  { fr: 'La lumière', en: 'The light', frV: 'Ce moment où tout devient plus juste.', enV: 'The moment when everything becomes truer.' },
-  { fr: 'Le moment', en: 'The moment', frV: 'Celui que NOD cherche pour ton projet.', enV: 'The one NOD looks for in your project.' },
-  { fr: 'Le résultat', en: 'The result', frV: "Celui où il existe enfin.", enV: 'The one where it finally exists.' },
-];
-
 export default function Accueil() {
   const { language } = useLanguage();
   const t = (fr: string, en: string) => (language === 'fr' ? fr : en);
@@ -140,31 +134,8 @@ export default function Accueil() {
         </p>
       </section>
 
-      {/* ---------- L'heure dorée, puis l'appel ---------- */}
+      {/* ---------- L'appel ---------- */}
       <div className="home-golden-block nod-grain">
-        <section className="home-golden" style={vars({ '--nod-golden-image': url(orangePressee) })}>
-          <div className="home-golden__texture" />
-          <div className="home-golden__body">
-            <div className="home-golden__head">
-              <Eyebrow tone="light">{t("L'heure dorée", 'Golden hour')}</Eyebrow>
-              <Eyebrow tone="light">2026</Eyebrow>
-            </div>
-            <h2 className="home-golden__title">
-              {t('La lumière rend tout', 'Light makes everything')}
-              <br />{t('plus juste, plus beau,', 'truer, more beautiful,')}
-              <br />{t('plus vivant.', 'more alive.')}
-            </h2>
-            <div className="home-golden__rows">
-              {HEURE.map((ligne) => (
-                <div className="home-golden__row" key={ligne.fr}>
-                  <span className="home-golden__key">{t(ligne.fr, ligne.en)}</span>
-                  <span className="home-golden__value">{t(ligne.frV, ligne.enV)}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <section className="home-cta">
           <div className="home-cta__body">
             <h2 className="home-cta__title">{t('Présente ton projet.', 'Tell me about your project.')}</h2>
