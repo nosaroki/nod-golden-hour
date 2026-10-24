@@ -4595,3 +4595,6 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
 .legal-nod__prose p { margin: 0; font: var(--type-body-serif); color: var(--text-muted); }
 .legal-nod__prose a { color: var(--red); }
 .contact__aside-note { margin: 0; font-family: var(--font-serif); font-style: italic; color: rgba(255, 240, 229, 0.75); }
+
+/* Contact : le formulaire seul, au centre. L'adresse mail reste dans le pied de page. */
+.contact { grid-template-columns: minmax(0, 1fr); max-width: 760px; }

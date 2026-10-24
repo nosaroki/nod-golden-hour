@@ -255,13 +255,6 @@ export default function Contact() {
             </div>
           </form>
 
-        <aside className="contact__aside">
-          <Eyebrow tone="inverse">{t('Contact direct', 'Direct contact')}</Eyebrow>
-          <a href="mailto:contact@nod-consulting.com" className="contact__aside-mail">contact@nod-consulting.com</a>
-          <p className="contact__aside-note">
-            {t('Pour écrire sans passer par le formulaire.', 'To write without using the form.')}
-          </p>
-        </aside>
       </section>
 
       {/* ---------- FAQ : les objections qui empêchent d'écrire ---------- */}
