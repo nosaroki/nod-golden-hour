@@ -4567,8 +4567,10 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
 }
 
 /* Le travail : extrait vidéo, même coins arrondis que les images. */
+/* Format vertical des réseaux, affiché entier : rien n'est rogné. */
 .index-travail__video {
-  display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover;
+  display: block; aspect-ratio: 9 / 16; object-fit: cover;
+  height: min(72vh, 680px); width: auto; max-width: 100%; margin-inline: auto;
   border-radius: var(--radius-media); background: var(--surface-sunken);
 }
-@media (min-width: 901px) { .index-travail__video { max-height: calc(100vh - var(--header-h, 71px) - 120px); } }
+@media (max-width: 900px) { .index-travail__video { height: min(78vh, 640px); } }

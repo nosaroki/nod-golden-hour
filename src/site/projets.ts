@@ -100,10 +100,9 @@ export const projets: Projet[] = [
   {
     id: 'contenus', famille: 'contenu', titre: 'Contenus pour les réseaux', sousTitre: 'Vidéo, carrousels, audit',
     kicker: 'Contenus', image: contenusImg, video: contenusVideo,
-    texte: "Des contenus pensés pour chaque voix. Pour une praticienne en drainage lymphatique, captation, montage et voix off. Pour une cheffe à domicile, des réels tirés de longues captations, puis des carrousels. Pour une sophrologue, un audit de son compte, puis un carrousel en portugais pour annoncer sa retraite.",
+    texte: "Des contenus pensés pour chaque voix. Pour une praticienne en drainage lymphatique, captation, montage et voix off. Pour une cheffe à domicile, des réels tirés de longues captations, puis des carrousels. Pour une sophrologue, un audit de son compte, puis un carrousel en portugais pour annoncer sa retraite. En dehors des commandes, des recettes filmées en format paysage et des carnets de voyage en stories.",
     role: 'Réalisation, montage, stratégie de contenu',
-    tags: ['Vidéo', 'Montage', 'Carrousels', 'Audit'],
-    lien: 'https://www.instagram.com/evadfvs/', lienLabel: { fr: 'Voir des vidéos', en: 'See some videos' },
+    tags: ['Vidéo', 'Montage', 'Carrousels', 'Stories', 'Audit'],
   },
   {
     id: 'pierres', famille: 'edition', titre: 'Pierres vertes', sousTitre: 'Livre',
