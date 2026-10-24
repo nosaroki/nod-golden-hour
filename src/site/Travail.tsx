@@ -105,7 +105,7 @@ export default function Travail() {
 
                   {estOuvert ? (
                     <div className="index-travail__fiche index-travail__fiche--mobile" id={`fiche-${projet.id}`}>
-                      <MediaFrame src={projet.image} ratio="4 / 3" scrim={projet.placeholder ? 'bottom' : 'none'} />
+                      <Visuel projet={projet} />
                       <FicheProjet projet={projet} t={t} />
                     </div>
                   ) : null}
@@ -119,7 +119,7 @@ export default function Travail() {
           {fiche ? (
             <>
               <div className="index-travail__media" key={fiche.id}>
-                <MediaFrame src={fiche.image} ratio="4 / 3" scrim={fiche.placeholder ? 'bottom' : 'none'} />
+                <Visuel projet={fiche} />
                 {fiche.aVenir ? (
                   <span className="index-travail__placeholder">{t('Visuel à venir', 'Visual to come')}</span>
                 ) : null}
@@ -181,4 +181,23 @@ function FicheProjet({ projet, t }: { projet: Projet; t: (fr: string, en: string
       ) : null}
     </>
   );
+}
+
+/* Le visuel d'une fiche : l'extrait vidéo quand il existe, l'image sinon. */
+function Visuel({ projet }: { projet: Projet }) {
+  if (projet.video) {
+    return (
+      <video
+        className="index-travail__video"
+        src={projet.video}
+        poster={projet.image}
+        autoPlay
+        muted
+        loop
+        playsInline
+        aria-hidden="true"
+      />
+    );
+  }
+  return <MediaFrame src={projet.image} ratio="4 / 3" scrim={projet.placeholder ? 'bottom' : 'none'} />;
 }

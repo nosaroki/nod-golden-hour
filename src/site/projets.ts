@@ -1,10 +1,14 @@
 import idala from '@/assets/idala.webp';
 import jasminka from '@/assets/jasminka.webp';
 import unmatched from '@/assets/unmatched.webp';
-import lightFold from '@/assets/brand/light-fold-warm.webp';
-import inkOrange from '@/assets/brand/texture-ink-orange.webp';
+import drugsImg from '@/assets/drugs.webp';
+import mangroveImg from '@/assets/mangrove.webp';
+import odaImg from '@/assets/oda.webp';
+import odaCarte from '@/assets/oda-carte.webp';
+import drugsCarte from '@/assets/drugs-carte.webp';
+import contenusImg from '@/assets/contenus.webp';
+import contenusVideo from '@/assets/contenus.mp4';
 import marbleOrange from '@/assets/brand/texture-marble-orange.webp';
-import gradientFold from '@/assets/brand/gradient-fold-yellow.webp';
 import orangePressee from '@/assets/brand/orange-pressee.webp';
 
 /* Les projets NOD. Chaque fiche suit la même logique : le besoin du client,
@@ -18,6 +22,10 @@ export interface Projet {
   sousTitre: string;
   kicker: string;
   image: string;
+  /** Extrait vidéo muet en boucle, affiché à la place de l'image dans la fiche. */
+  video?: string;
+  /** Visuel vertical pour les cartes de l'accueil, quand l'image est un logo horizontal. */
+  carte?: string;
   /** true quand l'image est une texture de marque, pas le projet lui-même. */
   placeholder?: boolean;
   /** true quand un vrai visuel est attendu ; affiche « Visuel à venir ». */
@@ -67,14 +75,15 @@ export const projets: Projet[] = [
   },
   {
     id: 'drugs', famille: 'identite', titre: 'Drugs and Sports', sousTitre: 'Identité de podcast',
-    kicker: 'Identité et contenu', image: orangePressee, placeholder: true, aVenir: true,
+    kicker: 'Identité et contenu', image: drugsImg, carte: drugsCarte,
     texte: "Un podcast qui changeait de nom et avait besoin d'une image à la hauteur. NOD a construit tout son univers : logo, brandbook, miniatures d'épisodes, bannière YouTube, pistes de contenus pour TikTok, Instagram et YouTube, plaquette pour les sponsors, guide de communication.",
     role: 'Direction artistique et stratégie de contenu',
     tags: ['Identité', 'Brandbook', 'Contenu', 'Partenariats'],
+    lien: 'https://www.instagram.com/thedrugsandsportspodcast/', lienLabel: { fr: 'Voir le compte', en: 'See the account' },
   },
   {
     id: 'mangrove', famille: 'sites', titre: 'Mangrove', sousTitre: 'Site de photographe de surf',
-    kicker: 'Site', image: gradientFold, placeholder: true, aVenir: true,
+    kicker: 'Site', image: mangroveImg,
     texte: "Un photographe de surf installé au Costa Rica voulait un seul lieu pour montrer son travail et le vendre. NOD a construit son site : galeries par séance, boutique de tirages, paiement en ligne. Ses clients retrouvent leurs photos puis les achètent au même endroit.",
     role: 'Conception et mise en ligne',
     tags: ['Site', 'E-commerce', 'Pixieset'],
@@ -82,7 +91,7 @@ export const projets: Projet[] = [
   },
   {
     id: 'oda', famille: 'sites', titre: 'ODA', sousTitre: 'Tarot & astrologie',
-    kicker: 'Projet maison', image: inkOrange, placeholder: true, aVenir: true,
+    kicker: 'Projet maison', image: odaImg, carte: odaCarte,
     texte: "Une plateforme de tarot et d'astrologie imaginée, dessinée puis développée par NOD de bout en bout : tirages, thème natal, astrocartographie, plusieurs langues. Une idée devenue un produit complet, de l'identité au code.",
     role: 'Concept, identité, développement',
     tags: ['Produit', 'Identité', 'Développement'],
@@ -90,7 +99,7 @@ export const projets: Projet[] = [
   },
   {
     id: 'contenus', famille: 'contenu', titre: 'Contenus pour les réseaux', sousTitre: 'Vidéo, carrousels, audit',
-    kicker: 'Contenus', image: lightFold, placeholder: true, aVenir: true,
+    kicker: 'Contenus', image: contenusImg, video: contenusVideo,
     texte: "Des contenus pensés pour chaque voix. Pour une praticienne en drainage lymphatique, captation, montage et voix off. Pour une cheffe à domicile, des réels tirés de longues captations, puis des carrousels. Pour une sophrologue, un audit de son compte, puis un carrousel en portugais pour annoncer sa retraite.",
     role: 'Réalisation, montage, stratégie de contenu',
     tags: ['Vidéo', 'Montage', 'Carrousels', 'Audit'],

@@ -38,7 +38,7 @@ export default function ProjetsCartes() {
               '--carte-rot': place.rot,
               '--carte-z': String(place.z),
               '--carte-fond': place.fond,
-              '--carte-image': url(projet.image),
+              '--carte-image': url(projet.carte ?? projet.image),
             })}
             aria-label={`${projet.titre}, ${projet.sousTitre}`}
           >
