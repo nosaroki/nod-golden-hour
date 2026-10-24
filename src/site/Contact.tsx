@@ -257,12 +257,13 @@ export default function Contact() {
           </form>
 
         <aside className="contact__aside">
-          <Eyebrow>{t('Ou directement', 'Or directly')}</Eyebrow>
+          <Eyebrow tone="inverse">{t('Contact direct', 'Direct contact')}</Eyebrow>
           <a href="mailto:contact@nod-consulting.com" className="contact__aside-mail">contact@nod-consulting.com</a>
           <div className="contact__socials">
             <a href="https://www.instagram.com/nodconsulting/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><FaInstagram /></a>
             <a href="https://www.linkedin.com/company/nodconsulting/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><FaLinkedin /></a>
           </div>
+          <p className="contact__slogan">NOD, say yes to new projects</p>
         </aside>
       </section>
 

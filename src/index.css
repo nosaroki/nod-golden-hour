@@ -4582,13 +4582,3 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
 .index-travail__details dd { margin: 0; }
 .index-travail__details dd:not(.index-travail__texte) { font: var(--type-body); }
 
-/* Contact : le contact direct devient une simple note à côté du formulaire,
-   sans aplat. Le formulaire reste la porte d'entrée principale. */
-.contact .contact__aside {
-  background: none; color: var(--navy); border-radius: 0; box-shadow: none;
-  padding: var(--space-6) 0 0; border-top: 1px solid var(--line);
-}
-.contact .contact__aside-mail { color: var(--navy); border-bottom-color: var(--line); }
-.contact .contact__aside-mail:hover { color: var(--red); border-bottom-color: var(--red); }
-.contact .contact__socials a { color: var(--navy); }
-.contact .contact__socials a:hover { color: var(--red); }
