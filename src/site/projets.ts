@@ -8,7 +8,7 @@ import odaCarte from '@/assets/oda-carte.webp';
 import drugsCarte from '@/assets/drugs-carte.webp';
 import contenusImg from '@/assets/contenus.webp';
 import contenusVideo from '@/assets/contenus.mp4';
-import marbleOrange from '@/assets/brand/texture-marble-orange.webp';
+import pierresImg from '@/assets/pierres.webp';
 import orangePressee from '@/assets/brand/orange-pressee.webp';
 
 /* Les projets NOD. Chaque fiche suit la même logique : le besoin du client,
@@ -100,13 +100,13 @@ export const projets: Projet[] = [
   {
     id: 'contenus', famille: 'contenu', titre: 'Contenus pour les réseaux', sousTitre: 'Vidéo, carrousels, audit',
     kicker: 'Contenus', image: contenusImg, video: contenusVideo,
-    texte: "Des contenus pensés pour chaque voix. Pour une praticienne en drainage lymphatique, captation, montage et voix off. Pour une cheffe à domicile, des réels tirés de longues captations, puis des carrousels. Pour une sophrologue, un audit de son compte, puis un carrousel en portugais pour annoncer sa retraite. En dehors des commandes, des recettes filmées en format paysage et des carnets de voyage en stories.",
+    texte: "Des contenus pensés pour chaque voix. Pour une praticienne en drainage lymphatique, captation, montage et voix off. Pour une cheffe à domicile, des réels tirés de longues captations, puis des carrousels. Pour une sophrologue, un audit de son compte, puis un carrousel en portugais pour annoncer sa retraite. En dehors des commandes, des recettes filmées et des carnets de voyage.",
     role: 'Réalisation, montage, stratégie de contenu',
     tags: ['Vidéo', 'Montage', 'Carrousels', 'Stories', 'Audit'],
   },
   {
     id: 'pierres', famille: 'edition', titre: 'Pierres vertes', sousTitre: 'Livre',
-    kicker: 'Édition', image: marbleOrange, placeholder: true, aVenir: true,
+    kicker: 'Édition', image: pierresImg,
     texte: "Un cadeau à offrir, un titre, un thème : les pierres vertes. Tout le reste était à inventer. NOD a mené les recherches, écrit le texte, composé chaque page, puis préparé le livre pour l'impression. Un objet pensé de la première ligne à la reliure.",
     role: 'Recherche, écriture, mise en page',
     tags: ['Édition', 'Rédaction', 'Mise en page'],
