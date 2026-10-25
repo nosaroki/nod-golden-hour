@@ -4633,3 +4633,10 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
   /* Le titre du contact passe à la ligne après la question. */
   .titre-bloc { display: block; }
 }
+
+/* Accessibilité : champs du formulaire bien délimités, focus clavier visible partout. */
+.nod-input { border-color: rgba(17, 37, 66, 0.28); }
+.nod-input:focus-within { border-color: var(--navy); }
+a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .nod-checkbox__input:focus-visible + .nod-checkbox__box {
+  outline: 2px solid var(--red); outline-offset: 3px;
+}
