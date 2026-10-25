@@ -1,12 +1,16 @@
 // Hébergement Cloudflare (Workers, fichiers statiques). Le site est construit
 // par `npm run build` dans dist/, puis servi tel quel. Toute adresse inconnue
 // renvoie index.html : c'est React qui affiche la bonne page ou la 404.
+// Seules les vidéos passent par worker/index.js (lecture par morceaux pour Safari).
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "nod-consulting",
+  "main": "worker/index.js",
   "compatibility_date": "2026-10-01",
   "assets": {
     "directory": "./dist",
-    "not_found_handling": "single-page-application"
+    "binding": "ASSETS",
+    "not_found_handling": "single-page-application",
+    "run_worker_first": ["/video/*"]
   }
 }

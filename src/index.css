@@ -4650,3 +4650,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .nod-checkbox__
 /* Écran de confirmation : titre et phrase sur une ligne chacun. */
 .contact-head__titre { max-width: none; }
 .contact-head__arrivee .page-head__lede { max-width: none; }
+
+/* Message d'erreur du formulaire : centré, comme le bouton. */
+.contact__error { display: block; width: 100%; text-align: center; }

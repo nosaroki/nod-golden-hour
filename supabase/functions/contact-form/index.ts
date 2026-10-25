@@ -6,6 +6,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 const ORIGINES = [
   /^https:\/\/(www\.)?nod-consulting\.com$/,
   /^https:\/\/nod-golden-hour[a-z0-9-]*\.vercel\.app$/,
+  /^https:\/\/nod-consulting\.[a-z0-9-]+\.workers\.dev$/,
   /^http:\/\/localhost:\d+$/,
 ];
 

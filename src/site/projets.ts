@@ -9,7 +9,9 @@ import odaImg from '@/assets/oda.webp';
 import odaCarte from '@/assets/oda-carte.webp';
 import drugsCarte from '@/assets/drugs-carte.webp';
 import contenusImg from '@/assets/contenus.webp';
-import contenusVideo from '@/assets/contenus.mp4';
+/* La vidéo vit dans public/video : elle passe par le petit script Cloudflare
+   qui permet à Safari de la lire. */
+const contenusVideo = '/video/contenus.mp4';
 import pierresImg from '@/assets/pierres.webp';
 
 /* Les projets NOD. Chaque fiche suit la même logique : le besoin du client,

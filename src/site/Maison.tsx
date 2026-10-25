@@ -54,7 +54,7 @@ export default function Maison() {
         <div className="page-head__veil" />
         <div className="page-head__foot" />
         <div className="page-head__body">
-          <Eyebrow tone="light">{t('Fondée en 2025 par Nnéna', 'Founded in 2025 by Nnéna')}</Eyebrow>
+          <Eyebrow tone="light">{t('Fondée en 2025', 'Founded in 2025')}</Eyebrow>
           <h1 className="page-head__title page-head__title--une-ligne">
             {t('Une maison pour faire exister les projets.', 'A house that brings projects to life.')}
           </h1>
