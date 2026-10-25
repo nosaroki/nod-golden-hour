@@ -56,9 +56,7 @@ export default function Maison() {
         <div className="page-head__body">
           <Eyebrow tone="light">{t('La maison', 'The house')}</Eyebrow>
           <h1 className="page-head__title">
-            {t("Ce n'est pas une agence.", 'Not an agency.')}
-            <br />
-            {t("C'est une maison.", "It's a house.")}
+            {t('Une maison pour faire exister les projets.', 'A house that brings projects to life.')}
           </h1>
           <p className="page-head__lede">
             {t('Une seule personne pour porter ton projet de bout en bout.', 'One person to carry your project from end to end.')}

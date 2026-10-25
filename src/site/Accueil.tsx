@@ -76,8 +76,6 @@ export default function Accueil() {
             )}
           </p>
           <p className="home-manifesto__text">
-            {t("Ce n'est pas une agence. C'est une maison.", 'It is not an agency. It is a house.')}
-            <br />
             {t('Un seul interlocuteur, du début à la fin.', 'One single contact, from start to finish.')}
             <br />
             {t(
@@ -102,10 +100,9 @@ export default function Accueil() {
           <p className="home-summary__intro">
             {t('Trois points de départ, une seule méthode.', 'Three starting points, one method.')}
             <br />
-            {t(
-              'Stratégie, identité, contenu, développement, tenus ensemble du brief au lancement.',
-              'Strategy, identity, content, development, held together from brief to launch.',
-            )}
+            {t('Stratégie, identité, contenu, développement,', 'Strategy, identity, content, development,')}
+            <br />
+            {t('tenus ensemble du brief au lancement.', 'held together from brief to launch.')}
           </p>
 
           <ul className="home-summary__list">
