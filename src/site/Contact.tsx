@@ -152,14 +152,12 @@ export default function Contact() {
         ) : (
           <div className="page-head__body contact-head__arrivee" role="status">
             <h1 className="page-head__title contact-head__titre">
-              {prenom
-                ? t(`Merci ${prenom}, ton message est bien arrivé.`, `Thank you ${prenom}, your message has arrived.`)
-                : t('Merci, ton message est bien arrivé.', 'Thank you, your message has arrived.')}
+              {prenom ? t(`Merci ${prenom}.`, `Thank you ${prenom}.`) : t('Merci.', 'Thank you.')}
             </h1>
             <p className="page-head__lede">
               {t(
-                "Je reviens vers toi dans les meilleurs délais. Le récapitulatif t'attend dans ta boîte mail.",
-                "I'll get back to you as soon as possible. A summary is waiting in your inbox.",
+                'Je lis ton message et je reviens vers toi très vite.',
+                "I'll read your message and get back to you very soon.",
               )}
             </p>
             <div className="page-hero__actions">
