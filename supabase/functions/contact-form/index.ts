@@ -146,7 +146,7 @@ const TEXTES = {
     merci: (prenom: string) => `Merci, ${prenom}.`,
     intro: "Ton message est bien arrivé.<br>Je le lis avec attention et je reviens vers toi dans les meilleurs délais.",
     brochureTitre: "La brochure NOD",
-    brochureTexte: "Comme demandé, la voici : la maison, la méthode, les accompagnements.",
+    brochureTexte: "Comme demandé, la voici : toutes les prestations de NOD et leurs tarifs.",
     brochureBouton: "Ouvrir la brochure",
     demande: "Ta demande",
     detail: "Un détail à ajouter ? Il suffit de répondre à ce mail.",
@@ -158,7 +158,7 @@ const TEXTES = {
     merci: (prenom: string) => `Thank you, ${prenom}.`,
     intro: "Your message has arrived.<br>I will read it carefully and get back to you as soon as possible.",
     brochureTitre: "The NOD brochure",
-    brochureTexte: "As requested, here it is: the house, the method, the ways we work together.",
+    brochureTexte: "As requested, here it is: every NOD service and its pricing.",
     brochureBouton: "Open the brochure",
     demande: "Your request",
     detail: "Anything to add? Simply reply to this email.",
@@ -286,9 +286,13 @@ Deno.serve(async (req) => {
       weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit",
     }).replace(":", " h ");
 
-    // Lien vers la brochure : variable d'environnement BROCHURE_URL dans
-    // Supabase. Tant qu'elle est vide, la brochure n'est pas envoyée.
-    const brochureUrl = Deno.env.get("BROCHURE_URL") || null;
+    // Lien vers la brochure dans la langue de la personne : variables
+    // d'environnement BROCHURE_URL_FR et BROCHURE_URL_EN dans Supabase.
+    // Tant qu'elles sont vides, la brochure n'est pas envoyée.
+    const brochureUrl =
+      Deno.env.get(langue === "en" ? "BROCHURE_URL_EN" : "BROCHURE_URL_FR") ||
+      Deno.env.get("BROCHURE_URL") ||
+      null;
 
     const html = mailNotification({
       n: echapper(name),

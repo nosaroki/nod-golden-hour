@@ -228,8 +228,7 @@ export default function Contact() {
               />
             </div>
 
-            {/* À RETIRER AU LANCEMENT si la brochure n'est pas prête : la case
-                n'envoie encore rien. */}
+            {/* La brochure part dans la langue du site (BROCHURE_URL_FR / _EN). */}
             <Checkbox
               label={t('Je veux aussi recevoir la brochure NOD par mail.', "I'd also like to receive the NOD brochure by email.")}
               checked={form.brochure}
