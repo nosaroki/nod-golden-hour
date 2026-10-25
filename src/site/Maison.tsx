@@ -133,8 +133,8 @@ export default function Maison() {
           <h2 className="house-founder__title">{t('Nnéna a fondé NOD en 2025.', 'Nnéna founded NOD in 2025.')}</h2>
           <p className="house-founder__text">
             {t(
-              "Nnéna a fondé NOD en 2025. Avant ça, l'événementiel et la communication, en agence : comités de pilotage, équipes à encadrer, délais à tenir. En parallèle, elle apprend à coder seule. NOD réunit les trois : le sens de l'orchestration, le goût de l'image, la main qui construit.",
-              'Nnéna founded NOD in 2025. Before that, events and communication, in agencies: steering committees, teams to lead, deadlines to hold. Alongside, she taught herself to code. NOD brings the three together: a sense of orchestration, an eye for image, the hand that builds.',
+              "Avant NOD, l'événementiel et la communication, en agence : comités de pilotage, équipes à encadrer, délais à tenir. En parallèle, elle apprend à coder seule. NOD réunit les trois : le sens de l'orchestration, le goût de l'image, la main qui construit.",
+              'Before NOD, events and communication, in agencies: steering committees, teams to lead, deadlines to hold. Alongside, she taught herself to code. NOD brings the three together: a sense of orchestration, an eye for image, the hand that builds.',
             )}
           </p>
           <p>

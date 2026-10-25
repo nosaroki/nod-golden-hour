@@ -4611,3 +4611,5 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
 @media (min-width: 900px) {
   .page-head__title--une-ligne { font-size: clamp(2.2rem, 3.9vw, 3.6rem); white-space: nowrap; }
 }
+.home-manifesto__lead { font-size: clamp(1.6rem, 3vw, 2.5rem); }
+@media (min-width: 900px) { .faq__title { font-size: clamp(1.7rem, 2.6vw, 2.3rem); white-space: nowrap; } }
