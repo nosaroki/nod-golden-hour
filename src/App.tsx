@@ -12,12 +12,6 @@ import Maison from "./site/Maison";
 import Travail from "./site/Travail";
 import Contact from "./site/Contact";
 
-/* L'ancienne version, gardée le temps de la comparaison, sous /v1. */
-import HomeV1 from "./pages/Home";
-import PrincipeV1 from "./pages/Principe";
-import TravailV1 from "./pages/Work";
-import ContactV1 from "./pages/Contact";
-
 import MentionsLegales from "./pages/MentionsLegales";
 import Confidentialite from "./pages/Confidentialite";
 import ComingSoon from "./pages/ComingSoon";
@@ -40,10 +34,6 @@ const App = () => (
             <Route path="/travail" element={<Travail />} />
             <Route path="/contact" element={<Contact />} />
 
-            <Route path="/v1" element={<HomeV1 />} />
-            <Route path="/v1/principe" element={<PrincipeV1 />} />
-            <Route path="/v1/travail" element={<TravailV1 />} />
-            <Route path="/v1/contact" element={<ContactV1 />} />
 
             <Route path="/mentions-legales" element={<MentionsLegales />} />
             <Route path="/confidentialite" element={<Confidentialite />} />

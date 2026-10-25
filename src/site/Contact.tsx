@@ -144,7 +144,8 @@ export default function Contact() {
           <div className="page-head__body contact-head__depart">
             <Eyebrow tone="light">{t('Entrer en contact', 'Get in touch')}</Eyebrow>
             <h1 className="page-head__title">
-              {t('Un projet en tête ? Écris-moi.', 'A project in mind? Write to me.')}
+              <span className="titre-bloc">{t('Un projet en tête ?', 'A project in mind?')}</span>{' '}
+              <span className="titre-bloc">{t('Écris-moi.', 'Write to me.')}</span>
             </h1>
             <p className="page-head__lede">
               {t(
