@@ -18,13 +18,13 @@ const INTENTIONS = [
   },
   {
     n: '02', fr: 'Repositionner', en: 'Reposition',
-    frTexte: "Ta marque existe déjà mais elle ne dit plus ce que tu es devenu. NOD revoit sa stratégie, son image, sa position, pour qu'elle te ressemble à nouveau.",
-    enTexte: 'Your brand exists but no longer says what you have become. NOD revisits its strategy, image and position.',
+    frTexte: "Ta marque existe déjà mais elle ne dit plus ce que tu es devenu.\nNOD revoit sa stratégie, son image, sa position, pour qu'elle te ressemble à nouveau.",
+    enTexte: 'Your brand exists but no longer says what you have become.\nNOD revisits its strategy, image and position.',
   },
   {
     n: '03', fr: 'Incarner', en: 'Embody',
-    frTexte: "Tu veux exister publiquement et que ton image te ressemble. NOD lui donne une forme, que ton nom soit déjà une marque ou qu'il commence tout juste à compter.",
-    enTexte: 'You want to exist publicly, with an image that looks like you. NOD gives it a form.',
+    frTexte: "Tu veux exister publiquement et que ton image te ressemble.\nNOD lui donne une forme, que ton nom soit déjà une marque ou qu'il commence tout juste à compter.",
+    enTexte: 'You want to exist publicly, with an image that looks like you.\nNOD gives it a form.',
   },
 ];
 
@@ -72,19 +72,19 @@ export default function Accueil() {
             <br />
             {t(
               'Rien ne se perd en route, parce que personne ne se passe le relais.',
-              'Nothing is lost on the way, because nobody hands over.',
+              'Nothing gets lost along the way: there are no handoffs.',
             )}
           </p>
           <p className="home-manifesto__text">
-            {t('Un seul interlocuteur, du début à la fin.', 'One single contact, from start to finish.')}
+            {t('Un seul interlocuteur, du début à la fin.', 'One point of contact, from start to finish.')}
             <br />
             {t(
               'Ton projet avance sans que tu aies à coordonner cinq prestataires.',
-              'Your project moves without you coordinating five suppliers.',
+              'Your project moves forward without you juggling five different providers.',
             )}
           </p>
           <p className="home-manifesto__text">
-            <Link to="/la-maison" className="nod-link-light">{t('Entrer dans la maison', 'Enter the house')} &rarr;</Link>
+            <Link to="/la-maison" className="nod-link-light">{t('Entrer dans la maison', 'Discover the house')} &rarr;</Link>
           </p>
         </div>
       </section>
@@ -114,7 +114,7 @@ export default function Accueil() {
               >
                 <span className="home-summary__row">
                   <span className="home-summary__title">{t(item.fr, item.en)}</span>
-                  <span className="home-summary__text">{t(item.frTexte, item.enTexte)}</span>
+                  <span className="home-summary__text home-summary__text--lignes">{t(item.frTexte, item.enTexte)}</span>
                 </span>
                 <span className="home-summary__rule" aria-hidden="true" />
               </li>
@@ -128,7 +128,7 @@ export default function Accueil() {
         <div className="home-work__head">
           <h2 className="home-work__title">{t('Le travail', 'The work')}</h2>
           <span className="home-work__note">
-            {t('Des projets menés du brief au lancement.', 'Projects carried from brief to launch.')}
+            {t('Quelques projets que NOD a fait exister.', 'A few of the projects NOD has brought to life.')}
           </span>
         </div>
 
@@ -147,7 +147,7 @@ export default function Accueil() {
             <p className="home-cta__text">
               {t(
                 "Pas besoin d'un projet déjà ficelé. Une idée suffit pour lancer la conversation.",
-                'No need for a finished project. An idea is enough to start the conversation.',
+                "Your project doesn't have to be fully formed. An idea is all it takes to start talking.",
               )}
             </p>
             <Link to="/contact" className="nod-btn nod-btn--night nod-btn--lg">

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 type Language = 'fr' | 'en';
 
@@ -178,7 +178,31 @@ const translations: Record<Language, Record<string, string>> = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [language, setLanguage] = useState<Language>('fr');
+  /* La langue choisie reste en mémoire d'une visite à l'autre. Sans choix
+     enregistré, on suit la langue du navigateur : français si elle l'est,
+     anglais sinon. */
+  const [language, setLanguageState] = useState<Language>(() => {
+    try {
+      const enregistree = window.localStorage.getItem('nod-langue');
+      if (enregistree === 'fr' || enregistree === 'en') return enregistree;
+    } catch {
+      /* stockage indisponible : on retombe sur le navigateur */
+    }
+    return typeof navigator !== 'undefined' && !navigator.language.toLowerCase().startsWith('fr') ? 'en' : 'fr';
+  });
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    try {
+      window.localStorage.setItem('nod-langue', lang);
+    } catch {
+      /* stockage indisponible : le choix vaut pour la visite en cours */
+    }
+  };
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   const t = (key: string): string => {
     return translations[language][key] || key;

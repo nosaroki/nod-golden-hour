@@ -54,12 +54,12 @@ export default function Maison() {
         <div className="page-head__veil" />
         <div className="page-head__foot" />
         <div className="page-head__body">
-          <Eyebrow tone="light">{t('La maison', 'The house')}</Eyebrow>
-          <h1 className="page-head__title">
+          <Eyebrow tone="light">{t('Fondée en 2025 par Nnéna', 'Founded in 2025 by Nnéna')}</Eyebrow>
+          <h1 className="page-head__title page-head__title--une-ligne">
             {t('Une maison pour faire exister les projets.', 'A house that brings projects to life.')}
           </h1>
           <p className="page-head__lede">
-            {t('Une seule personne pour porter ton projet de bout en bout.', 'One person to carry your project from end to end.')}
+            {t('Une seule personne pour porter ton projet de bout en bout.', 'One person who sees your project through, from first idea to launch.')}
           </p>
         </div>
       </section>
@@ -102,7 +102,7 @@ export default function Maison() {
           <p className="home-manifesto__text">
             {t(
               "Une seule personne prend ton idée là où elle n'est encore qu'une pensée. Elle la mène jusqu'au jour où elle existe pour de vrai.",
-              'One person takes your idea while it is still only a thought, and carries it to the day it exists for real.',
+              'One person takes your idea while it is still only a thought and carries it to the day it exists for real.',
             )}
           </p>
         </div>
@@ -132,7 +132,7 @@ export default function Maison() {
           <p className="house-founder__text">
             {t(
               "Avant NOD, l'événementiel et la communication, en agence : comités de pilotage, équipes à encadrer, délais à tenir. En parallèle, elle apprend à coder seule. NOD réunit les trois : le sens de l'orchestration, le goût de l'image, la main qui construit.",
-              'Before NOD, events and communication, in agencies: steering committees, teams to lead, deadlines to hold. Alongside, she taught herself to code. NOD brings the three together: a sense of orchestration, an eye for image, the hand that builds.',
+              'Before NOD, Nnéna worked in events and communication agencies: steering committees, teams to manage, deadlines to meet. On the side, she taught herself to code. NOD brings the three together: a sense of orchestration, an eye for image, the hand that builds.',
             )}
           </p>
           <p>

@@ -27,11 +27,11 @@ const FAQ_FR = [
   },
   {
     q: 'Combien ça coûte ?',
-    a: "Chaque projet a son devis, construit sur ce qu'il demande vraiment. Écris-moi deux lignes sur ton projet : je te réponds avec une fourchette.",
+    a: "Chaque projet a son devis, construit sur ce qu'il demande vraiment.\nÉcris-moi deux lignes sur ton projet : je te réponds avec une fourchette.",
   },
   {
     q: 'Combien de temps ça prend ?',
-    a: "Trois semaines pour une direction de marque, six pour une identité complète, huit pour un site. Un accompagnement de lancement complet se compte en mois.",
+    a: "Une à quatre semaines pour un cadrage stratégique. Huit à dix semaines pour un lancement au format court, trois à six mois pour un accompagnement complet. Le calendrier exact est fixé dans le devis.",
   },
   {
     q: "Je n'ai ni nom, ni logo, ni site. C'est trop tôt ?",
@@ -41,19 +41,14 @@ const FAQ_FR = [
     q: "Tu utilises l'IA ?",
     a: "Oui, comme un outil parmi d'autres : pour prototyper, produire des visuels ou automatiser ce qui peut l'être. Jamais à la place de la direction créative, qui reste humaine du début à la fin.",
   },
-  {
-    q: 'Comment ça commence ?',
-    a: "Tu remplis le formulaire. Je reviens vers toi dans les meilleurs délais avec mes questions. On échange, je t'envoie un devis. À la signature et au premier acompte, le projet démarre.",
-  },
 ];
 
 const FAQ_EN = [
   { q: 'Do you work alone?', a: 'Yes. One single contact from beginning to end. When a project needs a skill I do not have, I call on trusted creatives, but you always have one contact.' },
-  { q: 'What does it cost?', a: 'Every project gets its own quote, built on what it really needs. Write two lines about your project: I will answer with a range.' },
-  { q: 'How long does it take?', a: 'Three weeks for brand direction, six for a full identity, eight for a site. A full launch runs over months.' },
-  { q: 'I have no name, no logo, no site. Is it too early?', a: 'No, it is the best moment. Setting the direction first avoids building on a base you will have to undo.' },
+  { q: 'What does it cost?', a: "Every project gets its own quote, built around what it actually needs.\nTell me what you have in mind and I'll come back to you with a precise, detailed answer." },
+  { q: 'How long does it take?', a: 'One to four weeks for a strategic framing. Eight to ten weeks for a short-format launch, three to six months for full support. The exact timeline is set in the quote.' },
+  { q: 'I have no name, no logo, no site. Is it too early?', a: 'Actually, no. It might even be the best moment to start. Setting the direction first avoids building on a base you will have to undo.' },
   { q: 'Do you use AI?', a: 'Yes, as one tool among others: to prototype, produce visuals or automate what can be. Never in place of creative direction, which stays human from start to finish.' },
-  { q: 'How does it start?', a: 'Fill in the form. I come back to you as soon as possible with questions. We talk, I send a quote. Once signed, the project starts.' },
 ];
 
 export default function Contact() {
@@ -142,15 +137,15 @@ export default function Contact() {
 
         {etape !== 'recu' ? (
           <div className="page-head__body contact-head__depart">
-            <Eyebrow tone="light">{t('Entrer en contact', 'Get in touch')}</Eyebrow>
+            <Eyebrow tone="light">{t('Premier échange', 'Get in touch')}</Eyebrow>
             <h1 className="page-head__title">
               <span className="titre-bloc">{t('Un projet en tête ?', 'A project in mind?')}</span>{' '}
-              <span className="titre-bloc">{t('Écris-moi.', 'Write to me.')}</span>
+              <span className="titre-bloc">{t('Écris-moi.', "Let's talk.")}</span>
             </h1>
             <p className="page-head__lede">
               {t(
                 "Pas besoin d'un projet déjà ficelé. Une idée suffit pour lancer la conversation.",
-                'No need for a finished project. An idea is enough to start the conversation.',
+                "Your project doesn't have to be fully formed. An idea is all it takes to start talking.",
               )}
             </p>
           </div>
@@ -193,7 +188,7 @@ export default function Contact() {
             <Input
               label={t('Email *', 'Email *')}
               type="email"
-              placeholder="ton@email.com"
+              placeholder={t('ton@email.com', 'you@email.com')}
               value={form.email}
               error={errors.email}
               onChange={(e) => maj('email', e.target.value)}
@@ -236,7 +231,7 @@ export default function Contact() {
             {/* À RETIRER AU LANCEMENT si la brochure n'est pas prête : la case
                 n'envoie encore rien. */}
             <Checkbox
-              label={t('Je veux aussi recevoir la brochure NOD par mail.', 'Also send me the NOD brochure by email.')}
+              label={t('Je veux aussi recevoir la brochure NOD par mail.', "I'd also like to receive the NOD brochure by email.")}
               checked={form.brochure}
               onChange={(e) => maj('brochure', e.target.checked)}
             />

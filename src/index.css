@@ -4640,3 +4640,9 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
 a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .nod-checkbox__input:focus-visible + .nod-checkbox__box {
   outline: 2px solid var(--red); outline-offset: 3px;
 }
+
+/* Retours de relecture : retours à la ligne voulus dans les textes. */
+.home-summary__text--lignes, .faq__a { white-space: pre-line; }
+
+/* Tags : le métier d'abord (stratégie, développement web...), puis ce qui a été livré. */
+.index-travail__tags li.is-metier { border-color: var(--red); color: var(--red); font-weight: 500; }

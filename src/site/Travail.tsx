@@ -42,7 +42,7 @@ export default function Travail() {
         <div className="page-head__veil" />
         <div className="page-head__foot" />
         <div className="page-head__body">
-          <Eyebrow tone="light">{t('Le travail', 'The work')}</Eyebrow>
+          <Eyebrow tone="light">{t('Stratégie, identité, développement web, contenu, édition', 'Strategy, identity, web development, content, publishing')}</Eyebrow>
           <h1 className="page-head__title page-head__title--une-ligne">
             {t('Des projets menés du brief au lancement.', 'Projects carried from brief to launch.')}
           </h1>
@@ -144,7 +144,7 @@ export default function Travail() {
           <p className="travail__cta-text">
             {t(
               "Pas besoin d'un projet déjà ficelé. Une idée suffit pour lancer la conversation.",
-              'No need for a finished project. An idea is enough to start the conversation.',
+              "Your project doesn't have to be fully formed. An idea is all it takes to start talking.",
             )}
           </p>
           <Link to="/contact" className="nod-btn nod-btn--night nod-btn--lg">
@@ -177,6 +177,7 @@ function FicheProjet({ projet, t }: { projet: Projet; t: (fr: string, en: string
         </div>
       </dl>
       <ul className="index-travail__tags">
+        {projet.metiers.map((m) => <li key={m} className="is-metier">{m}</li>)}
         {projet.tags.map((tag) => <li key={tag}>{tag}</li>)}
       </ul>
       {projet.lien ? (

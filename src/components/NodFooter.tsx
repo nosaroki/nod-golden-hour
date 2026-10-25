@@ -1,14 +1,17 @@
 import { Link } from "react-router-dom";
 import { FaInstagram, FaLinkedin } from "react-icons/fa";
-import logoLight from "@/assets/logo-light.svg";
+import logoNod from "@/assets/logo.svg";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 // Pied de page partagé. Une seule signature (le slogan animé) — plus de logo
 // redondant ni de navigation. `dark` : variante navy (page Le principe).
 export default function NodFooter({ dark = false }: { dark?: boolean }) {
+  const { language } = useLanguage();
+  const t = (fr: string, en: string) => (language === "fr" ? fr : en);
   return (
     <footer className={"site-footer" + (dark ? " site-footer--dark" : "")}>
       <p className="site-footer__slogan">
-        <img className="site-footer__slogan-logo" src={logoLight} alt="NOD" />
+        <img className="site-footer__slogan-logo" src={logoNod} alt="NOD" />
         <span className="slogan-grad">say <b>yes</b> to new projects</span>
       </p>
       <div className="site-footer__accent" />
@@ -30,8 +33,8 @@ export default function NodFooter({ dark = false }: { dark?: boolean }) {
       <div className="site-footer__base">
         <span className="site-footer__copy">© 2026 NOD · Golden hour</span>
         <div className="site-footer__legal">
-          <Link to="/mentions-legales">Mentions légales</Link>
-          <Link to="/confidentialite">Confidentialité</Link>
+          <Link to="/mentions-legales">{t("Mentions légales", "Legal notice")}</Link>
+          <Link to="/confidentialite">{t("Confidentialité", "Privacy")}</Link>
         </div>
       </div>
     </footer>
