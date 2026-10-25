@@ -1,0 +1,8 @@
+# Fichiers construits par Vite : leur nom change à chaque version,
+# ils peuvent rester en cache un an.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Brochures : mises à jour de temps en temps, cache d'une journée.
+/brochure/*
+  Cache-Control: public, max-age=86400
