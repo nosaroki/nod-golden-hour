@@ -45,7 +45,7 @@ export default function Confidentialite() {
             <h2>Sous-traitants</h2>
             <p>
               Les données sont stockées par Supabase. Les emails sont envoyés via Resend. Le site
-              est hébergé par Gandi. Aucune donnée n'est vendue ni cédée à des tiers.
+              est hébergé par Cloudflare. Aucune donnée n'est vendue ni cédée à des tiers.
             </p>
           </section>
 

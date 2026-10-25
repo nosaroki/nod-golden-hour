@@ -2,7 +2,7 @@ import NodNav from '@/components/NodNav';
 import NodFooter from '@/components/NodFooter';
 import { Eyebrow } from '@/components/nod';
 
-/* Mentions légales. L'hébergeur est à mettre à jour au changement d'hébergement. */
+/* Mentions légales. Hébergeur : Cloudflare depuis la mise en ligne de la refonte. */
 
 export default function MentionsLegales() {
   return (
@@ -30,10 +30,10 @@ export default function MentionsLegales() {
           <section>
             <h2>Hébergeur</h2>
             <p>
-              Gandi SAS, société par actions simplifiée au capital de 630 000 €.<br />
-              63-65 boulevard Masséna, 75013 Paris, France.<br />
-              RCS Paris 423 093 459.<br />
-              <a href="https://www.gandi.net" target="_blank" rel="noopener noreferrer">gandi.net</a>
+              Cloudflare, Inc.<br />
+              101 Townsend Street, San Francisco, CA 94107, États-Unis.<br />
+              +1 650 319 8930<br />
+              <a href="https://www.cloudflare.com" target="_blank" rel="noopener noreferrer">cloudflare.com</a>
             </p>
           </section>
 
