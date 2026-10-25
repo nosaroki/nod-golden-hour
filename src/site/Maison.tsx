@@ -30,13 +30,13 @@ export default function Maison() {
     },
     {
       fr: 'La direction', en: 'The direction',
-      frV: 'Stratégie, positionnement, univers visuel. Le cap est posé avant la moindre production.',
-      enV: 'Strategy, positioning, visual world. The course is set before anything is produced.',
+      frV: 'Stratégie, positionnement, univers visuel.\nLe cap est posé avant la moindre production.',
+      enV: 'Strategy, positioning, visual world.\nThe course is set before anything is produced.',
     },
     {
       fr: 'La production', en: 'The making',
-      frV: "Identité, contenus, site. Tout est fabriqué d'une même main, avec le cercle quand le projet le demande.",
-      enV: 'Identity, content, website. Everything made by one hand, with the circle when the project needs it.',
+      frV: "Identité, contenus, site : tout est fabriqué d'une même main.",
+      enV: 'Identity, content, website: everything made by one hand.',
     },
     {
       fr: 'Le lancement', en: 'The launch',
@@ -61,7 +61,7 @@ export default function Maison() {
             {t("C'est une maison.", "It's a house.")}
           </h1>
           <p className="page-head__lede">
-            {t('Un interlocuteur. Un cercle choisi derrière lui.', 'One contact. A chosen circle behind them.')}
+            {t('Une seule personne pour porter ton projet de bout en bout.', 'One person to carry your project from end to end.')}
           </p>
         </div>
       </section>
@@ -133,18 +133,9 @@ export default function Maison() {
           <h2 className="house-founder__title">{t('Nnéna a fondé NOD en 2025.', 'Nnéna founded NOD in 2025.')}</h2>
           <p className="house-founder__text">
             {t(
-              "Elle vient de l'événementiel et de la communication, code en autodidacte depuis 2022. NOD est né à la croisée des trois : le sens de l'orchestration, le goût de l'image, la main qui construit.",
-              'She comes from events and communication, and has been coding self-taught since 2022. NOD was born at the crossroads of the three.',
+              "Nnéna a fondé NOD en 2025. Avant ça, l'événementiel et la communication, en agence : comités de pilotage, équipes à encadrer, délais à tenir. En parallèle, elle apprend à coder seule. NOD réunit les trois : le sens de l'orchestration, le goût de l'image, la main qui construit.",
+              'Nnéna founded NOD in 2025. Before that, events and communication, in agencies: steering committees, teams to lead, deadlines to hold. Alongside, she taught herself to code. NOD brings the three together: a sense of orchestration, an eye for image, the hand that builds.',
             )}
-          </p>
-          <p className="house-founder__text">
-            {t(
-              "En agence, elle a mené des comités de pilotage, encadré des équipes, tenu les délais et analysé les retombées sur les réseaux.",
-              'In agencies, she ran steering committees, led teams, held deadlines and analysed social media results.',
-            )}
-          </p>
-          <p className="house-founder__text">
-            {t('Soin du détail, cohérence, exigence esthétique.', 'Care for detail, coherence, aesthetic exigence.')}
           </p>
           <p>
             <Link to="/contact" className="nod-btn nod-btn--secondary">

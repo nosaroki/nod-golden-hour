@@ -23,7 +23,7 @@ interface Formulaire {
 const FAQ_FR = [
   {
     q: 'Tu travailles seule ?',
-    a: "Oui. C'est le principe : une seule interlocutrice du début à la fin. Quand un projet demande une compétence que je n'ai pas, je fais appel à un cercle de créatifs choisis, mais tu n'as jamais qu'un seul contact.",
+    a: "Oui. C'est le principe : une seule interlocutrice du début à la fin. Quand un projet demande une compétence que je n'ai pas, je fais appel à des créatifs de confiance, mais tu n'as jamais qu'un seul contact.",
   },
   {
     q: 'Combien ça coûte ?',
@@ -48,7 +48,7 @@ const FAQ_FR = [
 ];
 
 const FAQ_EN = [
-  { q: 'Do you work alone?', a: 'Yes. One single contact from beginning to end. When a project needs a skill I do not have, I call on a chosen circle of creatives, but you always have one contact.' },
+  { q: 'Do you work alone?', a: 'Yes. One single contact from beginning to end. When a project needs a skill I do not have, I call on trusted creatives, but you always have one contact.' },
   { q: 'What does it cost?', a: 'Every project gets its own quote, built on what it really needs. Write two lines about your project: I will answer with a range.' },
   { q: 'How long does it take?', a: 'Three weeks for brand direction, six for a full identity, eight for a site. A full launch runs over months.' },
   { q: 'I have no name, no logo, no site. Is it too early?', a: 'No, it is the best moment. Setting the direction first avoids building on a base you will have to undo.' },
@@ -144,9 +144,7 @@ export default function Contact() {
           <div className="page-head__body contact-head__depart">
             <Eyebrow tone="light">{t('Entrer en contact', 'Get in touch')}</Eyebrow>
             <h1 className="page-head__title">
-              {t('Un projet en tête ?', 'A project in mind?')}
-              <br />
-              {t('Écris-moi.', 'Write to me.')}
+              {t('Un projet en tête ? Écris-moi.', 'A project in mind? Write to me.')}
             </h1>
             <p className="page-head__lede">
               {t(

@@ -68,15 +68,21 @@ export default function Accueil() {
         <div className="home-manifesto__body">
           <Eyebrow tone="light">{t('La maison', 'The house')}</Eyebrow>
           <p className="home-manifesto__lead">
+            {t('Une seule main, du brief au lancement.', 'One single hand, from brief to launch.')}
+            <br />
             {t(
-              "Une seule main, du brief au lancement. Rien ne se perd en route, parce que personne ne se passe le relais.",
-              'One single hand, from brief to launch. Nothing is lost on the way, because nobody hands over.',
+              'Rien ne se perd en route, parce que personne ne se passe le relais.',
+              'Nothing is lost on the way, because nobody hands over.',
             )}
           </p>
           <p className="home-manifesto__text">
+            {t("Ce n'est pas une agence. C'est une maison.", 'It is not an agency. It is a house.')}
+            <br />
+            {t('Un seul interlocuteur, du début à la fin.', 'One single contact, from start to finish.')}
+            <br />
             {t(
-              "Ce n'est pas une agence. C'est une maison. Un interlocuteur, un cercle choisi derrière lui. Ton projet avance sans que tu aies à coordonner cinq prestataires.",
-              "It is not an agency. It is a house. One contact, a chosen circle behind them. Your project moves without you coordinating five suppliers.",
+              'Ton projet avance sans que tu aies à coordonner cinq prestataires.',
+              'Your project moves without you coordinating five suppliers.',
             )}
           </p>
           <p className="home-manifesto__text">
@@ -94,9 +100,11 @@ export default function Accueil() {
           </div>
 
           <p className="home-summary__intro">
+            {t('Trois points de départ, une seule méthode.', 'Three starting points, one method.')}
+            <br />
             {t(
-              'Trois points de départ, une seule méthode. Stratégie, identité, contenu, développement, tenus ensemble du brief au lancement.',
-              'Three starting points, one method. Strategy, identity, content, development, held together from brief to launch.',
+              'Stratégie, identité, contenu, développement, tenus ensemble du brief au lancement.',
+              'Strategy, identity, content, development, held together from brief to launch.',
             )}
           </p>
 

@@ -43,10 +43,8 @@ export default function Travail() {
         <div className="page-head__foot" />
         <div className="page-head__body">
           <Eyebrow tone="light">{t('Le travail', 'The work')}</Eyebrow>
-          <h1 className="page-head__title">
-            {t('Des projets menés', 'Projects carried')}
-            <br />
-            {t('du brief au lancement.', 'from brief to launch.')}
+          <h1 className="page-head__title page-head__title--une-ligne">
+            {t('Des projets menés du brief au lancement.', 'Projects carried from brief to launch.')}
           </h1>
           <p className="page-head__lede">
             {t(

@@ -4602,3 +4602,12 @@ p, li, dd, .home-summary__text, .index-travail__texte, .faq__a {
 .contact__actions { flex-direction: column; align-items: center; text-align: center; gap: var(--space-3); }
 .contact__rgpd { max-width: none; }
 .contact__form > .nod-checkbox { justify-self: center; }
+
+/* Retours à la ligne : un titre court tient sur une ligne, les chapôs aussi. */
+.page-head__lede { max-width: 92ch; }
+.faq__title { max-width: none; }
+.home-summary__intro { max-width: 46ch; }
+.house-method__value { white-space: pre-line; }
+@media (min-width: 900px) {
+  .page-head__title--une-ligne { font-size: clamp(2.2rem, 3.9vw, 3.6rem); white-space: nowrap; }
+}
