@@ -86,8 +86,8 @@ export const projets: Projet[] = [
     texte: "NOD a pris la direction des opérations : stratégie digitale, organisation du lancement, création des maquettes web. Jusqu'aux coulisses : briefs créatifs, nom de domaine, adresses mail.",
     role: 'Direction des opérations et stratégie digitale',
     metiers: ['Stratégie', 'Opérations'],
-    tags: ['Maquettes', 'Shopify', 'Lancement'],
-    en: {"sousTitre": "Matcha beauty house", "kicker": "Brand launch", "besoin": "Launching a beauty house built around matcha as its key ingredient.", "texte": "NOD led operations: digital strategy, launch planning, web mock-ups. Down to the groundwork: creative briefs, domain name, email addresses.", "role": "Operations lead and digital strategy", "metiers": ["Strategy", "Operations"], "tags": ["Mockups", "Shopify", "Launch"]},
+    tags: ['Maquettes', 'Lancement'],
+    en: {"sousTitre": "Matcha beauty house", "kicker": "Brand launch", "besoin": "Launching a beauty house built around matcha as its key ingredient.", "texte": "NOD led operations: digital strategy, launch planning, web mock-ups. Down to the groundwork: creative briefs, domain name, email addresses.", "role": "Operations lead and digital strategy", "metiers": ["Strategy", "Operations"], "tags": ["Mockups", "Launch"]},
     lien: 'https://unmatchedbeautyglobal.com', lienLabel: VOIR_SITE,
   },
   {
