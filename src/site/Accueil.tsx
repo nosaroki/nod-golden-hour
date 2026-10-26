@@ -5,7 +5,8 @@ import NodFooter from '@/components/NodFooter';
 import { Eyebrow, Icon, url, vars } from '@/components/nod';
 import { useLanguage } from '@/contexts/LanguageContext';
 import ProjetsCartes from './ProjetsCartes';
-import silhouette from '@/assets/brand/golden-hour-silhouette.webp';
+/* Image d'en-tête servie depuis public/img : index.html la précharge avant le reste. */
+const silhouette = '/img/golden-hour-silhouette.webp';
 import orangePressee from '@/assets/brand/orange-pressee.webp';
 
 /* Accueil. La forme vient du design system, le texte vient du site NOD. */

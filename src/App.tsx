@@ -1,32 +1,25 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { LanguageProvider } from "@/contexts/LanguageContext";
 import ScrollManager from "@/components/ScrollManager";
 
-/* Le site : pages construites sur le design system NOD. */
+/* Le site : pages construites sur le design system NOD.
+   L'accueil est chargé tout de suite, les autres pages à la demande :
+   le premier affichage télécharge moins de code. */
 import Accueil from "./site/Accueil";
-import Maison from "./site/Maison";
-import Travail from "./site/Travail";
-import Contact from "./site/Contact";
-
-import MentionsLegales from "./pages/MentionsLegales";
-import Confidentialite from "./pages/Confidentialite";
-import ComingSoon from "./pages/ComingSoon";
-import NotFound from "./pages/NotFound";
-
-const queryClient = new QueryClient();
+const Maison = lazy(() => import("./site/Maison"));
+const Travail = lazy(() => import("./site/Travail"));
+const Contact = lazy(() => import("./site/Contact"));
+const MentionsLegales = lazy(() => import("./pages/MentionsLegales"));
+const Confidentialite = lazy(() => import("./pages/Confidentialite"));
+const ComingSoon = lazy(() => import("./pages/ComingSoon"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <LanguageProvider>
-      <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <ScrollManager />
+  <LanguageProvider>
+    <BrowserRouter>
+      <ScrollManager />
+      <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Accueil />} />
             <Route path="/la-maison" element={<Maison />} />
@@ -41,10 +34,9 @@ const App = () => (
             <Route path="/coming-soon" element={<ComingSoon />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
-    </LanguageProvider>
-  </QueryClientProvider>
+      </Suspense>
+    </BrowserRouter>
+  </LanguageProvider>
 );
 
 export default App;

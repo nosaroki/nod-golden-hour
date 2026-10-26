@@ -4,7 +4,8 @@ import NodNav from '@/components/NodNav';
 import NodFooter from '@/components/NodFooter';
 import { Checkbox, Eyebrow, Icon, Input, url, vars } from '@/components/nod';
 import { useLanguage } from '@/contexts/LanguageContext';
-import gradientFold from '@/assets/brand/gradient-fold-yellow.webp';
+/* Image d'en-tête servie depuis public/img : index.html la précharge avant le reste. */
+const gradientFold = '/img/gradient-fold-yellow.webp';
 
 /* Contact. Forme du design system, branchement inchangé : la fonction Supabase
    contact-form stocke la demande puis envoie le mail via Resend. */

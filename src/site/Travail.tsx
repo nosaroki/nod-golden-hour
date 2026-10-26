@@ -5,7 +5,8 @@ import NodFooter from '@/components/NodFooter';
 import { Eyebrow, Icon, MediaFrame, Tag, url, vars } from '@/components/nod';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { enLangue, familles, projets as projetsFr, type Projet } from './projets';
-import inkOrange from '@/assets/brand/texture-ink-orange.webp';
+/* Image d'en-tête servie depuis public/img : index.html la précharge avant le reste. */
+const inkOrange = '/img/texture-ink-orange.webp';
 
 /* Le travail. Index éditorial : la liste numérotée porte la page. Le clic
    ouvre le projet : image et fiche à droite, ou sous le nom sur mobile.

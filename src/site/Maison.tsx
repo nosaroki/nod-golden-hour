@@ -3,7 +3,8 @@ import NodNav from '@/components/NodNav';
 import NodFooter from '@/components/NodFooter';
 import { Eyebrow, Icon, url, vars } from '@/components/nod';
 import { useLanguage } from '@/contexts/LanguageContext';
-import lightFold from '@/assets/brand/light-fold-warm.webp';
+/* Image d'en-tête servie depuis public/img : index.html la précharge avant le reste. */
+const lightFold = '/img/light-fold-warm.webp';
 import orangePressee from '@/assets/brand/orange-pressee.webp';
 // import atelier from '@/assets/hero.webp'; (utilisé par l'encart golden hour, en commentaire plus bas)
 import nnenaImg from '@/assets/nnena-portrait.webp';
