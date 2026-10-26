@@ -5,7 +5,7 @@ import { Eyebrow, Icon, url, vars } from '@/components/nod';
 import { useLanguage } from '@/contexts/LanguageContext';
 import lightFold from '@/assets/brand/light-fold-warm.webp';
 import orangePressee from '@/assets/brand/orange-pressee.webp';
-import atelier from '@/assets/hero.webp';
+// import atelier from '@/assets/hero.webp'; (utilisé par l'encart golden hour, en commentaire plus bas)
 import nnenaImg from '@/assets/nnena-portrait.webp';
 
 /* La maison. Le manifeste du site NOD (le doute, le manque d'accompagnement)
@@ -144,7 +144,8 @@ export default function Maison() {
         <div className="house-founder__image" />
       </section>
 
-      {/* ---------- L'heure dorée, puis l'invitation ---------- */}
+      {/* Encart golden hour retiré pour l'instant. Gardé ici au cas où on veut le réutiliser.
+      
       <section
         className="nod-quote-panel nod-quote-panel--start principe-quote"
         style={vars({ '--nod-quote-image': url(atelier) })}
@@ -164,6 +165,7 @@ export default function Maison() {
           </Link>
         </div>
       </section>
+      */}
 
       <NodFooter />
     </>
