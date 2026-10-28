@@ -17,6 +17,26 @@ export default function Maison() {
   const { language } = useLanguage();
   const t = (fr: string, en: string) => (language === 'fr' ? fr : en);
 
+
+  /* Comment NOD intervient : trois domaines, chacun avec ce qui est réellement fait. */
+  const domaines = [
+    {
+      fr: 'Marque et concept', en: 'Brand and concept',
+      frL: ['Positionnement et plateforme de marque', 'Direction artistique et identité visuelle', 'Concepts de campagnes et de contenus', 'Messages, récit et ton de marque', 'Traduction de la stratégie en idées concrètes'],
+      enL: ['Positioning and brand platform', 'Art direction and visual identity', 'Campaign and content concepts', 'Messaging, narrative and tone of voice', 'Turning strategy into concrete ideas'],
+    },
+    {
+      fr: 'Contenu et création', en: 'Content and creation',
+      frL: ['Formats et lignes éditoriales', 'Rédaction web, réseaux et campagnes', 'Direction visuelle et direction de contenu', 'Sites, de la maquette au développement'],
+      enL: ['Formats and editorial lines', 'Copywriting for web, social and campaigns', 'Visual and content direction', 'Websites, from mockup to development'],
+    },
+    {
+      fr: 'Production et coordination', en: 'Production and coordination',
+      frL: ['Captation et montage de contenus', 'Planification et publication sur les réseaux', 'Pilotage de projet : planning, livrables, parties prenantes', 'Lien entre équipes, agences et partenaires créatifs'],
+      enL: ['Filming and editing content', 'Social media planning and publishing', 'Project management: timelines, deliverables, stakeholders', 'Bridging teams, agencies and creative partners'],
+    },
+  ];
+
   /* Le déroulé d'un projet, dans l'ordre : ici la numérotation a un sens. */
   const deroule = [
     {
@@ -55,12 +75,12 @@ export default function Maison() {
         <div className="page-head__veil" />
         <div className="page-head__foot" />
         <div className="page-head__body">
-          <Eyebrow tone="light">{t('Fondée en 2025', 'Founded in 2025')}</Eyebrow>
+          <Eyebrow tone="light">{t('Une seule main', 'One single hand')}</Eyebrow>
           <h1 className="page-head__title page-head__title--une-ligne">
-            {t('Une maison pour faire exister les projets.', 'A house that brings projects to life.')}
+            {t('Une maison qui fait exister les projets.', 'A house that brings projects to life.')}
           </h1>
           <p className="page-head__lede">
-            {t('Une seule personne pour porter ton projet de bout en bout.', 'One person who sees your project through, from first idea to launch.')}
+            {t("De l'idée floue au projet qui existe vraiment.", 'From a blurry idea to a project that truly exists.')}
           </p>
         </div>
       </section>
@@ -109,16 +129,37 @@ export default function Maison() {
         </div>
       </section>
 
-      {/* ---------- Le déroulé ---------- */}
-      <section className="house-method house-method--creme">
-        <div className="house-method__inner">
-          <Eyebrow>{t('Le déroulé', 'How it goes')}</Eyebrow>
-          <ol className="house-method__rows">
-            {deroule.map((ligne, index) => (
-              <li className="house-method__row" key={ligne.fr}>
-                <span className="house-method__index">{String(index + 1).padStart(2, '0')}</span>
-                <span className="house-method__key">{t(ligne.fr, ligne.en)}</span>
-                <span className="house-method__value">{t(ligne.frV, ligne.enV)}</span>
+      {/* ---------- Comment NOD intervient ---------- */}
+      <section className="mz mz--nuit mz--domaines">
+        <div className="mz__inner">
+          <h2 className="mz__titre">{t('Comment NOD intervient', 'How NOD works')}</h2>
+          <div className="mz-domaines">
+            {domaines.map((domaine, index) => (
+              <div className="mz-domaines__col" key={domaine.fr}>
+                <span className="mz__num">{String(index + 1).padStart(2, '0')}</span>
+                <h3 className="mz-domaines__titre">{t(domaine.fr, domaine.en)}</h3>
+                <ul className="mz-domaines__liste">
+                  {(language === 'fr' ? domaine.frL : domaine.enL).map((point) => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------- Le déroulé : une frise, comme dans la brochure ---------- */}
+      <section className="mz mz--creme mz--frise">
+        <div className="mz__inner">
+          <h2 className="mz__titre">{t('Le déroulé', 'How it goes')}</h2>
+          <ol className="mz-frise">
+            {deroule.map((etape, index) => (
+              <li className="mz-frise__etape" key={etape.fr}>
+                <span className="mz__num">{String(index + 1).padStart(2, '0')}</span>
+                <span className="mz-frise__point" aria-hidden="true" />
+                <h3 className="mz-frise__titre">{t(etape.fr, etape.en)}</h3>
+                <p className="mz-frise__texte">{t(etape.frV, etape.enV)}</p>
               </li>
             ))}
           </ol>
@@ -126,23 +167,35 @@ export default function Maison() {
       </section>
 
       {/* ---------- Qui ---------- */}
-      <section id="qui" className="house-founder" style={vars({ '--nod-house-image': url(nnenaImg) })}>
-        <div className="house-founder__body">
-          <Eyebrow>{t('Qui', 'Who')}</Eyebrow>
-          <h2 className="house-founder__title">{t('Nnéna a fondé NOD en 2025.', 'Nnéna founded NOD in 2025.')}</h2>
-          <p className="house-founder__text">
+      <section id="qui" className="mz-qui mz-qui--orange">
+        <div className="mz-qui__texte">
+          <h2 className="mz__titre">{t('Qui', 'Who')}</h2>
+          <p className="mz-qui__accroche">{t('Enchantée, moi c\'est Nnéna\u00a0!', 'Nice to meet you, I\'m Nnéna!')}</p>
+          <p className="mz-qui__p">
             {t(
-              "Avant NOD, l'événementiel et la communication, en agence : comités de pilotage, équipes à encadrer, délais à tenir. En parallèle, elle apprend à coder seule. NOD réunit les trois : le sens de l'orchestration, le goût de l'image, la main qui construit.",
-              'Before NOD, Nnéna worked in events and communication agencies: steering committees, teams to manage, deadlines to meet. On the side, she taught herself to code. NOD brings the three together: a sense of orchestration, an eye for image, the hand that builds.',
+              "C'est moi derrière NOD. J'ai commencé par la communication digitale : community management, social media management, relations presse, création de contenus. Je me suis ensuite lancée en freelance, puis j'ai travaillé en agence, où j'ai piloté des projets, des équipes et des comités.",
+              "I'm the one behind NOD. I started in digital communication: community management, social media management, press relations, content creation. I then went freelance before working in agencies, where I led projects, teams and steering committees.",
+            )}
+          </p>
+          <p className="mz-qui__p">
+            {t(
+              "En parallèle, j'ai appris à coder, seule d'abord, puis en formation. À force de voir des projets passer de main en main et se perdre en route, j'ai eu envie de les porter du début à la fin.",
+              'Alongside, I learned to code, on my own first, then through training. After seeing projects pass from hand to hand and get lost along the way, I wanted to carry them from start to finish.',
+            )}
+          </p>
+          <p className="mz-qui__p">
+            {t(
+              "C'est comme ça que NOD a vu le jour\u00a0! Aujourd'hui, j'accompagne des projets dans le bien-être, la beauté, la food, le sport, la photographie ou l'édition, de la stratégie jusqu'au lancement.",
+              'That is how NOD came to life! Today, I support projects in wellness, beauty, food, sport, photography and publishing, from strategy all the way to launch.',
             )}
           </p>
           <p>
-            <Link to="/contact" className="nod-btn nod-btn--secondary">
+            <Link to="/contact" className="nod-btn nod-btn--night">
               {t('Entrer en contact', 'Get in touch')} <Icon name="arrow-right" size={18} />
             </Link>
           </p>
         </div>
-        <div className="house-founder__image" />
+        <div className="mz-qui__photo" style={vars({ '--mz-photo': url(nnenaImg) })} role="img" aria-label={t('Portrait de Nnéna', 'Portrait of Nnéna')} />
       </section>
 
       {/* Encart golden hour retiré pour l'instant. Gardé ici au cas où on veut le réutiliser.

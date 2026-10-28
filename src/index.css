@@ -4659,3 +4659,60 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .nod-checkbox__
 
 /* Message d'erreur du formulaire : centré, comme le bouton. */
 .contact__error { display: block; width: 100%; text-align: center; }
+
+/* La maison : Comment NOD intervient, déroulé en frise, Qui. */
+@font-face{font-family:'Spectral';font-style:normal;font-weight:600;font-display:swap;src:url(/fonts/spectral-600-normal.woff2) format('woff2')}
+.mz { padding: clamp(72px, 9vw, 128px) var(--page-pad); }
+.mz__inner { max-width: var(--container-lg); margin-inline: auto; }
+.mz--creme { background: #FFF0E5; color: #112542; }
+.mz--nuit { background: #112542; color: #FFF0E5; }
+.mz__titre { margin: 0 0 clamp(40px, 5vw, 64px); font-family: 'Spectral', serif; font-weight: 300; font-size: clamp(40px, 5vw, 68px); line-height: 1.02; letter-spacing: -0.02em; }
+.mz__num { display: block; font-family: 'Bricolage Grotesque', sans-serif; font-weight: 500; font-size: 13px; letter-spacing: .14em; color: #F55F31; }
+.mz--nuit .mz__num { color: #FFD35F; }
+
+.mz-domaines { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px); }
+.mz-domaines__col { border-top: 2px solid #F55F31; padding-top: 20px; }
+.mz-domaines__titre { margin: 14px 0 20px; font-family: 'Spectral', serif; font-weight: 600; font-size: clamp(22px, 2vw, 28px); line-height: 1.15; color: #112542; }
+.mz-domaines__liste { list-style: none; margin: 0; padding: 0; font-family: 'Spectral', serif; font-size: 18px; line-height: 1.45; color: rgba(17,37,66,.78); }
+.mz-domaines__liste li + li { margin-top: 10px; }
+
+.mz-frise { list-style: none; margin: 0; padding: 0; position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(20px, 2.6vw, 36px); }
+.mz-frise::before { content: ""; position: absolute; left: 0; right: 0; top: 37px; height: 1px; background: rgba(255,240,229,.35); }
+.mz-frise__etape { position: relative; }
+.mz-frise__point { display: block; width: 14px; height: 14px; border-radius: 50%; background: #F55F31; margin: 16px 0 26px; position: relative; }
+.mz-frise__etape:nth-child(2) .mz-frise__point { background: #FF914D; }
+.mz-frise__etape:nth-child(3) .mz-frise__point { background: #FFB25A; }
+.mz-frise__etape:nth-child(n+4) .mz-frise__point { background: #FFD35F; }
+.mz-frise__titre { margin: 0 0 12px; font-family: 'Spectral', serif; font-weight: 600; font-size: clamp(20px, 1.8vw, 24px); line-height: 1.15; color: #FFF0E5; }
+.mz-frise__texte { margin: 0; font-family: 'Spectral', serif; font-size: 16.5px; line-height: 1.5; color: rgba(255,240,229,.78); white-space: normal; }
+
+.mz-qui { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); background: #FFF0E5; color: #112542; }
+.mz-qui__texte { padding: clamp(72px, 9vw, 128px) var(--page-pad) clamp(72px, 9vw, 128px) max(var(--page-pad), calc((100vw - var(--container-lg)) / 2)); display: grid; align-content: center; gap: 18px; }
+.mz-qui .mz__titre { margin-bottom: 8px; }
+.mz-qui__accroche { margin: 0; font-family: 'Spectral', serif; font-weight: 600; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.2; color: #112542; }
+.mz-qui__p { margin: 0; max-width: 560px; font-family: 'Spectral', serif; font-size: 18px; line-height: 1.55; color: rgba(17,37,66,.8); }
+.mz-qui__photo { min-height: 560px; background-image: var(--mz-photo); background-size: cover; background-position: center 60%; }
+
+@media (max-width: 900px) {
+  .mz-domaines { grid-template-columns: 1fr; }
+  .mz-frise { grid-template-columns: 1fr; gap: 0; padding-left: 30px; }
+  .mz-frise::before { left: 6px; right: auto; top: 6px; bottom: 6px; width: 1px; height: auto; }
+  .mz-frise__etape { padding-bottom: 28px; }
+  .mz-frise__point { position: absolute; left: -30px; top: 2px; margin: 0; }
+  .mz-frise__titre { margin-top: 6px; }
+  .mz-qui { grid-template-columns: 1fr; }
+  .mz-qui__photo { order: -1; min-height: 0; aspect-ratio: 4 / 5; }
+  .mz-qui__texte { padding: 56px var(--page-pad) 72px; }
+}
+
+/* Variante validée : intervient en bleu nuit (détails jaunes), déroulé en crème, qui en orange. */
+.mz--domaines .mz-domaines__col { border-top-color: #FFD35F; }
+.mz--domaines .mz-domaines__titre { color: #FFF0E5; }
+.mz--domaines .mz-domaines__liste { color: rgba(255,240,229,.8); }
+.mz--frise .mz-frise::before { background: rgba(17,37,66,.2); }
+.mz--frise .mz-frise__titre { color: #112542; }
+.mz--frise .mz-frise__texte { color: rgba(17,37,66,.78); }
+.mz--frise .mz__num { color: #F55F31; }
+.mz-qui--orange { background: var(--nod-gradient-golden); color: #FFF0E5; }
+.mz-qui--orange .mz__titre, .mz-qui--orange .mz-qui__accroche { color: #FFF0E5; }
+.mz-qui--orange .mz-qui__p { color: rgba(255,240,229,.92); }
