@@ -17,26 +17,6 @@ export default function Maison() {
   const { language } = useLanguage();
   const t = (fr: string, en: string) => (language === 'fr' ? fr : en);
 
-
-  /* Comment NOD intervient : trois domaines, chacun avec ce qui est réellement fait. */
-  const domaines = [
-    {
-      fr: 'Stratégie et concept', en: 'Strategy and concept',
-      frL: ['Positionnement et plateforme de marque', 'Concepts de campagnes et de contenus', 'Messages, récit et ton de marque', 'Traduction de la stratégie en idées concrètes'],
-      enL: ['Positioning and brand platform', 'Campaign and content concepts', 'Messaging, narrative and tone of voice', 'Turning strategy into concrete ideas'],
-    },
-    {
-      fr: 'Contenu et création', en: 'Content and creation',
-      frL: ['Formats et lignes éditoriales', 'Rédaction web, réseaux et campagnes', 'Direction visuelle et direction de contenu', 'Sites, de la maquette au développement'],
-      enL: ['Formats and editorial lines', 'Copywriting for web, social and campaigns', 'Visual and content direction', 'Websites, from mockup to development'],
-    },
-    {
-      fr: 'Production et coordination', en: 'Production and coordination',
-      frL: ['Captation et montage de contenus', 'Planification et publication sur les réseaux', 'Pilotage de projet : planning, livrables, parties prenantes', 'Lien entre équipes, agences et partenaires créatifs'],
-      enL: ['Filming and editing content', 'Social media planning and publishing', 'Project management: timelines, deliverables, stakeholders', 'Bridging teams, agencies and creative partners'],
-    },
-  ];
-
   /* Le déroulé d'un projet, dans l'ordre : ici la numérotation a un sens. */
   const deroule = [
     {
@@ -126,26 +106,6 @@ export default function Maison() {
               'One person takes your idea while it is still only a thought and carries it to the day it exists for real.',
             )}
           </p>
-        </div>
-      </section>
-
-      {/* ---------- Comment NOD intervient ---------- */}
-      <section className="house-method house-method--creme house-domaines">
-        <div className="house-method__inner">
-          <Eyebrow>{t('Comment NOD intervient', 'How NOD works')}</Eyebrow>
-          <ol className="house-method__rows">
-            {domaines.map((domaine, index) => (
-              <li className="house-method__row" key={domaine.fr}>
-                <span className="house-method__index">{String(index + 1).padStart(2, '0')}</span>
-                <span className="house-method__key">{t(domaine.fr, domaine.en)}</span>
-                <ul className="house-domaines__liste">
-                  {(language === 'fr' ? domaine.frL : domaine.enL).map((point) => (
-                    <li key={point}>{point}</li>
-                  ))}
-                </ul>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 
