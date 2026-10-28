@@ -4659,3 +4659,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .nod-checkbox__
 
 /* Message d'erreur du formulaire : centré, comme le bouton. */
 .contact__error { display: block; width: 100%; text-align: center; }
+
+/* La maison : comment NOD intervient (mêmes lignes que le déroulé). */
+.house-domaines__liste { list-style: none; margin: 0; padding: 0; font: var(--type-body-serif); color: var(--text-muted); }
+.house-domaines__liste li + li { margin-top: var(--space-2); }
+@media (max-width: 760px) { .house-domaines__liste { grid-column: 2; } }
+.house-domaines + .house-method--creme { border-top: 1px solid var(--line); }
