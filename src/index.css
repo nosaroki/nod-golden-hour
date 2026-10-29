@@ -4740,3 +4740,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .nod-checkbox__
   .site-footer__haut { grid-template-columns:1fr; gap:40px; }
   .site-footer__droite { justify-self:stretch; max-width:none; }
 }
+
+/* Textes longs révélés au scroll (TexteRevele) */
+.revele__mot { opacity: 0.25; transition: opacity .25s linear; }
+.revele__lecteur { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+@media (prefers-reduced-motion: reduce) { .revele__mot { opacity: 1; transition: none; } }

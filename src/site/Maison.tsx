@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import NodNav from '@/components/NodNav';
 import NodFooter from '@/components/NodFooter';
+import TexteRevele from '@/components/TexteRevele';
 import { Eyebrow, Icon, url, vars } from '@/components/nod';
 import { useLanguage } from '@/contexts/LanguageContext';
 /* Image d'en-tête servie depuis public/img : index.html la précharge avant le reste. */
@@ -90,42 +91,46 @@ export default function Maison() {
         <div className="home-manifesto__image" />
         <div className="home-manifesto__veil" />
         <div className="home-manifesto__body">
-          <p className="home-manifesto__lead">
-            {t(
+          <TexteRevele
+            className="home-manifesto__lead"
+            texte={t(
               "Un projet ne meurt presque jamais par manque d'idée. Il meurt avant même d'exister, pour deux raisons.",
               'A project almost never dies from a lack of ideas. It dies before it even exists, for two reasons.',
             )}
-          </p>
+          />
 
           <div className="principe-raisons">
             <div className="principe-raison">
               <h2 className="principe-raison__h">{t('Le doute.', 'Doubt.')}</h2>
-              <p className="principe-raison__p">
-                {t(
+              <TexteRevele
+                className="principe-raison__p"
+                texte={t(
                   "Trop d'incertitudes, trop de questions sans réponse. L'idée reste dans ta tête au lieu de prendre forme.",
                   'Too much uncertainty, too many unanswered questions. The idea stays in your head instead of taking shape.',
                 )}
-              </p>
+              />
             </div>
             <div className="principe-raison">
               <h2 className="principe-raison__h">{t("Le manque d'accompagnement.", 'The lack of support.')}</h2>
-              <p className="principe-raison__p">
-                {t(
+              <TexteRevele
+                className="principe-raison__p"
+                texte={t(
                   "Tu sais ce que tu veux créer. Tu ne sais pas par où commencer, ni qui pour te tenir du début à la fin.",
                   'You know what you want to create. You do not know where to start, nor who will hold it from beginning to end.',
                 )}
-              </p>
+              />
             </div>
           </div>
 
           <p className="principe-pull">{t('NOD répond aux deux.', 'NOD answers both.')}</p>
 
-          <p className="home-manifesto__text">
-            {t(
+          <TexteRevele
+            className="home-manifesto__text"
+            texte={t(
               "Une seule personne prend ton idée là où elle n'est encore qu'une pensée. Elle la mène jusqu'au jour où elle existe pour de vrai.",
               'One person takes your idea while it is still only a thought and carries it to the day it exists for real.',
             )}
-          </p>
+          />
         </div>
       </section>
 
@@ -170,24 +175,27 @@ export default function Maison() {
         <div className="mz-qui__texte">
           <h2 className="mz__titre">{t('Qui', 'Who')}</h2>
           <p className="mz-qui__accroche">{t('Enchantée, moi c\'est Nnéna\u00a0!', 'Nice to meet you, I\'m Nnéna!')}</p>
-          <p className="mz-qui__p">
-            {t(
+          <TexteRevele
+            className="mz-qui__p"
+            texte={t(
               "C'est moi derrière NOD. J'ai commencé par la communication digitale : community management, social media management, relations presse, création de contenus. Je me suis ensuite lancée en freelance, puis j'ai travaillé en agence, où j'ai piloté des projets, des équipes et des comités.",
               "I'm the one behind NOD. I started in digital communication: community management, social media management, press relations, content creation. I then went freelance before working in agencies, where I led projects, teams and steering committees.",
             )}
-          </p>
-          <p className="mz-qui__p">
-            {t(
+          />
+          <TexteRevele
+            className="mz-qui__p"
+            texte={t(
               "En parallèle, j'ai appris à coder, seule d'abord, puis en formation. À force de voir des projets passer de main en main et se perdre en route, j'ai eu envie de les porter du début à la fin.",
               'Alongside, I learned to code, on my own first, then through training. After seeing projects pass from hand to hand and get lost along the way, I wanted to carry them from start to finish.',
             )}
-          </p>
-          <p className="mz-qui__p">
-            {t(
+          />
+          <TexteRevele
+            className="mz-qui__p"
+            texte={t(
               "C'est comme ça que NOD a vu le jour\u00a0! Aujourd'hui, j'accompagne des projets dans le bien-être, la beauté, la food, le sport, la photographie ou l'édition, de la stratégie jusqu'au lancement.",
               'That is how NOD came to life! Today, I support projects in wellness, beauty, food, sport, photography and publishing, from strategy all the way to launch.',
             )}
-          </p>
+          />
           <p>
             <Link to="/contact" className="nod-btn nod-btn--night">
               {t('Entrer en contact', 'Get in touch')} <Icon name="arrow-right" size={18} />
