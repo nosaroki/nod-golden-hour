@@ -43,9 +43,9 @@ export const LANCEMENTS: Ligne[] = [
   {
     id: 'lancement-complet',
     fr: 'Accompagnement complet', en: 'Full support',
-    dFr: "3 à 6 mois. Tout le format court, avec un site complet ou une plateforme, la production de contenu sur toute la période, la gestion des réseaux pendant le lancement, des points de pilotage réguliers et la coordination des prestataires.",
-    dEn: '3 to 6 months. Everything in the short format, plus a full website or platform, content production throughout, social media management during the launch, regular steering meetings and coordination of all providers.',
-    prix: 15000,
+    dFr: "Au-delà du format court : un site plus complet ou une plateforme, le suivi des réseaux, le pilotage et la coordination des prestataires. Sur devis, selon le projet.",
+    dEn: 'Beyond the short format: a larger website or a platform, social media follow-up, steering and coordination of providers. On quote, depending on the project.',
+    prix: null,
   },
 ];
 
@@ -150,8 +150,8 @@ export const GROUPES: Groupe[] = [
         { id: 'reseaux-premium', fr: 'Gestion premium', en: 'Premium management', dFr: 'Vingt posts par mois, avec une analyse mensuelle des résultats', dEn: 'Twenty posts a month, with a monthly performance review', prix: 1800, mensuel: true },
       ] },
       { fr: 'Publicité en ligne', en: 'Online advertising', lignes: [
-        { id: 'pub-gestion', fr: 'Gestion des publicités', en: 'Ad management', dFr: 'Mise en place comprise : compte, ciblage, créations, suivi, optimisation, reporting. Le budget publicitaire se paie directement à la plateforme', dEn: 'Setup included: account, targeting, creatives, monitoring, optimisation, reporting. The ad budget is paid directly to the platform', prix: 350, mensuel: true },
-        { id: 'pub-audit', fr: 'Audit de campagnes', en: 'Campaign audit', dFr: 'Analyse des performances, recommandations', dEn: 'Performance analysis, recommendations', prix: 400 },
+        { id: 'pub-gestion', fr: 'Gestion des publicités', en: 'Ad management', dFr: 'Mise en place, ciblage, budget, suivi, optimisation, bilan de fin de campagne. Le budget publicitaire se paie directement à la plateforme', dEn: 'Setup, targeting, budget, monitoring, optimisation, end-of-campaign review. The ad budget is paid directly to the platform', prix: 450, mensuel: true },
+        { id: 'pub-audit', fr: 'Audit de campagnes', en: 'Campaign audit', dFr: 'Pour des campagnes déjà lancées, par toi ou par un autre prestataire : analyse des performances, recommandations', dEn: 'For campaigns already running, by you or another provider: performance analysis, recommendations', prix: 400 },
       ] },
     ],
   },

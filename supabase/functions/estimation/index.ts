@@ -84,7 +84,7 @@ const TARIFS: Record<string, Tarif> = {
  "lancement-complet": {
   "fr": "Lancement complet, accompagnement complet",
   "en": "Full launch, full support",
-  "prix": 15000
+  "prix": null
  },
  "cadrage": {
   "fr": "Cadrage stratégique",
@@ -218,7 +218,7 @@ const TARIFS: Record<string, Tarif> = {
  "pub-gestion": {
   "fr": "Gestion des publicités, mise en place comprise (15 % du budget, minimum)",
   "en": "Ad management, setup included (15% of budget, minimum)",
-  "prix": 350,
+  "prix": 450,
   "mensuel": true
  },
  "pub-audit": {
