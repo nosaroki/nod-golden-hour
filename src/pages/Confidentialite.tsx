@@ -29,7 +29,8 @@ export default function Confidentialite() {
               NOD collecte uniquement les données transmises via le formulaire de contact :
               nom, email, téléphone facultatif, message. Si tu demandes la brochure, ton email
               sert aussi à te l'envoyer. Si tu t'inscris aux nouvelles de NOD en bas de page,
-              seul ton email est conservé.
+              seul ton email est conservé. Si tu demandes ton estimation sur la page À la carte, ton
+              prénom, ton email et ta sélection servent à te l'envoyer et à te recontacter.
             </p>
           </section>
 

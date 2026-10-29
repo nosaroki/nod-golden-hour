@@ -34,7 +34,7 @@
     <script>
       (function () {
         var p = location.pathname.replace(/\/+$/, '') || '/';
-        var img = { '/': 'golden-hour-silhouette', '/la-maison': 'light-fold-warm', '/travail': 'texture-ink-orange', '/contact': 'gradient-fold-yellow' }[p];
+        var img = { '/': 'golden-hour-silhouette', '/la-maison': 'light-fold-warm', '/travail': 'texture-ink-orange', '/contact': 'gradient-fold-yellow', '/a-la-carte': 'crumpled-paper' }[p];
         if (!img) return;
         var l = document.createElement('link');
         l.rel = 'preload'; l.as = 'image'; l.href = '/img/' + img + '.webp'; l.setAttribute('fetchpriority', 'high');

@@ -17,6 +17,7 @@ const LIENS = [
   { to: '/', fr: 'Accueil', en: 'Home' },
   { to: '/travail', fr: 'Le travail', en: 'The work' },
   { to: '/la-maison', fr: 'La maison', en: 'The house' },
+  { to: '/a-la-carte', fr: 'À la carte', en: 'À la carte' },
   { to: '/contact', fr: 'Contact', en: 'Contact' },
 ];
 

@@ -10,6 +10,7 @@ import Accueil from "./site/Accueil";
 const Maison = lazy(() => import("./site/Maison"));
 const Travail = lazy(() => import("./site/Travail"));
 const Contact = lazy(() => import("./site/Contact"));
+const Estimation = lazy(() => import("./site/Estimation"));
 const MentionsLegales = lazy(() => import("./pages/MentionsLegales"));
 const Confidentialite = lazy(() => import("./pages/Confidentialite"));
 const ComingSoon = lazy(() => import("./pages/ComingSoon"));
@@ -26,6 +27,9 @@ const App = () => (
             <Route path="/principe" element={<Navigate to="/la-maison" replace />} />
             <Route path="/travail" element={<Travail />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/a-la-carte" element={<Estimation />} />
+            <Route path="/tarifs" element={<Navigate to="/a-la-carte" replace />} />
+            <Route path="/estimation" element={<Navigate to="/a-la-carte" replace />} />
 
 
             <Route path="/mentions-legales" element={<MentionsLegales />} />

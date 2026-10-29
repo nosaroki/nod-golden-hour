@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import NodNav from '@/components/NodNav';
 import NodFooter from '@/components/NodFooter';
 import { Checkbox, Eyebrow, Icon, Input, url, vars } from '@/components/nod';
@@ -56,7 +56,10 @@ export default function Contact() {
   const { language } = useLanguage();
   const t = (fr: string, en: string) => (language === 'fr' ? fr : en);
 
-  const [form, setForm] = useState<Formulaire>({ name: '', email: '', phone: '', message: '', brochure: false, website: '' });
+  /* Sélection envoyée depuis la page Estimation : elle pré-remplit le message. */
+  const { state } = useLocation();
+  const selection = (state as { selection?: string } | null)?.selection ?? '';
+  const [form, setForm] = useState<Formulaire>({ name: '', email: '', phone: '', message: selection, brochure: false, website: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
   /* form : le formulaire. sortie : il s'efface (0,5 s). recu : l'écran de confirmation. */
   const [etape, setEtape] = useState<'form' | 'sortie' | 'recu'>('form');
@@ -116,6 +119,10 @@ export default function Contact() {
   const faq = language === 'fr' ? FAQ_FR : FAQ_EN;
   const prenom = (form.name.trim().split(/\s+/)[0] || '').replace(/^./, (c) => c.toUpperCase());
 
+  useEffect(() => {
+    if (selection) document.getElementById('formulaire')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [selection]);
+
   /* Pendant que le formulaire s'efface, la page remonte : l'en-tête va
      s'agrandir jusqu'à occuper tout l'écran. */
   useEffect(() => {
@@ -149,6 +156,11 @@ export default function Contact() {
                 "Your project doesn't have to be fully formed. An idea is all it takes to start talking.",
               )}
             </p>
+            <p className="contact-head__estimer">
+              <Link to="/a-la-carte" className="nod-link-light">
+                {t('Estimer mon projet', 'Estimate my project')} &rarr;
+              </Link>
+            </p>
           </div>
         ) : (
           <div className="page-head__body contact-head__arrivee" role="status">
@@ -175,7 +187,7 @@ export default function Contact() {
 
       {etape !== 'recu' ? (
       <>
-      <section className={'contact' + (etape === 'sortie' ? ' is-sortie' : '')}>
+      <section id="formulaire" className={'contact' + (etape === 'sortie' ? ' is-sortie' : '')}>
           <form className="contact__form" onSubmit={envoyer} noValidate>
             <Input
               label={t('Nom *', 'Name *')}
