@@ -4837,3 +4837,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .nod-checkbox__
 .est-resume__nom { font-family:'Spectral',serif; font-size:18px; line-height:1.3; color:#FFF0E5; }
 .est-resume__retirer { background:none; border:none; cursor:pointer; padding:0 2px; font-size:20px; line-height:1; color:rgba(255,240,229,.45); transition:color .2s; }
 .est-resume__retirer:hover { color:#FFD35F; }
+
+/* Accessibilité : descriptions de À la carte plus contrastées */
+.est-ligne__desc { color: rgba(17,37,66,.78); }
+
+/* Le travail : le titre en deux phrases, une par ligne. */
+.page-head__title--deux-lignes .titre-bloc { display:block; }
+@media (min-width:1000px){ .page-head__title--deux-lignes .titre-bloc { white-space:nowrap; } }

@@ -44,15 +44,10 @@ export default function Travail() {
         <div className="page-head__foot" />
         <div className="page-head__body">
           <Eyebrow tone="light">{t('Stratégie, identité, développement web, contenu, édition', 'Strategy, identity, web development, content, publishing')}</Eyebrow>
-          <h1 className="page-head__title page-head__title--une-ligne">
-            {t('Des projets menés du brief au lancement.', 'Projects carried from brief to launch.')}
+          <h1 className="page-head__title page-head__title--deux-lignes">
+            <span className="titre-bloc">{t('Ils avaient de la suite dans les idées.', 'They had ideas and saw them through.')}</span>{' '}
+            <span className="titre-bloc">{t('NOD les a fait naître.', 'NOD brought them to life.')}</span>
           </h1>
-          <p className="page-head__lede">
-            {t(
-              'Des projets dans des univers très différents. Ouvre chacun pour lire ce qui a été fait.',
-              'Projects across very different worlds. Open each one to read what was done.',
-            )}
-          </p>
         </div>
       </section>
 
@@ -144,8 +139,8 @@ export default function Travail() {
           <h2 className="travail__cta-title">{t('Présente ton projet.', 'Tell me about your project.')}</h2>
           <p className="travail__cta-text">
             {t(
-              "Pas besoin d'un projet déjà ficelé. Une idée suffit pour lancer la conversation.",
-              "Your project doesn't have to be fully formed. An idea is all it takes to start talking.",
+              "Un de ces projets t'a parlé ? Le tien peut être le prochain.",
+              "Did one of these projects speak to you? Yours could be next.",
             )}
           </p>
           <Link to="/contact" className="nod-btn nod-btn--night nod-btn--lg">

@@ -103,7 +103,7 @@ export default function Accueil() {
             <br />
             {t('Stratégie, identité, contenu, développement,', 'Strategy, identity, content, development,')}
             <br />
-            {t('tenus ensemble du brief au lancement.', 'held together from brief to launch.')}
+            {t('tenus ensemble, du premier échange à la mise en ligne.', 'held together, from the first conversation to going live.')}
           </p>
 
           <ul className="home-summary__list">
@@ -129,7 +129,7 @@ export default function Accueil() {
         <div className="home-work__head">
           <h2 className="home-work__title">{t('Le travail', 'The work')}</h2>
           <span className="home-work__note">
-            {t('Quelques projets que NOD a fait exister.', 'A few of the projects NOD has brought to life.')}
+            {t('Ce que la maison a réalisé.', 'What the house has made.')}
           </span>
         </div>
 
@@ -144,15 +144,9 @@ export default function Accueil() {
       <div className="home-golden-block nod-grain">
         <section className="home-cta">
           <div className="home-cta__body">
-            <h2 className="home-cta__title">{t('Présente ton projet.', 'Tell me about your project.')}</h2>
-            <p className="home-cta__text">
-              {t(
-                "Pas besoin d'un projet déjà ficelé. Une idée suffit pour lancer la conversation.",
-                "Your project doesn't have to be fully formed. An idea is all it takes to start talking.",
-              )}
-            </p>
+            <h2 className="home-cta__title">{t("Qu'est-ce qu'on crée aujourd'hui ?", 'What are we creating today?')}</h2>
             <Link to="/contact" className="nod-btn nod-btn--night nod-btn--lg">
-              {t('Entrer en contact', 'Get in touch')} <Icon name="arrow-right" size={20} />
+              {t('Décrire mon projet', 'Describe my project')} <Icon name="arrow-right" size={20} />
             </Link>
           </div>
         </section>

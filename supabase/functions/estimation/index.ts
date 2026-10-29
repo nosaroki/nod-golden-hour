@@ -192,11 +192,6 @@ const TARIFS: Record<string, Tarif> = {
   "en": "Single video",
   "prix": 350
  },
- "photo": {
-  "fr": "Session photo",
-  "en": "Photo session",
-  "prix": 200
- },
  "pack-mensuel": {
   "fr": "Pack mensuel",
   "en": "Monthly pack",

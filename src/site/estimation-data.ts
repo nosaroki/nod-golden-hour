@@ -36,8 +36,8 @@ export const LANCEMENTS: Ligne[] = [
   {
     id: 'lancement-court',
     fr: 'Format court', en: 'Short format',
-    dFr: "8 à 10 semaines. Cadrage, identité, site vitrine jusqu'à 5 pages, contenus de lancement (10 posts, une session photo), mise en ligne. Tu repars avec tout, prêt à lancer.",
-    dEn: '8 to 10 weeks. Framing, identity, showcase website up to 5 pages, launch content (10 posts, one photo session), going live. You leave with everything, ready to launch.',
+    dFr: "8 à 10 semaines. Cadrage, identité, site vitrine jusqu'à 5 pages, contenus de lancement, mise en ligne. Tu repars avec tout, prêt à lancer.",
+    dEn: '8 to 10 weeks. Framing, identity, showcase website up to 5 pages, launch content, going live. You leave with everything, ready to launch.',
     prix: 8000,
   },
   {
@@ -132,10 +132,9 @@ export const GROUPES: Groupe[] = [
         { id: 'pack-posts', fr: 'Pack 10 posts', en: '10-post pack', dFr: 'Visuels sur mesure, textes, intentions éditoriales', dEn: 'Custom visuals, captions, editorial intent', prix: 800 },
         { id: 'canva', fr: 'Templates Canva', en: 'Canva templates', dFr: 'Cinq modèles réutilisables, à la charte', dEn: 'Five reusable, on-brand templates', prix: 350 },
       ] },
-      { fr: 'Vidéo et photo', en: 'Video and photo', lignes: [
+      { fr: 'Vidéo', en: 'Video', lignes: [
         { id: 'video', fr: 'Vidéo à la carte', en: 'Single video', dFr: 'Captation sur place, ou montage à partir de rushs fournis', dEn: 'Filmed on site, or edited from supplied footage', prix: 350 },
-        { id: 'photo', fr: 'Session photo', en: 'Photo session', dFr: '10 à 15 visuels retouchés, prêts à publier', dEn: '10 to 15 edited images, ready to post', prix: 200 },
-        { id: 'pack-mensuel', fr: 'Pack mensuel', en: 'Monthly pack', dFr: 'Quatre vidéos, une session photo, programmation', dEn: 'Four videos, one photo session, scheduling', prix: 900, mensuel: true },
+        { id: 'pack-mensuel', fr: 'Pack mensuel', en: 'Monthly pack', dFr: 'Quatre vidéos par mois, programmation', dEn: 'Four videos a month, scheduling', prix: 900, mensuel: true },
       ] },
     ],
   },

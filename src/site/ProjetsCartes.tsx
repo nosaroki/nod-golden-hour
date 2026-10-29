@@ -43,7 +43,6 @@ export default function ProjetsCartes() {
               '--carte-fond': place.fond,
               '--carte-image': url(projet.carte ?? projet.image),
             })}
-            aria-label={`${projet.titre}, ${projet.sousTitre}`}
           >
             {/* Le lien garde sa place ; seul le corps bouge au survol. Sinon la
                 carte se dérobe sous la souris et le survol clignote. */}
