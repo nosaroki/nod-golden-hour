@@ -18,10 +18,10 @@ export default function MentionsLegales() {
           <section>
             <h2>Éditeur du site</h2>
             <p>
-              NOD Consulting, entreprise individuelle sous le régime de la micro-entreprise,
-              représentée par Nnéna.<br />
+              NOD Consulting, Nnéna, EI (entrepreneur individuel), sous le régime de la
+              micro-entreprise.<br />
               SIRET : 913 549 499 00014<br />
-              Neuilly-sur-Seine, France<br />
+              Boulevard Victor Hugo, 92200 Neuilly-sur-Seine, France<br />
               Directrice de la publication : Nnéna<br />
               Contact : <a href="mailto:contact@nod-consulting.com">contact@nod-consulting.com</a>
             </p>

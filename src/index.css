@@ -4844,3 +4844,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .nod-checkbox__
 /* Le travail : le titre en deux phrases, une par ligne. */
 .page-head__title--deux-lignes .titre-bloc { display:block; }
 @media (min-width:1000px){ .page-head__title--deux-lignes .titre-bloc { white-space:nowrap; } }
+
+/* Portrait de Qui : image chargée à l'approche, même cadrage qu'avant. */
+.mz-qui__photo { position: relative; overflow: hidden; background: none; }
+.mz-qui__photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 60%; display: block; }

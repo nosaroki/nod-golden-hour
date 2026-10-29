@@ -202,7 +202,10 @@ export default function Maison() {
             </Link>
           </p>
         </div>
-        <div className="mz-qui__photo" style={vars({ '--mz-photo': url(nnenaImg) })} role="img" aria-label={t('Portrait de Nnéna', 'Portrait of Nnéna')} />
+        {/* Le portrait se charge seulement à l'approche, pour ne pas ralentir le haut de page. */}
+        <div className="mz-qui__photo">
+          <img src={nnenaImg} alt={t('Portrait de Nnéna', 'Portrait of Nnéna')} loading="lazy" decoding="async" />
+        </div>
       </section>
 
       {/* Encart golden hour retiré pour l'instant. Gardé ici au cas où on veut le réutiliser.
