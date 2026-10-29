@@ -28,7 +28,8 @@ export default function Confidentialite() {
             <p>
               NOD collecte uniquement les données transmises via le formulaire de contact :
               nom, email, téléphone facultatif, message. Si tu demandes la brochure, ton email
-              sert aussi à te l'envoyer.
+              sert aussi à te l'envoyer. Si tu t'inscris aux nouvelles de NOD en bas de page,
+              seul ton email est conservé.
             </p>
           </section>
 
@@ -36,8 +37,8 @@ export default function Confidentialite() {
             <h2>Finalité et base légale</h2>
             <p>
               Ces données servent à répondre à ta demande, sur la base de ton intérêt à être
-              recontacté. L'envoi de la brochure repose sur ton consentement, que tu peux
-              retirer à tout moment.
+              recontacté. L'envoi de la brochure et des nouvelles de NOD repose sur ton
+              consentement, que tu peux retirer à tout moment.
             </p>
           </section>
 
@@ -53,7 +54,8 @@ export default function Confidentialite() {
             <h2>Durée de conservation</h2>
             <p>
               Les messages sont conservés trois ans à compter du dernier échange, puis supprimés.
-              Tu peux demander leur suppression avant ce délai.
+              Tu peux demander leur suppression avant ce délai. L'email d'inscription aux
+              nouvelles est conservé jusqu'à ta désinscription.
             </p>
           </section>
 
