@@ -154,9 +154,8 @@ export default function Maison() {
         <div className="mz__inner">
           <h2 className="mz__titre">{t('Le déroulé', 'How it goes')}</h2>
           <ol className="mz-frise">
-            {deroule.map((etape, index) => (
+            {deroule.map((etape) => (
               <li className="mz-frise__etape" key={etape.fr}>
-                <span className="mz__num">{String(index + 1).padStart(2, '0')}</span>
                 <span className="mz-frise__point" aria-hidden="true" />
                 <h3 className="mz-frise__titre">{t(etape.fr, etape.en)}</h3>
                 <p className="mz-frise__texte">{t(etape.frV, etape.enV)}</p>
