@@ -1,3 +1,4 @@
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 // Outils partagés par les fonctions du site : origine autorisée, échappement
 // HTML, limite d'envois par adresse IP.
@@ -389,6 +390,22 @@ async function envoyer(contenu: Record<string, unknown>) {
   });
 }
 
+
+// Inscription aux nouvelles de NOD quand la personne a coché la case.
+// Une adresse déjà inscrite est ignorée : pas de doublon, et une erreur ici
+// ne bloque jamais l'envoi du formulaire.
+async function inscrireNouvelles(supabase: ReturnType<typeof createClient>, email: string) {
+  try {
+    const { data: existant } = await supabase
+      .from("newsletter_subscribers").select("id").eq("email", email).maybeSingle();
+    if (existant) return;
+    const { error } = await supabase.from("newsletter_subscribers").insert({ email });
+    if (error) console.error("newsletter_subscribers:", error.message);
+  } catch (e) {
+    console.error("newsletter_subscribers:", e);
+  }
+}
+
 Deno.serve(async (req) => {
   const entetes = enTetes(req);
   if (req.method === "OPTIONS") return new Response("ok", { headers: entetes });
@@ -409,6 +426,11 @@ Deno.serve(async (req) => {
 
     const calcul = calculer(ids, langue);
     if (calcul.lignes.length === 0) return reponse({ status: "error" }, 400, entetes);
+
+    if (corps.nouvelles === true) {
+      const supabase = createClient(Deno.env.get("SUPABASE_URL")!, Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!);
+      await inscrireNouvelles(supabase, email);
+    }
 
     const brochureUrl =
       Deno.env.get(langue === "en" ? "BROCHURE_URL_EN" : "BROCHURE_URL_FR") || Deno.env.get("BROCHURE_URL") || null;

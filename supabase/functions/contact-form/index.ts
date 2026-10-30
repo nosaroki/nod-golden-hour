@@ -244,6 +244,22 @@ async function envoyer(cle: string | undefined, contenu: Record<string, unknown>
   });
 }
 
+
+// Inscription aux nouvelles de NOD quand la personne a coché la case.
+// Une adresse déjà inscrite est ignorée : pas de doublon, et une erreur ici
+// ne bloque jamais l'envoi du formulaire.
+async function inscrireNouvelles(supabase: ReturnType<typeof createClient>, email: string) {
+  try {
+    const { data: existant } = await supabase
+      .from("newsletter_subscribers").select("id").eq("email", email).maybeSingle();
+    if (existant) return;
+    const { error } = await supabase.from("newsletter_subscribers").insert({ email });
+    if (error) console.error("newsletter_subscribers:", error.message);
+  } catch (e) {
+    console.error("newsletter_subscribers:", e);
+  }
+}
+
 Deno.serve(async (req) => {
   const entetes = enTetes(req);
   if (req.method === "OPTIONS") return new Response("ok", { headers: entetes });
@@ -258,6 +274,7 @@ Deno.serve(async (req) => {
     const phone = String(corps.phone ?? "").trim();
     const message = String(corps.message ?? "").trim();
     const brochure = corps.brochure === true;
+    const nouvelles = corps.nouvelles === true;
     const langue: Langue = corps.langue === "en" ? "en" : "fr";
     const piege = String(corps.website ?? "");
 
@@ -283,6 +300,7 @@ Deno.serve(async (req) => {
       .from("contact_submissions")
       .insert({ name, email, phone: phone || null, message });
     if (erreurBase) console.error("contact_submissions:", erreurBase.message);
+    if (nouvelles) await inscrireNouvelles(supabase, email);
 
     const prenomBrut = name.split(/\s+/)[0];
     const prenom = echapper(prenomBrut.charAt(0).toUpperCase() + prenomBrut.slice(1));

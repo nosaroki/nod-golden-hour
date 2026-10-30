@@ -18,6 +18,7 @@ interface Formulaire {
   phone: string;
   message: string;
   brochure: boolean;
+  nouvelles: boolean;
   website: string;
 }
 
@@ -59,7 +60,7 @@ export default function Contact() {
   /* Sélection envoyée depuis la page Estimation : elle pré-remplit le message. */
   const { state } = useLocation();
   const selection = (state as { selection?: string } | null)?.selection ?? '';
-  const [form, setForm] = useState<Formulaire>({ name: '', email: '', phone: '', message: selection, brochure: false, website: '' });
+  const [form, setForm] = useState<Formulaire>({ name: '', email: '', phone: '', message: selection, brochure: false, nouvelles: false, website: '' });
   const [errors, setErrors] = useState<Record<string, string>>({});
   /* form : le formulaire. sortie : il s'efface (0,5 s). recu : l'écran de confirmation. */
   const [etape, setEtape] = useState<'form' | 'sortie' | 'recu'>('form');
@@ -244,6 +245,11 @@ export default function Contact() {
               label={t('Je veux aussi recevoir la brochure NOD par mail.', "I'd also like to receive the NOD brochure by email.")}
               checked={form.brochure}
               onChange={(e) => maj('brochure', e.target.checked)}
+            />
+            <Checkbox
+              label={t('Je veux recevoir les nouvelles de NOD.', "I'd like to receive news from NOD.")}
+              checked={form.nouvelles}
+              onChange={(e) => maj('nouvelles', e.target.checked)}
             />
 
             {erreurEnvoi ? <span className="contact__error">{erreurEnvoi}</span> : null}

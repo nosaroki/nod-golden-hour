@@ -86,6 +86,7 @@ export default function Estimation() {
   const [email, setEmail] = useState('');
   const [prenom, setPrenom] = useState('');
   const [piege, setPiege] = useState('');
+  const [nouvelles, setNouvelles] = useState(false);
   const [etat, setEtat] = useState<'repos' | 'envoi' | 'ok' | 'erreur' | 'invalide'>('repos');
   const [ouvert, setOuvert] = useState(false);
 
@@ -102,7 +103,7 @@ export default function Estimation() {
       const res = await fetch(ESTIMATION_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email: email.trim(), prenom: prenom.trim(), ids: idsOrdonnes, langue: language, website: piege }),
+        body: JSON.stringify({ email: email.trim(), prenom: prenom.trim(), ids: idsOrdonnes, langue: language, nouvelles, website: piege }),
       });
       const data = await res.json();
       setEtat(data.status === 'ok' ? 'ok' : 'erreur');
@@ -283,6 +284,10 @@ export default function Estimation() {
                   onChange={(e) => { setEmail(e.target.value); if (etat !== 'envoi') setEtat('repos'); }}
                 />
                 <input className="est-resume__piege" type="text" name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" value={piege} onChange={(e) => setPiege(e.target.value)} />
+                <label className="est-resume__case">
+                  <input type="checkbox" checked={nouvelles} onChange={(e) => setNouvelles(e.target.checked)} />
+                  <span>{t('Je veux aussi recevoir les nouvelles de NOD.', "I'd also like to receive news from NOD.")}</span>
+                </label>
                 {etat === 'invalide' || etat === 'erreur' ? (
                   <p className="est-resume__err" role="alert">
                     {etat === 'invalide'
@@ -299,7 +304,7 @@ export default function Estimation() {
             <button type="button" className="nod-btn nod-btn--primary est-resume__ouvrir" disabled={vide} onClick={() => setOuvert(!ouvert)}>
               {ouvert ? t('Fermer', 'Close') : t('Recevoir', 'Get it')}
             </button>
-            {!vide ? (
+            {!vide && etat !== 'ok' ? (
               <button type="button" className="est-resume__effacer" onClick={() => setChoisis([])}>
                 {t('Tout effacer', 'Clear all')}
               </button>
