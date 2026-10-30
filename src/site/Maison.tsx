@@ -173,8 +173,8 @@ export default function Maison() {
       {/* ---------- Qui ---------- */}
       <section id="qui" className="mz-qui mz-qui--orange">
         <div className="mz-qui__texte">
-          <h2 className="mz__titre">{t('Qui', 'Who')}</h2>
-          <p className="mz-qui__accroche">{t('Enchantée, moi c\'est Nnéna\u00a0!', 'Nice to meet you, I\'m Nnéna!')}</p>
+          <h2 className="mz__titre">{t('Qui\u00a0?', 'Who?')}</h2>
+          <p className="mz-qui__accroche">{t('Nnéna, enchantée\u00a0!', 'Nnéna, nice to meet you!')}</p>
           <TexteRevele
             className="mz-qui__p"
             texte={t(
