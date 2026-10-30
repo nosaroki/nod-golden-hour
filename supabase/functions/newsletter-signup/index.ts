@@ -69,8 +69,12 @@ const C = {
   jaune: "#FFD35F",
   filet: "#F1D9C7",
 };
-const SERIF = "Spectral, Georgia, 'Times New Roman', serif";
-const SANS = "'Bricolage Grotesque', 'Helvetica Neue', Helvetica, Arial, sans-serif";
+// Polices de la marque. Apple Mail et iOS les chargent depuis Google Fonts ;
+// Gmail et Outlook ne chargent pas de polices web et prennent la suivante de la
+// liste : Palatino ou Iowan pour les textes, Avenir pour les repères.
+const SERIF = "Spectral, 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif";
+const SANS = "'Bricolage Grotesque', 'Avenir Next', Avenir, 'Helvetica Neue', Helvetica, Arial, sans-serif";
+const POLICES = `<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,600;1,400&family=Bricolage+Grotesque:wght@400;500;600&display=swap" rel="stylesheet">`;
 
 const TEXTES = {
   fr: {
@@ -96,7 +100,7 @@ function mailBienvenue(langue: Langue) {
   const T = TEXTES[langue];
   return `<!DOCTYPE html>
 <html lang="${langue}">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light">${POLICES}</head>
 <body style="margin:0;padding:0;background:${C.creme};">
   <div style="display:none;max-height:0;overflow:hidden;">${T.apercu}</div>
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${C.creme};">
