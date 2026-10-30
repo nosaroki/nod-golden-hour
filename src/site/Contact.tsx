@@ -91,6 +91,8 @@ export default function Contact() {
       const res = await fetch(CONTACT_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        // Sans réponse au bout de 20 s, on affiche l'erreur au lieu de rester bloqué sur « Envoi… ».
+        signal: typeof AbortSignal.timeout === 'function' ? AbortSignal.timeout(20000) : undefined,
         body: JSON.stringify({ ...form, langue: language }),
       });
       const data = await res.json();

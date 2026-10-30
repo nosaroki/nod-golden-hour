@@ -103,6 +103,8 @@ export default function Estimation() {
       const res = await fetch(ESTIMATION_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        // Sans réponse au bout de 20 s, on affiche l'erreur au lieu de rester bloqué sur « Envoi… ».
+        signal: typeof AbortSignal.timeout === 'function' ? AbortSignal.timeout(20000) : undefined,
         body: JSON.stringify({ email: email.trim(), prenom: prenom.trim(), ids: idsOrdonnes, langue: language, nouvelles, website: piege }),
       });
       const data = await res.json();

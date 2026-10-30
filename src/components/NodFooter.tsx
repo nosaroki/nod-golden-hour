@@ -25,6 +25,7 @@ function Nouvelles({ t, langue }: { t: (fr: string, en: string) => string; langu
       const res = await fetch(NEWSLETTER_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        signal: typeof AbortSignal.timeout === 'function' ? AbortSignal.timeout(20000) : undefined,
         body: JSON.stringify({ email: email.trim(), langue, website: piege }),
       });
       const data = await res.json();
