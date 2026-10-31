@@ -69,17 +69,6 @@ const VOIR_SITE = { fr: 'Voir le site', en: 'See the site' };
 
 export const projets: Projet[] = [
   {
-    id: 'idala', famille: 'sites', titre: 'Idala', sousTitre: 'Plateforme bien-être',
-    kicker: 'Plateforme web', image: idala,
-    besoin: "Réunir des praticiens du bien-être et leurs clients sur un seul site, en cabinet, à domicile ou en visio.",
-    texte: "NOD a conçu puis développé la plateforme entière, 100 % bilingue français et anglais : annuaire des praticiens, réservation et paiement en ligne, séances en visio, espace d'administration.",
-    role: 'Conception et développement, du cahier des charges à la mise en ligne',
-    metiers: ['Développement web', 'Conception'],
-    tags: ['Réservation', 'Paiement en ligne', 'Visio', 'Bilingue'],
-    en: {"sousTitre": "Wellness platform", "kicker": "Web platform", "besoin": "Bringing wellness practitioners and their clients together on one site, in person, at home or by video.", "texte": "NOD designed and built the entire platform, fully bilingual in French and English: practitioner directory, online booking and payment, video sessions, admin area.", "role": "Design and development, from specification to launch", "metiers": ["Web development", "Product design"], "tags": ["Booking", "Online payment", "Video calls", "Bilingual"]},
-    lien: 'https://theidalafamily.com', lienLabel: VOIR_SITE,
-  },
-  {
     id: 'unmatched', famille: 'strategie', titre: 'Unmatched', sousTitre: 'Maison de beauté au matcha',
     kicker: 'Lancement de marque', image: unmatched, carte: unmatchedCarte,
     besoin: "Lancer une maison de beauté dont l'ingrédient principal est le matcha.",
@@ -121,6 +110,16 @@ export const projets: Projet[] = [
     tags: ['E-commerce', 'Paiement en ligne', 'Pixieset'],
     en: {"sousTitre": "Surf photographer website", "kicker": "Website", "besoin": "A surf photographer based in Costa Rica wanted one place to show his work and sell it.", "texte": "NOD built his site: galleries by session, print shop, online payment. His clients find their photos and buy them in the same place.", "role": "Design and launch", "metiers": ["Web development"], "tags": ["E-commerce", "Online payment", "Pixieset"]},
     lien: 'https://mangrovesurfphotography.com', lienLabel: VOIR_SITE,
+  },
+  {
+    id: 'idala', famille: 'sites', titre: 'Idala', sousTitre: 'Plateforme bien-être',
+    kicker: 'Plateforme web', image: idala,
+    besoin: "Réunir des praticiens du bien-être et leurs clients sur un seul site, en cabinet, à domicile ou en visio.",
+    texte: "NOD a conçu puis développé la plateforme entière, 100 % bilingue français et anglais : annuaire des praticiens, réservation et paiement en ligne, séances en visio, espace d'administration.",
+    role: 'Conception et développement, du cahier des charges à la mise en ligne',
+    metiers: ['Développement web', 'Conception'],
+    tags: ['Réservation', 'Paiement en ligne', 'Visio', 'Bilingue'],
+    en: {"sousTitre": "Wellness platform", "kicker": "Web platform", "besoin": "Bringing wellness practitioners and their clients together on one site, in person, at home or by video.", "texte": "NOD designed and built the entire platform, fully bilingual in French and English: practitioner directory, online booking and payment, video sessions, admin area.", "role": "Design and development, from specification to launch", "metiers": ["Web development", "Product design"], "tags": ["Booking", "Online payment", "Video calls", "Bilingual"]},
   },
   {
     id: 'oda', famille: 'sites', titre: 'ODA', sousTitre: 'Tarot & astrologie',
