@@ -4855,3 +4855,11 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .nod-checkbox__
 .est-resume__case input:checked { background:#FFD35F; border-color:#FFD35F; }
 .est-resume__case input:checked::after { content:""; width:8px; height:4px; border-left:2px solid #112542; border-bottom:2px solid #112542; transform:rotate(-45deg) translate(1px,-1px); }
 .est-resume__case input:focus-visible { outline:2px solid #FFD35F; outline-offset:2px; }
+
+/* Menu mobile ouvert en haut d'une page à image : le flou de la barre enfermait
+   le menu plein écran dans la barre. On le retire tant que le menu est ouvert. */
+.nodnav--ouvert { backdrop-filter: none; -webkit-backdrop-filter: none; }
+/* Dans le menu mobile (fond bleu nuit), la page en cours est toujours en jaune. */
+@media (max-width: 860px) {
+  .nodnav__links .nodnav__link.is-active, .nodnav__links .nodnav__link:hover { color: var(--yellow); }
+}

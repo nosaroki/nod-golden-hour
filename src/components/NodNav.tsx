@@ -39,7 +39,7 @@ export default function NodNav({ overImage = false }: NodNavProps) {
   const over = overImage && !scrolled;
 
   return (
-    <header className={'nodnav' + (over ? ' nodnav--over' : '')}>
+    <header className={'nodnav' + (over ? ' nodnav--over' : '') + (open ? ' nodnav--ouvert' : '')}>
       <Link to="/" className="nodnav__logo shimmer-text migra-font" aria-label="NOD, accueil">
         NOD
       </Link>
