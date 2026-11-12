@@ -16,7 +16,7 @@ interface Carte {
 }
 
 const PLACES: Carte[] = [
-  { id: 'idala', tx: '-312px', rot: '-6deg', z: 10, fond: 'linear-gradient(150deg,#F55F31,#FF914D)' },
+  { id: 'mangrove', tx: '-312px', rot: '-6deg', z: 10, fond: 'linear-gradient(150deg,#F55F31,#FF914D)' },
   { id: 'jasminka', tx: '-156px', rot: '-3deg', z: 20, fond: 'linear-gradient(150deg,#112542,#2a4f7a)' },
   { id: 'unmatched', tx: '0px', rot: '0deg', z: 40, fond: 'linear-gradient(150deg,#FF914D,#FFD35F)' },
   { id: 'drugs', tx: '156px', rot: '3deg', z: 20, fond: 'linear-gradient(150deg,#112542,#2a4f7a)' },

@@ -1,4 +1,4 @@
-import idala from '@/assets/idala.webp';
+import marbre from '@/assets/brand/texture-marble-orange.webp';
 import jasminka from '@/assets/jasminka.webp';
 import jasminkaCarte from '@/assets/jasminka-carte.webp';
 import unmatched from '@/assets/unmatched-fiche.webp';
@@ -112,14 +112,15 @@ export const projets: Projet[] = [
     lien: 'https://mangrovesurfphotography.com', lienLabel: VOIR_SITE,
   },
   {
-    id: 'idala', famille: 'sites', titre: 'Idala', sousTitre: 'Plateforme bien-être',
-    kicker: 'Plateforme web', image: idala,
-    besoin: "Réunir des praticiens du bien-être et leurs clients sur un seul site, en cabinet, à domicile ou en visio.",
-    texte: "NOD a conçu puis développé la plateforme entière, 100 % bilingue français et anglais : annuaire des praticiens, réservation et paiement en ligne, séances en visio, espace d'administration.",
+    /* Projet présenté sans nom de client ni lien : la plateforme va être refaite. */
+    id: 'marketplace', famille: 'sites', titre: 'Marketplace bien‑être', sousTitre: 'Plateforme bilingue',
+    kicker: 'Plateforme sur mesure', image: marbre, placeholder: true,
+    besoin: "Mettre en relation des praticiens du bien-être et leurs clients, en cabinet, à domicile ou en visio.",
+    texte: "Conception et développement complets de la plateforme, bilingue français et anglais : réservation multi-praticiens, paiement en ligne sécurisé avec commission, visio intégrée, agendas synchronisés, mails automatisés, espace d'administration. De la base de données au tunnel de paiement.",
     role: 'Conception et développement, du cahier des charges à la mise en ligne',
     metiers: ['Développement web', 'Conception'],
     tags: ['Réservation', 'Paiement en ligne', 'Visio', 'Bilingue'],
-    en: {"sousTitre": "Wellness platform", "kicker": "Web platform", "besoin": "Bringing wellness practitioners and their clients together on one site, in person, at home or by video.", "texte": "NOD designed and built the entire platform, fully bilingual in French and English: practitioner directory, online booking and payment, video sessions, admin area.", "role": "Design and development, from specification to launch", "metiers": ["Web development", "Product design"], "tags": ["Booking", "Online payment", "Video calls", "Bilingual"]},
+    en: {"titre": "Wellness marketplace", "sousTitre": "Bilingual platform", "kicker": "Custom platform", "besoin": "Connecting wellness practitioners and their clients, in person, at home or by video.", "texte": "Full design and development of the platform, bilingual in French and English: multi-practitioner booking, secure online payment with commission, built-in video calls, synced calendars, automated emails, admin area. From the database to the checkout.", "role": "Design and development, from specification to launch", "metiers": ["Web development", "Product design"], "tags": ["Booking", "Online payment", "Video calls", "Bilingual"]},
   },
   {
     id: 'oda', famille: 'sites', titre: 'ODA', sousTitre: 'Tarot & astrologie',
