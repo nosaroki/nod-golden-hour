@@ -4863,3 +4863,8 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .nod-checkbox__
 @media (max-width: 860px) {
   .nodnav__links .nodnav__link.is-active, .nodnav__links .nodnav__link:hover { color: var(--yellow); }
 }
+
+/* Accueil : la phrase qui dit clairement ce que fait NOD, sous le titre. */
+.page-hero__lede { margin-top: var(--space-6); max-width: 1000px; }
+.est-tout-voir { align-self:flex-start; margin-top:-24px; background:none; border:none; border-bottom:1px solid rgba(17,37,66,.35); padding:0 0 3px; cursor:pointer; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:#112542; }
+.est-tout-voir:hover { color:#F55F31; border-bottom-color:#F55F31; }

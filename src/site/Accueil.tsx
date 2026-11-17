@@ -11,21 +11,22 @@ import orangePressee from '@/assets/brand/orange-pressee.webp';
 
 /* Accueil. La forme vient du design system, le texte vient du site NOD. */
 
+/* Trois offres concrètes : ce qu'on vient chercher chez NOD. */
 const INTENTIONS = [
   {
-    n: '01', fr: 'Lancer', en: 'Launch',
-    frTexte: "Tu as une idée. Tu veux la voir exister sans savoir par où commencer. NOD la prend du début à la fin.",
-    enTexte: 'You have an idea. You want to see it exist without knowing where to start. NOD carries it from beginning to end.',
+    n: '01', fr: 'Lancer ta marque', en: 'Launch your brand',
+    frTexte: "Une idée ou une activité qui démarre.\nCadrage, identité, site, premiers contenus : je construis tout ce qu'il faut pour lancer.",
+    enTexte: 'An idea or a business getting started.\nFraming, identity, website, first content: I build everything you need to launch.',
   },
   {
-    n: '02', fr: 'Repositionner', en: 'Reposition',
-    frTexte: "Ta marque existe déjà mais elle ne dit plus ce que tu es devenu.\nNOD revoit sa stratégie, son image, sa position, pour qu'elle te ressemble à nouveau.",
-    enTexte: 'Your brand exists but no longer says what you have become.\nNOD revisits its strategy, image and position.',
+    n: '02', fr: 'Créer ton site', en: 'Build your website',
+    frTexte: "Un site vitrine ou une plateforme, conçu et développé sur mesure.\nDesign, textes, réservation ou paiement si besoin, référencement, mise en ligne.",
+    enTexte: 'A showcase website or a platform, designed and built from scratch.\nDesign, copy, booking or payment if needed, SEO, going live.',
   },
   {
-    n: '03', fr: 'Incarner', en: 'Embody',
-    frTexte: "Tu veux exister publiquement et que ton image te ressemble.\nNOD lui donne une forme, que ton nom soit déjà une marque ou qu'il commence tout juste à compter.",
-    enTexte: 'You want to exist publicly, with an image that looks like you.\nNOD gives it a form.',
+    n: '03', fr: 'Faire vivre tes réseaux', en: 'Bring your social media to life',
+    frTexte: "Une ligne éditoriale claire, des contenus qui te ressemblent.\nTes réseaux tenus mois après mois, de la création à la publication.",
+    enTexte: 'A clear editorial line, content that looks like you.\nYour social media handled month after month, from creation to publishing.',
   },
 ];
 
@@ -51,6 +52,14 @@ export default function Accueil() {
             <br />
             {t('les projets et ceux qui les portent.', 'projects and the people behind them.')}
           </h1>
+          <p className="page-head__lede page-hero__lede">
+            {t(
+              'Stratégie, identité, site et contenu pour les marques et les indépendants qui se lancent.',
+              'Strategy, identity, website and content for brands and independents getting started.',
+            )}
+            <br />
+            {t("Une seule personne, de l'idée à la mise en ligne.", 'One person, from idea to launch.')}
+          </p>
           <div className="page-hero__actions">
             <Link to="/travail" className="nod-btn nod-btn--inverse nod-btn--lg">
               {t('Voir le travail', 'See the work')} <Icon name="arrow-right" size={20} />
@@ -95,15 +104,13 @@ export default function Accueil() {
         <div className="home-summary__body">
           <div className="home-summary__head">
             <Eyebrow>{t('Ce que fait NOD', 'What NOD does')}</Eyebrow>
-            <Link to="/contact">{t('Parler de ton projet', 'Talk about your project')} &rarr;</Link>
+            <Link to="/a-la-carte">{t('Voir à la carte', 'See à la carte')} &rarr;</Link>
           </div>
 
           <p className="home-summary__intro">
-            {t('Trois points de départ, une seule méthode.', 'Three starting points, one method.')}
+            {t('Trois façons de travailler ensemble.', 'Three ways to work together.')}
             <br />
-            {t('Stratégie, identité, contenu, développement,', 'Strategy, identity, content, development,')}
-            <br />
-            {t('tenus ensemble, du premier échange à la mise en ligne.', 'held together, from the first conversation to going live.')}
+            {t('Chacune se prend seule ou se combine.', 'Each one works on its own or combined.')}
           </p>
 
           <ul className="home-summary__list">

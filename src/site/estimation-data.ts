@@ -130,7 +130,6 @@ export const GROUPES: Groupe[] = [
     sous: [
       { fr: 'Posts et visuels', en: 'Posts and visuals', lignes: [
         { id: 'pack-posts', fr: 'Pack 10 posts', en: '10-post pack', dFr: 'Visuels sur mesure, textes, intentions éditoriales', dEn: 'Custom visuals, captions, editorial intent', prix: 800 },
-        { id: 'canva', fr: 'Templates Canva', en: 'Canva templates', dFr: 'Cinq modèles réutilisables, à la charte', dEn: 'Five reusable, on-brand templates', prix: 350 },
       ] },
       { fr: 'Vidéo', en: 'Video', lignes: [
         { id: 'video', fr: 'Vidéo à la carte', en: 'Single video', dFr: 'Captation sur place, ou montage à partir de rushs fournis', dEn: 'Filmed on site, or edited from supplied footage', prix: 350 },
@@ -141,16 +140,12 @@ export const GROUPES: Groupe[] = [
   {
     id: 'reseaux',
     repereFr: 'Faire vivre', repereEn: 'Bringing it to life',
-    fr: 'Réseaux et publicité', en: 'Social media and ads',
+    fr: 'Les réseaux', en: 'Social media',
     introFr: 'Une présence suivie, mois après mois.', introEn: 'A steady presence, month after month.',
     sous: [
-      { fr: 'Gestion des réseaux', en: 'Social media management', unique: true, lignes: [
+      { unique: true, lignes: [
         { id: 'reseaux-essentiel', fr: 'Gestion essentielle', en: 'Essential management', dFr: 'Dix posts par mois : création, planning, programmation, suivi', dEn: 'Ten posts a month: creation, planning, scheduling, follow-up', prix: 1200, mensuel: true },
         { id: 'reseaux-premium', fr: 'Gestion premium', en: 'Premium management', dFr: 'Vingt posts par mois, avec une analyse mensuelle des résultats', dEn: 'Twenty posts a month, with a monthly performance review', prix: 1800, mensuel: true },
-      ] },
-      { fr: 'Publicité en ligne', en: 'Online advertising', lignes: [
-        { id: 'pub-gestion', fr: 'Gestion des publicités', en: 'Ad management', dFr: 'Mise en place, ciblage, budget, suivi, optimisation, bilan de fin de campagne. Le budget publicitaire se paie directement à la plateforme', dEn: 'Setup, targeting, budget, monitoring, optimisation, end-of-campaign review. The ad budget is paid directly to the platform', prix: 450, mensuel: true },
-        { id: 'pub-audit', fr: 'Audit de campagnes', en: 'Campaign audit', dFr: 'Pour des campagnes déjà lancées, par toi ou par un autre prestataire : analyse des performances, recommandations', dEn: 'For campaigns already running, by you or another provider: performance analysis, recommendations', prix: 400 },
       ] },
     ],
   },

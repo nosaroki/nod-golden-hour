@@ -12,6 +12,8 @@ const papier = '/img/crumpled-paper.webp';
 const ESTIMATION_URL = 'https://wzqbtihxdjgqovtjebrj.supabase.co/functions/v1/estimation';
 
 const SITES = ['site-simple', 'site-etoffe', 'site-complet', 'plateforme'];
+/* Les offres principales, affichées d'emblée. */
+const PRINCIPAUX = ['direction', 'strategie', 'site', 'options', 'reseaux'];
 
 const euros = (n: number) => n.toLocaleString('fr-FR').replace(/[  \s]/g, ' ') + ' €';
 
@@ -19,6 +21,8 @@ export default function Estimation() {
   const { language } = useLanguage();
   const t = (fr: string, en: string) => (language === 'fr' ? fr : en);
   const [choisis, setChoisis] = useState<string[]>([]);
+  /* Les prestations principales d'abord ; le reste derrière « Voir toutes les prestations ». */
+  const [toutVoir, setToutVoir] = useState(false);
 
   const toutes = useMemo(() => {
     const m = new Map<string, Ligne>();
@@ -114,6 +118,50 @@ export default function Estimation() {
     }
   };
 
+  /* Les offres principales d'abord, puis le bouton, puis le reste, déplié en dessous. */
+  const groupeChoisi = (g: (typeof GROUPES)[number]) => g.sous.some((s) => s.lignes.some((l) => choisis.includes(l.id)));
+  const affiches = GROUPES.filter((g) => !(g.id === 'options' && (!siteChoisi || plateforme)));
+  const principaux = affiches.filter((g) => PRINCIPAUX.includes(g.id));
+  const autres = affiches.filter((g) => !PRINCIPAUX.includes(g.id));
+  const rendreGroupe = (g: (typeof GROUPES)[number]) => (
+                <section className="est-groupe" key={g.id} aria-labelledby={`est-${g.id}`}>
+                  <p className="est-groupe__repere">{t(g.repereFr, g.repereEn)}</p>
+                  <h2 className="est-groupe__titre" id={`est-${g.id}`}>{t(g.fr, g.en)}</h2>
+                  <p className="est-groupe__intro">{t(g.introFr, g.introEn)}</p>
+                  {g.sous.map((s, i) => (
+                    <div className="est-sous" key={i}>
+                      {s.fr ? (
+                        <h3 className="est-sous__titre">
+                          {t(s.fr, s.en ?? s.fr)}
+                          {s.unique ? <span>{t('Une formule au choix', 'One plan')}</span> : null}
+                        </h3>
+                      ) : null}
+                      <ul className="est-liste">
+                        {s.lignes.map((l) => {
+                          const on = choisis.includes(l.id);
+                          return (
+                            <li key={l.id}>
+                              <button
+                                type="button"
+                                className={'est-ligne' + (on ? ' is-on' : '')}
+                                aria-pressed={on}
+                                onClick={() => basculer(l, s.lignes, s.unique)}
+                              >
+                                <span className="est-ligne__point" aria-hidden="true" />
+                                <span className="est-ligne__texte">
+                                  <span className="est-ligne__nom">{t(l.fr, l.en)}</span>
+                                  <span className="est-ligne__desc">{t(l.dFr, l.dEn)}</span>
+                                </span>
+                              </button>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  ))}
+                </section>
+  );
+
   return (
     <>
       <NodNav overImage />
@@ -169,47 +217,15 @@ export default function Estimation() {
               )}
             </section>
 
-            {!toutConfier && GROUPES.map((g) => {
-              if (g.id === 'options' && (!siteChoisi || plateforme)) return null;
-              return (
-                <section className="est-groupe" key={g.id} aria-labelledby={`est-${g.id}`}>
-                  <p className="est-groupe__repere">{t(g.repereFr, g.repereEn)}</p>
-                  <h2 className="est-groupe__titre" id={`est-${g.id}`}>{t(g.fr, g.en)}</h2>
-                  <p className="est-groupe__intro">{t(g.introFr, g.introEn)}</p>
-                  {g.sous.map((s, i) => (
-                    <div className="est-sous" key={i}>
-                      {s.fr ? (
-                        <h3 className="est-sous__titre">
-                          {t(s.fr, s.en ?? s.fr)}
-                          {s.unique ? <span>{t('Une formule au choix', 'One plan')}</span> : null}
-                        </h3>
-                      ) : null}
-                      <ul className="est-liste">
-                        {s.lignes.map((l) => {
-                          const on = choisis.includes(l.id);
-                          return (
-                            <li key={l.id}>
-                              <button
-                                type="button"
-                                className={'est-ligne' + (on ? ' is-on' : '')}
-                                aria-pressed={on}
-                                onClick={() => basculer(l, s.lignes, s.unique)}
-                              >
-                                <span className="est-ligne__point" aria-hidden="true" />
-                                <span className="est-ligne__texte">
-                                  <span className="est-ligne__nom">{t(l.fr, l.en)}</span>
-                                  <span className="est-ligne__desc">{t(l.dFr, l.dEn)}</span>
-                                </span>
-                              </button>
-                            </li>
-                          );
-                        })}
-                      </ul>
-                    </div>
-                  ))}
-                </section>
-              );
-            })}
+            {!toutConfier && principaux.map(rendreGroupe)}
+            {!toutConfier ? (
+              <button type="button" className="est-tout-voir" aria-expanded={toutVoir} onClick={() => setToutVoir(!toutVoir)}>
+                {toutVoir
+                  ? t('Voir moins de prestations', 'Show fewer services')
+                  : t('Voir toutes les prestations', 'See all services')}
+              </button>
+            ) : null}
+            {!toutConfier && autres.filter((g) => toutVoir || groupeChoisi(g)).map(rendreGroupe)}
           </div>
 
           <aside className={'est-resume' + (vide ? ' is-vide' : '') + (ouvert ? ' is-ouvert' : '')} aria-live="polite">
@@ -217,7 +233,7 @@ export default function Estimation() {
 
             {vide ? (
               <p className="est-resume__vide">
-                {t('Sélectionne ce dont tu as besoin : le détail chiffré et le total t’arrivent par mail.', 'Select what you need: the itemised prices and the total come to you by email.')}
+                {t('Sélectionne ce dont tu as besoin et reçois une première estimation chiffrée par mail.', 'Select what you need and get a first priced estimate by email.')}
               </p>
             ) : (
               <ul className="est-resume__liste">
