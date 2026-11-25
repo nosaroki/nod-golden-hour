@@ -125,29 +125,15 @@ export default function Travail() {
               </div>
             </>
           ) : (
-            <p className="index-travail__invite">
-              {t('Ouvre un projet pour découvrir le travail.', 'Open a project to discover the work.')}
-            </p>
+            <div className="index-travail__repos">
+              <p className="index-travail__invite">
+                {t('Ouvre un projet pour découvrir le travail.', 'Open a project to discover the work.')}
+              </p>
+              <Contact t={t} />
+            </div>
           )}
         </aside>
       </div>
-
-      {/* ---------- Le contact vit au bas de la page projets ---------- */}
-      <section className="travail__cta nod-grain">
-        <div className="travail__cta-body">
-          <Eyebrow tone="ink">{t('Travaillons ensemble', "Let's work together")}</Eyebrow>
-          <h2 className="travail__cta-title">{t('Présente ton projet.', 'Tell me about your project.')}</h2>
-          <p className="travail__cta-text">
-            {t(
-              "Un de ces projets t'a parlé ? Le tien peut être le prochain.",
-              "Did one of these projects speak to you? Yours could be next.",
-            )}
-          </p>
-          <Link to="/contact" className="nod-btn nod-btn--night nod-btn--lg">
-            {t('Remplir le formulaire', 'Fill in the form')} <Icon name="arrow-right" size={20} />
-          </Link>
-        </div>
-      </section>
 
       <NodFooter />
     </>
@@ -183,6 +169,7 @@ function FicheProjet({ projet, t }: { projet: Projet; t: (fr: string, en: string
           <span className="nod-sr">{t('(nouvel onglet)', '(new tab)')}</span>
         </a>
       ) : null}
+      <Contact t={t} />
     </>
   );
 }
@@ -204,4 +191,16 @@ function Visuel({ projet }: { projet: Projet }) {
     );
   }
   return <MediaFrame src={projet.image} ratio="4 / 3" scrim={projet.placeholder ? 'bottom' : 'none'} />;
+}
+
+/* Le contact se glisse dans le panneau : la même typo que le reste de l'index. */
+function Contact({ t }: { t: (fr: string, en: string) => string }) {
+  return (
+    <p className="index-travail__contact">
+      <span>{t('Un projet en tête ?', 'Have a project in mind?')}</span>
+      <Link to="/contact" className="index-travail__lien">
+        {t('Travaillons ensemble', "Let's work together")} <Icon name="arrow-right" size={18} />
+      </Link>
+    </p>
+  );
 }

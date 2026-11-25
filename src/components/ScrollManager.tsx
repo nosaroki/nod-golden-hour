@@ -53,15 +53,22 @@ export default function ScrollManager() {
   }, [pathname]);
 
   useEffect(() => {
-    if (hash) {
+    window.scrollTo(0, 0);
+    if (!hash) return;
+    /* Les pages se chargent à la demande : on attend que l'ancre existe. */
+    let essais = 0;
+    let minuteur = 0;
+    const chercher = () => {
       const el = document.querySelector(hash);
       if (el) {
         const y = el.getBoundingClientRect().top + window.scrollY - 90;
         window.scrollTo({ top: y, behavior: 'smooth' });
-        return;
+      } else if (essais++ < 30) {
+        minuteur = window.setTimeout(chercher, 60);
       }
-    }
-    window.scrollTo(0, 0);
+    };
+    chercher();
+    return () => window.clearTimeout(minuteur);
   }, [pathname, hash]);
 
   return null;
