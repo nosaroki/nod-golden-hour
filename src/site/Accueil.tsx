@@ -17,19 +17,16 @@ const INTENTIONS = [
     n: '01', fr: 'Lancer ta marque', en: 'Launch your brand',
     frTexte: "Une idée ou une activité qui démarre.\nCadrage, identité, site, premiers contenus : je construis tout ce qu'il faut pour lancer.",
     enTexte: 'An idea or a business getting started.\nFraming, identity, website, first content: I build everything you need to launch.',
-    carte: '/a-la-carte#est-tout', projet: 'unmatched', nom: 'Unmatched',
   },
   {
     n: '02', fr: 'Créer ton site', en: 'Build your website',
     frTexte: "Un site vitrine ou une plateforme, conçu et développé sur mesure.\nDesign, textes, réservation ou paiement si besoin, référencement, mise en ligne.",
     enTexte: 'A showcase website or a platform, designed and built from scratch.\nDesign, copy, booking or payment if needed, SEO, going live.',
-    carte: '/a-la-carte#est-site', projet: 'mangrove', nom: 'Mangrove',
   },
   {
     n: '03', fr: 'Faire vivre tes réseaux', en: 'Bring your social media to life',
     frTexte: "Une ligne éditoriale claire, des contenus qui te ressemblent.\nTes réseaux tenus mois après mois, de la création à la publication.",
     enTexte: 'A clear editorial line, content that looks like you.\nYour social media handled month after month, from creation to publishing.',
-    carte: '/a-la-carte#est-strategie', projet: 'jasminka', nom: 'Jasminka',
   },
 ];
 
@@ -107,7 +104,6 @@ export default function Accueil() {
         <div className="home-summary__body">
           <div className="home-summary__head">
             <Eyebrow>{t('Ce que fait NOD', 'What NOD does')}</Eyebrow>
-            <Link to="/a-la-carte">{t('Voir à la carte', 'See à la carte')} &rarr;</Link>
           </div>
 
           <p className="home-summary__intro">
@@ -126,13 +122,7 @@ export default function Accueil() {
               >
                 <span className="home-summary__row">
                   <span className="home-summary__title">{t(item.fr, item.en)}</span>
-                  <span className="home-summary__text">
-                    <span className="home-summary__text--lignes">{t(item.frTexte, item.enTexte)}</span>
-                    <span className="home-summary__liens">
-                      <Link to={item.carte}>{t('Les prestations', 'The services')} &rarr;</Link>
-                      <Link to={`/travail#${item.projet}`}>{t(`Le projet ${item.nom}`, `See ${item.nom}`)} &rarr;</Link>
-                    </span>
-                  </span>
+                  <span className="home-summary__text home-summary__text--lignes">{t(item.frTexte, item.enTexte)}</span>
                 </span>
                 <span className="home-summary__rule" aria-hidden="true" />
               </li>

@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import NodNav from '@/components/NodNav';
 import NodFooter from '@/components/NodFooter';
@@ -12,8 +12,31 @@ const papier = '/img/crumpled-paper.webp';
 const ESTIMATION_URL = 'https://wzqbtihxdjgqovtjebrj.supabase.co/functions/v1/estimation';
 
 const SITES = ['site-simple', 'site-etoffe', 'site-complet', 'plateforme'];
-/* Les offres principales, affichées d'emblée. */
-const PRINCIPAUX = ['direction', 'strategie', 'site', 'options', 'reseaux'];
+/* On part du besoin, dit avec des mots simples : chaque besoin ouvre les prestations qui y répondent. */
+const BESOINS = [
+  {
+    id: 'lancer', groupes: [] as string[],
+    fr: 'Lancer mon projet de A à Z', en: 'Launch my project from A to Z',
+    dFr: "Je te confie tout, de l'idée à la mise en ligne.", dEn: 'You hand me everything, from the idea to the launch.',
+  },
+  {
+    id: 'marque', groupes: ['direction'],
+    fr: 'Une identité pour ma marque', en: 'An identity for my brand',
+    dFr: 'Savoir à qui tu parles, avoir un logo, des couleurs et un style reconnaissable.', dEn: 'Knowing who you speak to, with a logo, colours and a recognisable style.',
+  },
+  {
+    id: 'site', groupes: ['site', 'options', 'autour'],
+    fr: 'Un site internet', en: 'A website',
+    dFr: 'Un site pour te présenter, avec réservation ou paiement en ligne si tu en as besoin.', dEn: 'A website to present yourself, with booking or online payment if you need it.',
+  },
+  {
+    id: 'reseaux', groupes: ['strategie', 'contenu', 'reseaux'],
+    fr: 'Faire vivre mes réseaux', en: 'Bring my social media to life',
+    dFr: 'Savoir quoi publier, avoir des posts et des vidéos, ou me décharger de la gestion chaque mois.', dEn: 'Knowing what to post, getting posts and videos, or handing over the monthly management.',
+  },
+];
+/* Les liens de l'accueil arrivent avec une ancre : on coche le besoin qui va avec. */
+const ANCRES: Record<string, string> = { '#est-tout': 'lancer', '#est-direction': 'marque', '#est-site': 'site', '#est-strategie': 'reseaux', '#est-reseaux': 'reseaux' };
 
 const euros = (n: number) => n.toLocaleString('fr-FR').replace(/[  \s]/g, ' ') + ' €';
 
@@ -21,8 +44,16 @@ export default function Estimation() {
   const { language } = useLanguage();
   const t = (fr: string, en: string) => (language === 'fr' ? fr : en);
   const [choisis, setChoisis] = useState<string[]>([]);
-  /* Les prestations principales d'abord ; le reste derrière « Voir toutes les prestations ». */
+  /* D'abord le besoin, puis les prestations qui y répondent ; « Voir toutes les prestations » montre le reste. */
   const [toutVoir, setToutVoir] = useState(false);
+  const [besoins, setBesoins] = useState<string[]>([]);
+  useEffect(() => {
+    const surAncre = () => { const b = ANCRES[window.location.hash]; if (b) setBesoins((avant) => (avant.includes(b) ? avant : [...avant, b])); };
+    surAncre();
+    window.addEventListener('hashchange', surAncre);
+    return () => window.removeEventListener('hashchange', surAncre);
+  }, []);
+  const basculerBesoin = (id: string) => setBesoins((avant) => (avant.includes(id) ? avant.filter((b) => b !== id) : [...avant, id]));
 
   const toutes = useMemo(() => {
     const m = new Map<string, Ligne>();
@@ -121,8 +152,9 @@ export default function Estimation() {
   /* Les offres principales d'abord, puis le bouton, puis le reste, déplié en dessous. */
   const groupeChoisi = (g: (typeof GROUPES)[number]) => g.sous.some((s) => s.lignes.some((l) => choisis.includes(l.id)));
   const affiches = GROUPES.filter((g) => !(g.id === 'options' && (!siteChoisi || plateforme)));
-  const principaux = affiches.filter((g) => PRINCIPAUX.includes(g.id));
-  const autres = affiches.filter((g) => !PRINCIPAUX.includes(g.id));
+  const groupesDuBesoin = BESOINS.filter((b) => besoins.includes(b.id)).flatMap((b) => b.groupes);
+  const visibles = affiches.filter((g) => toutVoir || groupesDuBesoin.includes(g.id) || groupeChoisi(g));
+  const lancementVisible = toutVoir || toutConfier || besoins.includes('lancer');
   const rendreGroupe = (g: (typeof GROUPES)[number]) => (
                 <section className="est-groupe" key={g.id} aria-labelledby={`est-${g.id}`}>
                   <p className="est-groupe__repere">{t(g.repereFr, g.repereEn)}</p>
@@ -185,6 +217,34 @@ export default function Estimation() {
       <section className="est">
         <div className="est__grille">
           <div className="est__choix">
+            <section className="est-groupe est-besoin" aria-labelledby="est-besoin-titre">
+              <p className="est-groupe__repere">{t('Pour commencer', 'To begin')}</p>
+              <h2 className="est-groupe__titre" id="est-besoin-titre">{t('De quoi as-tu besoin ?', 'What do you need?')}</h2>
+              <p className="est-groupe__intro">
+                {t(
+                  'Choisis ce qui te correspond et les prestations associées apparaîtront à la suite.',
+                  'Choose what fits you and the related services will appear right after.',
+                )}
+              </p>
+              <ul className="est-liste">
+                {BESOINS.map((b) => {
+                  const on = besoins.includes(b.id);
+                  return (
+                    <li key={b.id}>
+                      <button type="button" className={'est-ligne' + (on ? ' is-on' : '')} aria-pressed={on} onClick={() => basculerBesoin(b.id)}>
+                        <span className="est-ligne__point" aria-hidden="true" />
+                        <span className="est-ligne__texte">
+                          <span className="est-ligne__nom">{t(b.fr, b.en)}</span>
+                          <span className="est-ligne__desc">{t(b.dFr, b.dEn)}</span>
+                        </span>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+
+            {lancementVisible ? (
             <section className="est-groupe est-tout" id="est-tout" aria-labelledby="est-tout-titre">
               <p className="est-groupe__repere">{t('Tout confier', 'Hand it all over')}</p>
               <h2 className="est-groupe__titre" id="est-tout-titre">{t('Tu veux tout confier ?', 'Want to hand it all over?')}</h2>
@@ -216,8 +276,9 @@ export default function Estimation() {
                 <p className="est-tout__ou">{t('Ou choisis pièce par pièce :', 'Or pick piece by piece:')}</p>
               )}
             </section>
+            ) : null}
 
-            {!toutConfier && principaux.map(rendreGroupe)}
+            {!toutConfier && visibles.map(rendreGroupe)}
             {!toutConfier ? (
               <button type="button" className="est-tout-voir" aria-expanded={toutVoir} onClick={() => setToutVoir(!toutVoir)}>
                 {toutVoir
@@ -225,7 +286,6 @@ export default function Estimation() {
                   : t('Voir toutes les prestations', 'See all services')}
               </button>
             ) : null}
-            {!toutConfier && autres.filter((g) => toutVoir || groupeChoisi(g)).map(rendreGroupe)}
           </div>
 
           <aside className={'est-resume' + (vide ? ' is-vide' : '') + (ouvert ? ' is-ouvert' : '')} aria-live="polite">

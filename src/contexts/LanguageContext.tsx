@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import React, { createContext, startTransition, useContext, useEffect, useLayoutEffect, useState, ReactNode } from 'react';
 
 type Language = 'fr' | 'en';
 
@@ -175,21 +175,29 @@ const translations: Record<Language, Record<string, string>> = {
   },
 };
 
+const useLayoutEffectSurNavigateur = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
+
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   /* La langue choisie reste en mémoire d'une visite à l'autre. Sans choix
      enregistré, on suit la langue du navigateur : français si elle l'est,
      anglais sinon. */
-  const [language, setLanguageState] = useState<Language>(() => {
+  const [language, setLanguageState] = useState<Language>('fr');
+  /* Les pages pré-générées sont en français : on bascule avant le premier affichage
+     si la visite précédente ou le navigateur demandent l'anglais. */
+  useLayoutEffectSurNavigateur(() => {
+    let choisie: Language | null = null;
     try {
       const enregistree = window.localStorage.getItem('nod-langue');
-      if (enregistree === 'fr' || enregistree === 'en') return enregistree;
+      if (enregistree === 'fr' || enregistree === 'en') choisie = enregistree;
     } catch {
       /* stockage indisponible : on retombe sur le navigateur */
     }
-    return typeof navigator !== 'undefined' && !navigator.language.toLowerCase().startsWith('fr') ? 'en' : 'fr';
-  });
+    if (!choisie) choisie = navigator.language.toLowerCase().startsWith('fr') ? 'fr' : 'en';
+    /* En transition : React finit de reprendre la page avant de passer à l'anglais. */
+    if (choisie !== 'fr') startTransition(() => setLanguageState(choisie as Language));
+  }, []);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
@@ -202,6 +210,8 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
 
   useEffect(() => {
     document.documentElement.lang = language;
+    /* La page est maintenant dans la bonne langue : on peut l'afficher. */
+    if (language === 'en') document.documentElement.classList.remove('langue-attente');
   }, [language]);
 
   const t = (key: string): string => {

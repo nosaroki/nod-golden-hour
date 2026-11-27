@@ -3429,6 +3429,7 @@ a:hover { color: #F55F31; }
 
 .home-summary__item.is-open .home-summary__text {
   opacity: 1;
+  color: var(--text-body);
 }
 
 .home-summary__item.is-open .home-summary__rule {
@@ -4868,25 +4869,6 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .nod-checkbox__
 .est-tout-voir { align-self:flex-start; margin-top:-24px; background:none; border:none; border-bottom:1px solid rgba(17,37,66,.35); padding:0 0 3px; cursor:pointer; font-family:'Bricolage Grotesque',sans-serif; font-weight:600; font-size:13px; letter-spacing:.12em; text-transform:uppercase; color:#112542; }
 .est-tout-voir:hover { color:#F55F31; border-bottom-color:#F55F31; }
 
-/* Sous chaque offre : vers les prestations et vers un projet. */
-.home-summary__text--lignes { display: block; }
-.home-summary__liens {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2) var(--space-6);
-  margin-top: var(--space-4);
-}
-.home-summary__liens a {
-  font: var(--type-label);
-  color: var(--nod-red);
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--dur-fast) var(--ease-standard);
-}
-.home-summary__liens a:hover,
-.home-summary__liens a:focus-visible { border-bottom-color: currentColor; }
-
-
 /* Travail : le contact dans le panneau de droite, sous la fiche ou l'invitation. */
 .index-travail__contact {
   display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--space-2) var(--space-4);
@@ -4914,3 +4896,10 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible, .nod-checkbox__
 .index-travail__repos .index-travail__lien:focus-visible { color: var(--red); border-bottom-color: currentColor; }
 .index-travail__repos .index-travail__contact { font-size: 0.95rem; }
 @media (max-width: 900px) { .index-travail__repos { padding-top: 0; } }
+
+
+/* À la carte : la phrase d'introduction du besoin tient sur une ligne. */
+.est-besoin .est-groupe__intro { max-width: none; }
+
+/* Fiche d'un projet fermé : présente dans la page, jamais affichée. */
+.index-travail__fiche--mobile[hidden] { display: none !important; }

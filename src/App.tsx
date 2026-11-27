@@ -16,9 +16,10 @@ const Confidentialite = lazy(() => import("./pages/Confidentialite"));
 const ComingSoon = lazy(() => import("./pages/ComingSoon"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
-const App = () => (
+/* Le contenu du site, sans le routeur : le navigateur l'enveloppe dans BrowserRouter,
+   la pré-génération au déploiement dans StaticRouter. */
+export const Racine = () => (
   <LanguageProvider>
-    <BrowserRouter>
       <ScrollManager />
       <Suspense fallback={null}>
           <Routes>
@@ -39,8 +40,13 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
       </Suspense>
-    </BrowserRouter>
   </LanguageProvider>
+);
+
+const App = () => (
+  <BrowserRouter>
+    <Racine />
+  </BrowserRouter>
 );
 
 export default App;

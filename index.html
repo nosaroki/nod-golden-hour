@@ -27,9 +27,43 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="https://nod-consulting.com/og-image.jpg" />
 
+    <!-- Fiche d'identité pour les moteurs de recherche et les outils d'IA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "NOD Consulting",
+      "alternateName": "NOD",
+      "url": "https://nod-consulting.com/",
+      "logo": "https://nod-consulting.com/icon-512.png",
+      "image": "https://nod-consulting.com/og-image.jpg",
+      "description": "Maison créative tenue par une seule personne : stratégie, identité de marque, site internet et contenu pour les marques et les indépendants qui se lancent, de l'idée à la mise en ligne.",
+      "email": "contact@nod-consulting.com",
+      "founder": { "@type": "Person", "name": "Nnéna", "jobTitle": "Fondatrice et directrice créative" },
+      "areaServed": "Worldwide",
+      "knowsLanguage": ["fr", "en"],
+      "knowsAbout": ["Stratégie de marque", "Identité visuelle", "Création de site internet", "Développement web sur mesure", "Stratégie de contenu", "Gestion des réseaux sociaux"],
+      "sameAs": ["https://www.instagram.com/nodconsulting/", "https://www.linkedin.com/company/nodconsulting/"]
+    }
+    </script>
+
     <!-- Canonical -->
     <link rel="canonical" href="https://nod-consulting.com/" />
     
+    <!-- Les pages sont écrites en français : si le visiteur lit en anglais, on les masque
+         le temps que le site passe en anglais, pour ne pas voir le français une fraction de seconde. -->
+    <script>
+      (function () {
+        var l = null;
+        try { l = localStorage.getItem('nod-langue'); } catch (e) {}
+        if (l !== 'fr' && l !== 'en') l = (navigator.language || '').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en';
+        if (l !== 'en' || !document.querySelector) return;
+        var html = document.documentElement;
+        html.classList.add('langue-attente');
+        setTimeout(function () { html.classList.remove('langue-attente'); }, 1500);
+      })();
+    </script>
+    <style>.langue-attente #root { visibility: hidden; }</style>
     <!-- Image d'en-tête de la page demandée, téléchargée tout de suite -->
     <script>
       (function () {

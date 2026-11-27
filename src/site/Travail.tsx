@@ -98,12 +98,12 @@ export default function Travail() {
                     <Icon name={estOuvert ? 'minus' : 'plus'} size={20} className="index-travail__signe" />
                   </button>
 
-                  {estOuvert ? (
-                    <div className="index-travail__fiche index-travail__fiche--mobile" id={`fiche-${projet.id}`}>
-                      <Visuel projet={projet} />
-                      <FicheProjet projet={projet} t={t} />
-                    </div>
-                  ) : null}
+                  {/* La fiche est toujours écrite dans la page (lisible par Google et les IA),
+                      cachée tant que le projet n'est pas ouvert. L'image ne se charge qu'à l'ouverture. */}
+                  <div className="index-travail__fiche index-travail__fiche--mobile" id={`fiche-${projet.id}`} hidden={!estOuvert}>
+                    {estOuvert ? <Visuel projet={projet} /> : null}
+                    <FicheProjet projet={projet} t={t} />
+                  </div>
                 </li>
               );
             })}
